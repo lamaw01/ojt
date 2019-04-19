@@ -18,7 +18,9 @@ class Reg extends CI_Controller {
     $this->load->library('form_validation');
     $this->form_validation->set_rules("user_email", "Email", 'required');
     $this->form_validation->set_rules("user_password", "Password", 'required');
-    $this->form_validation->set_rules("user_name", "Name", 'required');
+    $this->form_validation->set_rules("confirm_password", "Confirm Password", 'required|matches[user_password]');
+    $this->form_validation->set_rules("user_fname", "First Name", 'required');
+    $this->form_validation->set_rules("user_lname", "Last Name", 'required');
     $this->form_validation->set_rules('user_level', 'User Type', 'required');
 
     if($this->form_validation->run()){
@@ -26,7 +28,9 @@ class Reg extends CI_Controller {
       $data = array(
         "user_email"     =>$this->input->post("user_email"),
         "user_password"     =>md5($this->input->post("user_password")),
-        "user_name"     =>$this->input->post("user_name"),
+        "confirm_password"  =>$this->input->post("confirm_password"),
+        "user_fname"     =>$this->input->post("user_fname"),
+        "user_lname"     =>$this->input->post("user_lname"),
         "user_level"   =>$this->input->post("user_level")
       );
 

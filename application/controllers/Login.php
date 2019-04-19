@@ -15,12 +15,16 @@ class Login extends CI_Controller{
     $validate = $this->login_model->validate($email,$password);
     if($validate->num_rows() > 0){
         $data  = $validate->row_array();
-        $name  = $data['user_name'];
+        $id = $data['user_id'];
+        $fname  = $data['user_fname'];
+        $lname  = $data['user_lname'];
         $email = $data['user_email'];
         $level = $data['user_level'];
         $sesdata = array(
-            'username'  => $name,
-            'email'     => $email,
+            'user_id'  => $user_id,
+            'user_fname'  => $fname,
+            'user_lname'  => $lname,
+            'user_email'     => $email,
             'level'     => $level,
             'logged_in' => TRUE
         );

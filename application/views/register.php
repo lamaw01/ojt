@@ -23,18 +23,26 @@
 
       <div class="form-group">
         <input type="text" name="user_email" class="form-control" placeholder="Email">
-        <span class="text-danger"><?php echo form_error("email"); ?></span>
+        <span class="text-danger"><?php echo form_error("user_email"); ?></span>
       </div>
       <div class="form-group">
         <input type="password" name="user_password" class="form-control" placeholder="Password">
-        <span class="text-danger"><?php echo form_error("password"); ?></span>
+        <span class="text-danger"><?php echo form_error("user_password"); ?></span>
       </div>
       <div class="form-group">
-        <input type="text" name="user_name" class="form-control" placeholder="Name">
-        <span class="text-danger"><?php echo form_error("name"); ?></span>
+        <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password">
+        <span class="text-danger"><?php echo form_error("confirm_password"); ?></span>
       </div>
       <div class="form-group">
-        <select class="form-control" name="user_level" placeholder="Name">
+        <input type="text" name="user_fname" class="form-control" placeholder="First Name">
+        <span class="text-danger"><?php echo form_error("user_fname"); ?></span>
+      </div>
+      <div class="form-group">
+        <input type="text" name="user_lname" class="form-control" placeholder="Last Name">
+        <span class="text-danger"><?php echo form_error("user_lname"); ?></span>
+      </div>
+      <div class="form-group">
+        <select class="form-control" name="user_level">
           <option value="1">Admin</option>
           <option value="2">Tech staff</option>
           <option value="3">Coop staff</option>
