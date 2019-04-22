@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Profile</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <!--<link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+
+    <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
     <style>
       th {
         text-align: center;
@@ -59,31 +60,24 @@
         </nav>
       </div>
     </div>
-    <center>
+    <div class="container">
       <h3 class="form-signin-heading">Profile</h3>
       <br>
-    <table width="600" border="0" cellspacing="10" cellpadding="10">
-      <tr style="background:#CCC">
-        <th><h4>First Name</h4></th>
-        <th><h4>Last Name</h4></th>
-        <th><h4>Email</h4></th>
-        <th><h4>User Level</h4></th>
-      </tr>
+      
       <?php
       $i=1;
       foreach($data as $row)
       {
-      echo "<tr>";
-      echo "<td><h4>".$row->user_fname."</h4></td>";
-      echo "<td><h4>".$row->user_lname."</h4></td>";
-      echo "<td><h4>".$row->user_email."</h4></td>";
-      echo "<td><h4>".$row->user_level."</h4></td>";
-      echo "</tr>";
+
+      echo "<h3><b>First Name :   </b>".$row->user_fname."</h3>";
+      echo "<h3><b>Last Name :  </b>".$row->user_lname."</h3>";
+      echo "<h3><b>Email :  </b>".$row->user_email."</h3>";
+      echo "<h3><b>User Level :   </b>".$row->user_level."</h3>";
+
       $i++;
       }
        ?>
-    </table>
-    </center>
+      </div>
  
     <script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
   </body>
