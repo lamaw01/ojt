@@ -1,0 +1,29 @@
+1. coreln
+
+LOAD DATA LOCAL INFILE 'c:/tmp/import1_coreln.csv'
+INTO TABLE coreln
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(account_no, product_code, @open_date, int_rate, penalty_rate, loan_amount, outstanding_bal, overdue_principal, interest_due_amount, pri_paid, penalty, customer_no, customer_name, account_name, account_status)
+SET open_date = STR_TO_DATE(@open_date, '%m/%d/%Y');
+
+2. mbwinln
+
+LOAD DATA LOCAL INFILE 'c:/tmp/import2_mbwinln.csv'
+INTO TABLE mbwinln
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(account_no, check_digit, @open_date, int_rate, pen_rate, principal_amt, bal_amt, over_due_pri_amt, int_bal_amt, pen_bal_amt)
+SET open_date = STR_TO_DATE(@open_date, '%m/%d/%Y');
+
+3.
+ALTER TABLE tablename AUTO_INCREMENT = 1
+
+4.
+UPDATE coreln 
+	SET account_no = replace(account_no, '-','');
+5.
+UPDATE migratedln 
+    SET account_no = replace(account_no, "'",0)
