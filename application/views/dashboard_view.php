@@ -2,16 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title><?php echo $title ?></title>
+    <title>Welcome</title>
 
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
       <style>
-        a{
+        a,p{
         font-family: 'Fjalla One', sans-serif;
       }
+        p{
+          text-align: center;
+        }
       </style>
   </head>
   <body>
@@ -58,6 +61,50 @@
       </div>
     </div>
 
+    <!--DISPLAY MIGRATED DATA FOR ADMIN-->
+    <?php if($this->session->userdata('level')==='1'):?>
+          <br>
+          <div class="container">
+            <table width="600" border="0" cellspacing="10" cellpadding="10">
+              <tr style="background:#CCC">
+                <th><p>No :</p></th>
+                <th><p>CoreLN No :</p></th>
+                <th><p>MBWINLN No :</p></th>
+                <th><p>Account Name :</p></th>
+              </tr>
+              <?php
+              $i=1;
+              foreach($data as $row)
+              {
+              echo "<tr>";
+              echo "<td><p>".$row->migratedln_id."</p></td>";
+              echo "<td><p>".$row->coreln_account_no."</p></td>";
+              echo "<td><p>".$row->mbwinln_acc_no."</p></td>";
+              echo "<td><p>".$row->account_name."</p></td>";
+              echo "</tr>";
+              $i++;
+              }
+               ?>
+            </table>
+          </div>
+    <!--DISPLAY MIGRATED DATA FOR TECH-->
+    <?php else:?>
+        <div class="container">
+            <br>
+            
+            <?php
+            $i=1;
+            foreach($data as $row)
+            {
+            echo "<p>No. : ".$row->migratedln.migratedln_id."</p>";
+            echo "<p>CoreLN No. : ".$row->coreln.account_no."</p>";
+            echo "<p>MBWIN No. : ".$row->mbwinln.account_no."</p>";
+            echo "<p>Account Name : ".$row->coreln.account_name."</p>";
+            $i++;
+            }
+             ?>
+          </div>
+    <?php endif;?>
  
     <script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
   </body>

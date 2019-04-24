@@ -27,3 +27,62 @@ UPDATE coreln
 5.
 UPDATE migratedln 
     SET account_no = replace(account_no, "'",0)
+
+6.
+SELECT coreln.account_no AS coreln_account_no, mbwinln.account_no AS mbwin_account_no, migratedln.account_no AS migratedln_account_no, migratedln.old_account_no AS migratedln_old_account_no
+FROM coreln
+INNER JOIN migratedln ON migratedln.account_no = coreln.account_no
+INNER JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+ORDER BY migratedln.migratedln_id ASC;
+
+7.
+SELECT coreln.account_no AS coreln_account_no, coreln.open_date AS coreln_open_date, mbwinln.open_date AS mbwinln_open_date, coreln.int_rate AS coreln_int_rate, mbwinln.int_rate AS mbwinln_int_rate, coreln.penalty_rate AS coreln_pen_rate, mbwinln.pen_rate AS mbwinln_pen_rate, coreln.loan_amount AS coreln_loan_amt, mbwinln.principal_amt AS mbwinln_principal_amt, coreln.outstanding_bal AS coreln_outstanding_bal, mbwinln.bal_amt AS mbwinln_bal_amt, coreln.overdue_principal AS coreln_overdue_prin, mbwinln.over_due_pri_amt AS mbwinln_over_due_pri_amt, coreln.interest_due_amount AS coreln_int_due_amt, mbwinln.int_bal_amt AS mbwinln_int_bal_amt, coreln.penalty AS coreln_penalty, mbwinln.pen_bal_amt AS mbwinln_pen_bal_amt, mbwinln.account_no AS mbwin_account_no, migratedln.account_no AS migratedln_account_no, migratedln.old_account_no AS migratedln_old_account_no
+FROM coreln
+INNER JOIN migratedln ON migratedln.account_no = coreln.account_no
+INNER JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+ORDER BY migratedln.migratedln_id ASC;
+
+8.
+SELECT coreln.account_no AS coreln_account_no, mbwinln.account_no AS mbwinln_acc_no, coreln.open_date AS coreln_open_date, mbwinln.open_date AS mbwinln_open_date, coreln.int_rate AS coreln_int_rate, mbwinln.int_rate AS mbwinln_int_rate, coreln.penalty_rate AS coreln_pen_rate, mbwinln.pen_rate AS mbwinln_pen_rate, coreln.loan_amount AS coreln_loan_amt, mbwinln.principal_amt AS mbwinln_principal_amt, coreln.outstanding_bal AS coreln_outstanding_bal, mbwinln.bal_amt AS mbwinln_bal_amt, coreln.overdue_principal AS coreln_overdue_prin, mbwinln.over_due_pri_amt AS mbwinln_over_due_pri_amt, coreln.interest_due_amount AS coreln_int_due_amt, mbwinln.int_bal_amt AS mbwinln_int_bal_amt, coreln.penalty AS coreln_penalty, mbwinln.pen_bal_amt AS mbwinln_pen_bal_amt
+FROM coreln
+INNER JOIN migratedln ON migratedln.account_no = coreln.account_no
+INNER JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+ORDER BY migratedln.migratedln_id ASC;
+
+9. SHOW DATA TO DASHBOARD_VIEW
+
+SELECT coreln.account_no AS coreln_account_no, mbwinln.account_no AS mbwinln_acc_no, coreln.open_date AS coreln_open_date, mbwinln.open_date AS mbwinln_open_date, coreln.int_rate AS coreln_int_rate, mbwinln.int_rate AS mbwinln_int_rate, coreln.penalty_rate AS coreln_pen_rate, mbwinln.pen_rate AS mbwinln_pen_rate, coreln.loan_amount AS coreln_loan_amt, mbwinln.principal_amt AS mbwinln_principal_amt, coreln.outstanding_bal AS coreln_outstanding_bal, mbwinln.bal_amt AS mbwinln_bal_amt, coreln.overdue_principal AS coreln_overdue_prin, mbwinln.over_due_pri_amt AS mbwinln_over_due_pri_amt, coreln.interest_due_amount AS coreln_int_due_amt, mbwinln.int_bal_amt AS mbwinln_int_bal_amt, coreln.penalty AS coreln_penalty, mbwinln.pen_bal_amt AS mbwinln_pen_bal_amt
+FROM coreln
+INNER JOIN migratedln ON migratedln.account_no = coreln.account_no
+INNER JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+ORDER BY migratedln.migratedln_id ASC;
+
+10. VALIDATOR BUTTON
+
+SELECT migratedln.migratedln_id, coreln.account_no AS coreln_account_no, mbwinln.account_no AS mbwinln_acc_no, coreln.open_date AS coreln_open_date, mbwinln.open_date AS mbwinln_open_date, coreln.int_rate AS coreln_int_rate, mbwinln.int_rate AS mbwinln_int_rate, coreln.penalty_rate AS coreln_pen_rate, mbwinln.pen_rate AS mbwinln_pen_rate, coreln.loan_amount AS coreln_loan_amt, mbwinln.principal_amt AS mbwinln_principal_amt, coreln.outstanding_bal AS coreln_outstanding_bal, mbwinln.bal_amt AS mbwinln_bal_amt, coreln.overdue_principal AS coreln_overdue_prin, mbwinln.over_due_pri_amt AS mbwinln_over_due_pri_amt, coreln.interest_due_amount AS coreln_int_due_amt, mbwinln.int_bal_amt AS mbwinln_int_bal_amt, coreln.penalty AS coreln_penalty, mbwinln.pen_bal_amt AS mbwinln_pen_bal_amt
+FROM coreln
+INNER JOIN migratedln ON migratedln.account_no = coreln.account_no
+INNER JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+WHERE coreln.int_rate = mbwinln.int_rate
+AND coreln.penalty_rate = mbwinln.pen_rate
+AND coreln.loan_amount = mbwinln.principal_amt
+AND coreln.outstanding_bal = mbwinln.bal_amt
+AND coreln.overdue_principal = mbwinln.over_due_pri_amt
+AND coreln.interest_due_amount = mbwinln.int_bal_amt
+AND coreln.penalty = mbwinln.pen_bal_amt
+LIMIT 15;
+
+11. show data dashboard
+
+SELECT migratedln.migratedln_id, coreln.account_no AS coreln_account_no, mbwinln.account_no AS mbwinln_acc_no, coreln.account_name
+FROM coreln
+INNER JOIN migratedln ON migratedln.account_no = coreln.account_no
+INNER JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+WHERE coreln.int_rate = mbwinln.int_rate
+AND coreln.penalty_rate = mbwinln.pen_rate
+AND coreln.loan_amount = mbwinln.principal_amt
+AND coreln.outstanding_bal = mbwinln.bal_amt
+AND coreln.overdue_principal = mbwinln.over_due_pri_amt
+AND coreln.interest_due_amount = mbwinln.int_bal_amt
+AND coreln.penalty = mbwinln.pen_bal_amt
+LIMIT 15;

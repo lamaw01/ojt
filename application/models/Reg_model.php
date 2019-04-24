@@ -11,5 +11,6 @@ class Reg_model extends CI_Model {
 		$this->db->insert("tbl_users", $data);
 	}
 
+	
 }
 ?>

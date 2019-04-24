@@ -11,8 +11,7 @@ class Page extends CI_Controller{
   function index(){
     //Allowing access to admin only
       if($this->session->userdata('level')==='1'){
-          $data['title'] = 'Admin Dashboard';
-          $this->load->view('dashboard_view',$data);
+          $this->load->view('dashboard_view');
       }else{
           echo "Access Denied";
       }
@@ -39,7 +38,7 @@ class Page extends CI_Controller{
     }
   }
  
-  function adminhome(){
+  /*function adminhome(){
 
       if($this->session->userdata('level')==='1'){
           $data['title'] = 'Admin Dashboard';
@@ -48,7 +47,7 @@ class Page extends CI_Controller{
           echo "Access Denied";
       }
  
-  }
+  }*/
 
   function adminvalidated(){
 
@@ -129,9 +128,14 @@ class Page extends CI_Controller{
   }
 
 
-  public function displayprofile(){
+  function displayprofile(){
     $result['data']=$this->Show_model->displayprof();
     $this->load->view('profile',$result);
+  }
+
+  function adminhome(){
+    $result['data']=$this->Show_model->displaymdata();
+    $this->load->view('dashboard_view',$result);
   }
 
 }
