@@ -21,14 +21,31 @@ class Admin extends CI_Controller {
     $config['total_rows'] = $this->Show_model->total_record();
     $config['per_page'] = $limit;
     $config['num_links'] = 5;
-    $config['first_link'] = 'First';
-    $config['last_link'] = 'Last';
+    $config['full_tag_open'] = '<ul class="pagination">';
+    $config['full_tag_close'] = '</ul>';
+    $config['prev_link'] = '&laquo;';
+    $config['prev_tag_open'] = '<li>';
+    $config['prev_tag_close'] = '</li>';
+    $config['next_tag_open'] = '<li>';
+    $config['next_tag_close'] = '</li>';
+    $config['cur_tag_open'] = '<li class="active"><a href="#">';
+    $config['cur_tag_close'] = '</a></li>';
+    $config['num_tag_open'] = '<li>';
+    $config['num_tag_close'] = '</li>';
+    $config['next_link'] = '&raquo;';
+
+    $config['first_link'] = false;
+    $config['last_link'] = false;
+
+
     $this->pagination->initialize($config);
 
     $result['data'] = $this->Show_model->get_join($limit,$offset);
     $this->load->view('admin_home',$result);
-}
+ }
 
-
+  function validateadmin(){
+    
+  }
 
 }

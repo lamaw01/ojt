@@ -86,3 +86,80 @@ AND coreln.overdue_principal = mbwinln.over_due_pri_amt
 AND coreln.interest_due_amount = mbwinln.int_bal_amt
 AND coreln.penalty = mbwinln.pen_bal_amt
 LIMIT 15;
+
+12.
+DELIMITER ?
+CREATE PROCEDURE val(IN migratedln_id INT)
+BEGIN
+    DECLARE id INT DEFAULT 0;
+    SET id = migratedln_id;
+    
+    IF (SELECT stat from migratedln WHERE migratedln_id = id) THEN
+    	UPDATE migratedln
+       	SET stat = 1;
+
+	END IF;
+END
+?
+
+13.
+DELIMITER ?
+CREATE PROCEDURE val3(IN migratedln_id INT)
+BEGIN
+    DECLARE id INT DEFAULT 0;
+    SET id = 1;
+    
+    IF (SELECT COUNT(stat) from migratedln WHERE stat = 0 AND migratedln_id = id) = 0 THEN
+    	UPDATE migratedln
+    	SET stat = 0;
+    ELSE
+    	UPDATE migratedln
+       	SET stat = 1;
+
+	END IF;
+END
+?
+
+14.
+
+DELIMITER ?
+CREATE PROCEDURE val6(IN id INT(10))
+BEGIN 
+
+    IF (SELECT COUNT(stat) from migratedln WHERE stat = 0 AND migratedln_id = id) = 0 THEN
+        UPDATE migratedln
+        SET stat = 0
+        WHERE migratedln_id = id;
+    ELSE
+        UPDATE migratedln
+        SET stat = 1
+        WHERE migratedln_id = id;
+
+    END IF;
+END
+$this->db->call_function('pc');
+
+15.
+DELIMITER ?
+CREATE PROCEDURE val(IN id INT(10))
+BEGIN 
+
+    IF (SELECT stat FROM coreln
+        INNER JOIN migratedln ON migratedln.account_no = coreln.account_no
+        INNER JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+        WHERE coreln.int_rate = mbwinln.int_rate
+        AND coreln.penalty_rate = mbwinln.pen_rate
+        AND coreln.loan_amount = mbwinln.principal_amt
+        AND coreln.outstanding_bal = mbwinln.bal_amt
+        AND coreln.overdue_principal = mbwinln.over_due_pri_amt
+        AND coreln.interest_due_amount = mbwinln.int_bal_amt
+        AND coreln.penalty = mbwinln.pen_bal_amt
+        AND migratedln.stat = 0) THEN
+
+        UPDATE migratedln
+        SET stat = 1
+        WHERE migratedln_id = id;
+        
+    END IF;
+END
+?

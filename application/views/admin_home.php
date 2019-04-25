@@ -60,14 +60,13 @@
         </nav>
       </div>
     </div>
-
-          <div class="container">
-            <table width="600" border="0" cellspacing="10" cellpadding="10">
+          <div class="container-fluid">
+            <table width="600" border="0" cellspacing="5" cellpadding="5">
               <tr style="background:#CCC">
-                <th><p>No :</p></th>
-                <th><p>CoreLN No :</p></th>
-                <th><p>MBWINLN No :</p></th>
-                <th><p>Account Name :</p></th>
+                <th><p>No</p></th>
+                <th><p>CoreLN No</p></th>
+                <th><p>MBWINLN No</p></th>
+                <th><p>Account Name</p></th>
               </tr>
               <?php
               $i=1;
@@ -78,15 +77,14 @@
               echo "<td><p>".$row->coreln_account_no."</p></td>";
               echo "<td><p>".$row->mbwinln_acc_no."</p></td>";
               echo "<td><p>".$row->account_name."</p></td>";
+              echo "<td><button type='button' class='btn btn-xs btn-primary' onclick='window.location='<?php echo site_url('admin/trigger');?>Check</button></td>";
               echo "</tr>";
               $i++;
               }
                ?>
             </table>
             <center>
-              <?php 
-                echo "<br><div>" .$this->pagination->create_links() ."</div>";
-              ?>
+              <p> <?php echo $this->pagination->create_links(); ?> </p>
               <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
             </center>
           </div>
