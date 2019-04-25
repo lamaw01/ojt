@@ -36,7 +36,7 @@
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
                   <li class="active"><a href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
-                  <li><a href="<?php echo base_url('admin');?>">Home</a></li>
+                  <li><a href="<?php echo base_url('page/adminhome');?>">Home</a></li>
                   <li><a href="<?php echo base_url('page/adminvalidated');?>">Validated</a></li>
                   <li><a href="<?php echo base_url('page/adminerrors');?>">Errors</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
@@ -61,26 +61,29 @@
       </div>
     </div>
 
-    <!--DISPLAY MIGRATED DATA FOR ADMIN-->
-    <?php if($this->session->userdata('level')==='1'):?>
-      <div class="container">
-        <div class="jumbotron">
-            <h2>Welcome <?php echo $this->session->userdata('user_fname','user_lname');?></h2>
-        </div>
-      </div>
-    <?php elseif($this->session->userdata('level')==='2'):?>
-       <div class="container">
-        <div class="jumbotron">
-            <h2>Welcome <?php echo $this->session->userdata('user_fname','user_lname');?></h2>
-        </div>
-      </div>
-    <?php else:?>
-       <div class="container">
-        <div class="jumbotron">
-            <h2>Welcome <?php echo $this->session->userdata('user_fname','user_lname');?></h2>
-        </div>
-      </div>
-    <?php endif;?>
+          <div class="container">
+            <table width="600" border="0" cellspacing="10" cellpadding="10">
+              <tr style="background:#CCC">
+                <th><p>No :</p></th>
+                <th><p>CoreLN No :</p></th>
+                <th><p>MBWINLN No :</p></th>
+                <th><p>Account Name :</p></th>
+              </tr>
+              <?php
+              $i=1;
+              foreach($data as $row)
+              {
+              echo "<tr>";
+              echo "<td><p>".$row->migratedln_id."</p></td>";
+              echo "<td><p>".$row->coreln_account_no."</p></td>";
+              echo "<td><p>".$row->mbwinln_acc_no."</p></td>";
+              echo "<td><p>".$row->account_name."</p></td>";
+              echo "</tr>";
+              $i++;
+              }
+               ?>
+            </table>
+          </div>
  
     <script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
   </body>

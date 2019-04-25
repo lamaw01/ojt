@@ -3,6 +3,7 @@ class Page extends CI_Controller{
   function __construct(){
     parent::__construct();
     $this->load->model('Show_model');
+    $this->load->library('pagination');
     if($this->session->userdata('logged_in') !== TRUE){
       redirect('login');
     }
@@ -11,7 +12,8 @@ class Page extends CI_Controller{
   function index(){
     //Allowing access to admin only
       if($this->session->userdata('level')==='1'){
-          $this->load->view('dashboard_view');
+        $data['title'] = 'Admin Dashboard';
+        $this->load->view('dashboard_view',$data);
       }else{
           echo "Access Denied";
       }
@@ -38,16 +40,6 @@ class Page extends CI_Controller{
     }
   }
  
-  /*function adminhome(){
-
-      if($this->session->userdata('level')==='1'){
-          $data['title'] = 'Admin Dashboard';
-          $this->load->view('dashboard_view',$data);
-      }else{
-          echo "Access Denied";
-      }
- 
-  }*/
 
   function adminvalidated(){
 
@@ -69,17 +61,7 @@ class Page extends CI_Controller{
       }
  
   }
-
-  function techhome(){
-
-      if($this->session->userdata('level')==='2'){
-          $data['title'] = 'Tech Dashboard';
-          $this->load->view('dashboard_view',$data);
-      }else{
-          echo "Access Denied";
-      }
  
-  }
 
   function techvalidated(){
 
@@ -133,9 +115,31 @@ class Page extends CI_Controller{
     $this->load->view('profile',$result);
   }
 
-  function adminhome(){
-    $result['data']=$this->Show_model->displaymdata();
-    $this->load->view('dashboard_view',$result);
+  /*function adminhome(){
+    if($this->session->userdata('level')==='1'){
+      $result['data']=$this->Show_model->displaymdata();
+      $this->load->view('admin_home',$result);
+    }else{
+      echo "Access Denied";
+    }
+  }*/
+
+  function techhome(){
+    if($this->session->userdata('level')==='2'){
+      $result['data']=$this->Show_model->displaymdata();
+      $this->load->view('tech_home',$result);
+    }else{
+      echo "Access Denied";
+    }
   }
+
+  /*function adminhome(){
+    if($this->session->userdata('level')==='1'){
+      $result['data']=$this->Show_model->get_join();
+      $this->load->view('admin_home',$result);
+    }else{
+      echo "Access Denied";
+    }
+  }*/
 
 }
