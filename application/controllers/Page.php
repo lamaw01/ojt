@@ -39,17 +39,6 @@ class Page extends CI_Controller{
         echo "Access Denied";
     }
   }
- 
-
-  function adminvalidated(){
-
-      if($this->session->userdata('level')==='1'){
-          $data['title'] = 'Admin Validated';
-          $this->load->view('validated',$data);
-      }else{
-          echo "Access Denied";
-      }
-  }
 
   function adminerrors(){
 

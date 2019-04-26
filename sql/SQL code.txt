@@ -163,3 +163,129 @@ BEGIN
     END IF;
 END
 ?
+
+16.
+DELIMITER ?
+CREATE PROCEDURE val7(IN id INT(10))
+BEGIN 
+
+    IF (SELECT * FROM coreln
+        INNER JOIN migratedln ON migratedln.account_no = coreln.account_no
+        INNER JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+        WHERE coreln.int_rate) IN (SELECT * FROM mbwinln WHERE mbwinln.int_rate)
+        
+        THEN
+
+        UPDATE migratedln
+        SET stat = 1
+        WHERE migratedln_id = id;
+        
+    END IF;
+END
+?
+
+17.
+BEGIN 
+
+    IF (SELECT coreln.int_rate FROM coreln
+        INNER JOIN migratedln ON migratedln.account_no = coreln.account_no
+        INNER JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+        WHERE coreln.int_rate) = (SELECT mbwinln.int_rate FROM mbwinl)
+        AND
+        (SELECT coreln.penalty_rate FROM coreln) = (SELECT mbwinln.pen_rate FROM mbwinln)
+        AND
+        (SELECT coreln.loan_amount FROM coreln) = (SELECT mbwinln.principal_amt FROM mbwinln)
+        AND
+        (SELECT coreln.outstanding_bal FROM coreln) = (SELECT mbwinln.bal_amt FROM mbwinln)
+        AND
+        (SELECT coreln.overdue_principal FROM coreln) = (SELECT mbwinln.over_due_pri_amt FROM mbwinln)
+        AND
+        (SELECT coreln.interest_due_amount FROM coreln) = (SELECT mbwinln.int_bal_amt FROM mbwinln)
+        AND
+        (SELECT coreln.penalty FROM coreln) = (SELECT mbwinln.pen_bal_amt FROM mbwinln)
+        AND
+        (SELECT migratedln.stat FROM = migratedln WHERE migratedln.stat = 0)
+        AND 
+        (SELECT migratedln.migratedln_id FROM migratedln WHERE migratedln.migratedln_id = id)
+        
+        THEN
+
+        UPDATE migratedln
+        SET stat = 1
+        WHERE migratedln_id = id;
+        
+    END IF;
+END?
+
+18.
+BEGIN 
+
+    IF (SELECT coreln.int_rate, coreln.penalty_rate, coreln.loan_amount, coreln.outstanding_bal, coreln.overdue_principal, coreln.interest_due_amount, coreln.penalty FROM coreln
+        INNER JOIN migratedln ON migratedln.account_no = coreln.account_no
+        INNER JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+        WHERE coreln.int_rate = mbwinln.int_rate
+        AND coreln.penalty_rate = mbwinln.pen_rate
+        AND coreln.loan_amount = mbwinln.principal_amt
+        AND coreln.outstanding_bal = mbwinln.bal_amt
+        AND coreln.overdue_principal = mbwinln.over_due_pri_amt
+        AND coreln.interest_due_amount = mbwinln.int_bal_amt
+        AND coreln.penalty = mbwinln.pen_bal_amt
+        AND migratedln.stat = 0) = (SELECT mbwinln.int_rate, mbwinln.pen_rate, mbwinln.principal_amt, mbwinln.bal_amt, mbwinln.over_due_pri_amt, mbwinln.int_bal_amt, mbwinln.pen_bal_amt FROM mbwinln WHERE mbwinln.int_rate = coreln.int_rate
+        AND mbwinln.pen_rate = coreln.penalty_rate
+        AND mbwinln.principal_amt = coreln.loan_amount
+        AND mbwinln.bal_amt = coreln.outstanding_bal
+        AND mbwinln.over_due_pri_amt = coreln.overdue_principal
+        AND mbwinln.int_bal_amt = coreln.interest_due_amount
+        AND mbwinln.pen_bal_amt = coreln.penalty
+        AND migratedln.stat = 0)
+        
+        THEN
+
+        UPDATE migratedln
+        SET stat = 1
+        WHERE migratedln_id = id;
+        
+    END IF;
+END
+?
+
+20.
+DELIMITER ?
+CREATE TRIGGER insertValln
+AFTER UPDATE ON migratedln
+FOR EACH ROW
+BEGIN
+
+	IF migratedln.stat = 1 THEN 
+    
+    	INSERT INTO validateln(coreln_id, mbwin_id, acc_name)
+        VALUES(OLD.migratedln.account_no, OLD.mbwinln.account_no, OLD.coreln.account_name);
+    
+	END IF;
+END
+?
+
+21.
+
+BEGIN
+	CASE WHEN (OLD.stat = 0) THEN
+    	INSERT INTO validateln(coreln_id, mbwinln_id)
+        VALUES(OLD.account_no, OLD.old_account_no);
+    WHEN (OLD.stat = 1) THEN
+    	INSERT INTO validateln(coreln_id, mbwinln_id)
+        VALUES(OLD.account_no, OLD.old_account_no);
+    ELSE BEGIN END;
+    END CASE;
+
+22.
+
+DELIMITER ?
+CREATE PROCEDURE insertValln()
+BEGIN
+	IF stat = 1 THEN
+    INSERT INTO validateln(coreln_id,mbwinln_id)
+    VALUES(account_no,old_account_no);
+	END IF;
+END
+?
+END

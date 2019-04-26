@@ -1,24 +1,24 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Validated extends CI_Controller {
   function __construct(){
     parent::__construct();
-    $this->load->model('Show_model');
+    $this->load->model('Validated_model');
 }
 
   function index($offset = NULL){
     $this->load->library('table');
     //pagination
-    $limit = 15;
+    $limit = 5;
     if(!is_null($offset))
     {
         $offset = $this->uri->segment(3);
     }
     $this->load->library('pagination');
     $config['uri_segment'] = 3;
-    $config['base_url'] = base_url().'admin/index';
-    $config['total_rows'] = $this->Show_model->total_record();
+    $config['base_url'] = base_url().'validated/index';
+    $config['total_rows'] = $this->Validated_model->total_recordvl();
     $config['per_page'] = $limit;
     $config['num_links'] = 5;
     $config['full_tag_open'] = '<ul class="pagination">';
@@ -40,15 +40,8 @@ class Admin extends CI_Controller {
 
     $this->pagination->initialize($config);
 
-    $result['data'] = $this->Show_model->get_join($limit,$offset);
-    $this->load->view('admin_home',$result);
+    $result['data'] = $this->Validated_model->get_joinvl($limit,$offset);
+    $this->load->view('admin_validated',$result);
  }
-
-  function callcheck($id){
-
-    $this->Show_model->checkln($id);
-    redirect('admin');
-    //var_dump($id);
-}
 
 }
