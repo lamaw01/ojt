@@ -41,7 +41,7 @@
                   <li><a href="#">Admin</a></li>
                   <li><a href="<?php echo base_url('admin');?>">Home</a></li>
                   <li><a href="<?php echo base_url('validated');?>">Validated</a></li>
-                  <li><a href="#">Errors</a></li>
+                  <li><a href="<?php echo base_url('errors');?>">Errors</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a href="#">Tech Staff</a></li>

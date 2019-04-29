@@ -36,7 +36,7 @@
                   <li><a href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
                   <li><a href="<?php echo base_url('admin');?>">Home</a></li>
                   <li><a href="<?php echo base_url('validated');?>">Validated</a></li>
-                  <li><a href="#">Errors</a></li>
+                  <li><a href="<?php echo base_url('errors');?>">Errors</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
@@ -48,8 +48,6 @@
     </div>
       <center>
           <div class="container">
-          </div>
-          <div class="container" style="padding-top: 25px;">
             <table width="600" border="0" cellspacing="5" cellpadding="5">
               <tr style="background:#CCC">
                 <th><p>No</p></th>

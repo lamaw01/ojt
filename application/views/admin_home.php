@@ -37,7 +37,7 @@
                   <li><a href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
                   <li><a href="<?php echo base_url('admin');?>">Home</a></li>
                   <li><a href="<?php echo base_url('validated');?>">Validated</a></li>
-                  <li><a href="#">Errors</a></li>
+                  <li><a href="<?php echo base_url('errors');?>">Errors</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
@@ -49,8 +49,7 @@
     </div>
         <center>
           <div class="container">
-          </div>
-          <div class="container" style="padding-top: 25px;">
+            
             <table width="600" border="0" cellspacing="5" cellpadding="5">
               <form method="POST" action="<?php echo base_url()?>admin/callcheck">
               <tr style="background:#CCC">
@@ -73,6 +72,18 @@
               <?php else: ?>
 
               <?php endif; ?>
+              <?php
+              if($this->uri->segment(2) == "callcheck"){
+                  $query = $this->db->query("call checkval('$row->migratedln_id')");
+                  mysqli_next_result($this->db->conn_id);
+
+                  if($query->num_rows() > 0){
+                    echo '<p class="text-success">Data Validated</p>';
+                  }else{
+                    echo '<p class="text-danger ">Validation Error</p>';
+                  }
+              }
+            ?>
                
             </table>
           </form>

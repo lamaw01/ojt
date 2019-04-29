@@ -47,7 +47,7 @@ class Show_model extends CI_Model{
 			AND coreln.interest_due_amount = mbwinln.int_bal_amt
 			AND coreln.penalty = mbwinln.pen_bal_amt
 			AND migratedln.stat = 0";
-	$this->db->where($where);
+  	$this->db->where($where);
     $this->db->limit($limit, $offset);
     $query = $this->db->get();
     return $query->result();
@@ -55,8 +55,16 @@ class Show_model extends CI_Model{
 
 
  function checkln($id){
-  	$query = $this->db->query("call valln('$id')");
-  	//return $query->result();
+
+  	$query = $this->db->query("call checkval('$id')");
+    mysqli_next_result($this->db->conn_id);
+
+    if($query->num_rows() > 0){
+      $query = $this->db->query("call valln('$id')");
+    }else{
+      $query = $this->db->query("call errln('$id')");
+    }
+  	
  }
 
 

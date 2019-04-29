@@ -2,16 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title><?php echo $title ?></title>
+    <title>Errors</title>
 
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
       <style>
-        a{
+        a,p{
         font-family: 'Fjalla One', sans-serif;
-      }
+        }
+        p{
+            text-align: center;
+        }
       </style>
   </head>
   <body>
@@ -30,24 +33,10 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <!--ACCESS MENUS FOR ADMIN-->
-                <?php if($this->session->userdata('level')==='1'):?>
-                  <li class="active"><a href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
-                  <li><a href="<?php echo base_url('page/adminhome');?>">Home</a></li>
-                  <li><a href="<?php echo base_url('page/adminvalidated');?>">Validated</a></li>
-                  <li><a href="<?php echo base_url('page/adminerrors');?>">Errors</a></li>
-                <!--ACCESS MENUS FOR STAFF-->
-                <?php elseif($this->session->userdata('level')==='2'):?>
-                  <li class="active"><a href="<?php echo base_url('page/displayprofile');?>">Tech Staff</a></li>
-                  <li><a href="<?php echo base_url('page/techhome');?>">Home</a></li>
-                  <li><a href="<?php echo base_url('page/techvalidated');?>">Validated</a></li>
-                  <li><a href="<?php echo base_url('page/techerrors');?>">Errors</a></li>
-                <!--ACCESS MENUS FOR AUTHOR-->
-                <?php else:?>
-                  <li class="active"><a href="<?php echo base_url('page/displayprofile');?>">Coop Staff</a></li>
-                  <li><a href="<?php echo base_url('page/coopvalidated');?>">Validated</a></li>
-                  <li><a href="<?php echo base_url('page/cooperrors');?>">Errors</a></li>
-                <?php endif;?>
+                  <li><a href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
+                  <li><a href="<?php echo base_url('admin');?>">Home</a></li>
+                  <li><a href="<?php echo base_url('validated');?>">Validated</a></li>
+                  <li><a href="<?php echo base_url('errors');?>">Errors</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
@@ -57,8 +46,44 @@
         </nav>
       </div>
     </div>
+      <center>
+          <div class="container">
+            <table width="600" border="0" cellspacing="5" cellpadding="5">
+              <tr style="background:#CCC">
+                <th><p>No</p></th>
+                <th><p>CoreLN No</p></th>
+                <th><p>Int Rate</p></th>
+                <th><p>Pen Rate</p></th>
+                <th><p>Loan Amt</p></th>
+                <th><p>Outs Bal</p></th>
+                <th><p>Overdue Prin</p></th>
+                <th><p>Int Due Amt</p></th>
+                <th><p>Penalty</p></th>
+              </tr>
+              <?php if(count($data)): foreach($data as $row): ?>
 
- 
+              <tr>
+              <td><p><?php echo $row->errorln_id; ?></p></td>
+              <td><p><?php echo $row->account_no; ?></p></td>
+              <td><p><?php echo $row->int_rate; ?></p></td>
+              <td><p><?php echo $row->penalty_rate; ?></p></td>
+              <td><p><?php echo $row->loan_amount; ?></p></td>
+              <td><p><?php echo $row->outstanding_bal; ?></p></td>
+              <td><p><?php echo $row->overdue_principal; ?></p></td>
+              <td><p><?php echo $row->interest_due_amount; ?></p></td>
+              <td><p><?php echo $row->penalty; ?></p></td>
+
+              <?php endforeach; ?>
+              <?php else: ?>
+
+              <?php endif; ?>
+               
+            </table>
+  
+              <p> <?php echo $this->pagination->create_links(); ?> </p>
+              <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
+            </center>
+          </div>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
   </body>
 </html>

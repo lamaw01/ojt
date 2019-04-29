@@ -289,3 +289,214 @@ BEGIN
 END
 ?
 END
+
+23.
+DELIMITER ?
+CREATE PROCEDURE valer(IN id INT(11))
+BEGIN 
+
+    IF (SELECT coreln.int_rate, coreln.penalty_rate, coreln.loan_amount, coreln.outstanding_bal, coreln.overdue_principal, coreln.interest_due_amount, coreln.penalty FROM coreln
+        LEFT JOIN migratedln ON migratedln.account_no = coreln.account_no
+        LEFT JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+        WHERE coreln.open_date = mbwinln.open_date
+        AND coreln.int_rate = mbwinln.int_rate
+        AND coreln.penalty_rate = mbwinln.pen_rate
+        AND coreln.loan_amount = mbwinln.principal_amt
+        AND coreln.outstanding_bal = mbwinln.bal_amt
+        AND coreln.overdue_principal = mbwinln.over_due_pri_amt
+        AND coreln.interest_due_amount = mbwinln.int_bal_amt
+        AND coreln.penalty = mbwinln.pen_bal_amt
+        AND migratedln.stat = 0
+        AND migratedln.migratedln_id = id) = (SELECT mbwinln.int_rate, mbwinln.pen_rate, mbwinln.principal_amt, mbwinln.bal_amt, mbwinln.over_due_pri_amt, mbwinln.int_bal_amt, mbwinln.pen_bal_amt FROM mbwinln 
+        LEFT JOIN migratedln ON migratedln.old_account_no = mbwinln.account_no
+        LEFT JOIN coreln ON migratedln.account_no = coreln.account_no                           
+        WHERE mbwinln.open_date = coreln.open_date
+        AND mbwinln.int_rate = coreln.int_rate
+        AND mbwinln.pen_rate = coreln.penalty_rate
+        AND mbwinln.principal_amt = coreln.loan_amount
+        AND mbwinln.bal_amt = coreln.outstanding_bal
+        AND mbwinln.over_due_pri_amt = coreln.overdue_principal
+        AND mbwinln.int_bal_amt = coreln.interest_due_amount
+        AND mbwinln.pen_bal_amt = coreln.penalty
+        AND migratedln.stat = 0
+        AND migratedln.migratedln_id = id)
+        
+        THEN
+
+        UPDATE migratedln
+        SET stat = 1
+        WHERE migratedln_id = id;
+        
+    END IF;
+END
+?
+
+24.
+<?php
+                  $query = $this->db->query("call checkval('$row->migratedln_id')");
+                  mysqli_next_result($this->db->conn_id);
+
+                  if($query->num_rows() >= 0){
+                    echo '<p class="text-success">Validation Error</p>';
+                  }
+                ?>
+
+25.
+DELIMITER ?
+CREATE PROCEDURE errln(IN id INT(11))
+BEGIN
+	IF (SELECT coreln.open_date FROM coreln
+        LEFT JOIN migratedln ON migratedln.account_no = coreln.account_no
+        LEFT JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+        WHERE migratedln.migratedln_id = id) != (SELECT mbwinln.open_date FROM mbwinln
+        LEFT JOIN migratedln ON migratedln.old_account_no = mbwinln.account_no
+        LEFT JOIN coreln ON migratedln.account_no = coreln.account_no
+        WHERE migratedln.migratedln_id = id) THEN
+        INSERT INTO errorln() VALUES(OLD.open_date);
+	ELSEIF (SELECT coreln.int_rate FROM coreln
+        LEFT JOIN migratedln ON migratedln.account_no = coreln.account_no
+        LEFT JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+        WHERE migratedln.migratedln_id = id) != (SELECT mbwinln.int_rate FROM mbwinln
+        LEFT JOIN migratedln ON migratedln.old_account_no = mbwinln.account_no
+        LEFT JOIN coreln ON migratedln.account_no = coreln.account_no
+        WHERE migratedln.migratedln_id = id) THEN
+        INSERT INTO errorln(int_rate) VALUES(OLD.int_rate);
+    ELSEIF (SELECT coreln.penalty_rate FROM coreln
+        LEFT JOIN migratedln ON migratedln.account_no = coreln.account_no
+        LEFT JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+        WHERE migratedln.migratedln_id = id) != (SELECT mbwinln.pen_rate FROM mbwinln
+        LEFT JOIN migratedln ON migratedln.old_account_no = mbwinln.account_no
+        LEFT JOIN coreln ON migratedln.account_no = coreln.account_no
+        WHERE migratedln.migratedln_id = id) THEN
+        INSERT INTO errorln(penalty_rate) VALUES(OLD.penalty_rate);
+    ELSEIF (SELECT coreln.loan_amount FROM coreln
+        LEFT JOIN migratedln ON migratedln.account_no = coreln.account_no
+        LEFT JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+        WHERE migratedln.migratedln_id = id) != (SELECT mbwinln.principal_amt FROM mbwinln
+        LEFT JOIN migratedln ON migratedln.old_account_no = mbwinln.account_no
+        LEFT JOIN coreln ON migratedln.account_no = coreln.account_no
+        WHERE migratedln.migratedln_id = id) THEN
+        INSERT INTO errorln(loan_amount) VALUES(OLD.loan_amount);
+    ELSEIF (SELECT coreln.outstanding_bal FROM coreln
+        LEFT JOIN migratedln ON migratedln.account_no = coreln.account_no
+        LEFT JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+        WHERE migratedln.migratedln_id = id) != (SELECT mbwinln.bal_amt FROM mbwinln
+        LEFT JOIN migratedln ON migratedln.old_account_no = mbwinln.account_no
+        LEFT JOIN coreln ON migratedln.account_no = coreln.account_no
+        WHERE migratedln.migratedln_id = id) THEN
+        INSERT INTO errorln(outstanding_bal) VALUES(OLD.outstanding_bal);
+    ELSEIF (SELECT coreln.overdue_principal FROM coreln
+        LEFT JOIN migratedln ON migratedln.account_no = coreln.account_no
+        LEFT JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+        WHERE migratedln.migratedln_id = id) != (SELECT mbwinln.over_due_pri_amt FROM mbwinln
+        LEFT JOIN migratedln ON migratedln.old_account_no = mbwinln.account_no
+        LEFT JOIN coreln ON migratedln.account_no = coreln.account_no
+        WHERE migratedln.migratedln_id = id) THEN
+        INSERT INTO errorln(overdue_principal) VALUES(OLD.overdue_principal);
+    ELSEIF (SELECT coreln.interest_due_amount FROM coreln
+        LEFT JOIN migratedln ON migratedln.account_no = coreln.account_no
+        LEFT JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+        WHERE migratedln.migratedln_id = id) != (SELECT mbwinln.int_bal_amt FROM mbwinln
+        LEFT JOIN migratedln ON migratedln.old_account_no = mbwinln.account_no
+        LEFT JOIN coreln ON migratedln.account_no = coreln.account_no
+        WHERE migratedln.migratedln_id = id) THEN
+        INSERT INTO errorln(interest_due_amount) VALUES(OLD.interest_due_amount);
+    ELSEIF (SELECT coreln.penalty FROM coreln
+        LEFT JOIN migratedln ON migratedln.account_no = coreln.account_no
+        LEFT JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+        WHERE migratedln.migratedln_id = id) != (SELECT mbwinln.pen_bal_amt FROM mbwinln
+        LEFT JOIN migratedln ON migratedln.old_account_no = mbwinln.account_no
+        LEFT JOIN coreln ON migratedln.account_no = coreln.account_no
+        WHERE migratedln.migratedln_id = id) THEN
+        INSERT INTO errorln(penalty) VALUES(OLD.penalty);
+        
+    END IF;
+END
+?
+
+26.
+DELIMITER ?
+CREATE PROCEDURE errln(IN id INT(11))
+BEGIN
+	
+	IF (SELECT coreln.int_rate FROM coreln) != (SELECT mbwinln.int_rate FROM mbwinln) THEN
+        INSERT INTO errorln(int_rate) VALUES(OLD.int_rate);
+        WHERE coreln.coreln_id = id;
+    ELSEIF (SELECT coreln.penalty_rate FROM coreln) != (SELECT mbwinln.pen_rate FROM mbwinln) THEN
+        INSERT INTO errorln(penalty_rate) VALUES(OLD.penalty_rate);
+         WHERE coreln.coreln_id = id;
+    ELSEIF (SELECT coreln.loan_amount FROM coreln) != (SELECT mbwinln.principal_amt FROM mbwinln) THEN
+        INSERT INTO errorln(loan_amount) VALUES(OLD.loan_amount);
+         WHERE coreln.coreln_id = id;
+    ELSEIF (SELECT coreln.outstanding_bal FROM coreln) != (SELECT mbwinln.bal_amt FROM mbwinln) THEN
+        INSERT INTO errorln(outstanding_bal) VALUES(OLD.outstanding_bal);
+         WHERE coreln.coreln_id = id;
+    ELSEIF (SELECT coreln.overdue_principal FROM corel) != (SELECT mbwinln.over_due_pri_amt FROM mbwinln) THEN
+        INSERT INTO errorln(overdue_principal) VALUES(OLD.overdue_principal);
+         WHERE coreln.coreln_id = id;
+    ELSEIF (SELECT coreln.interest_due_amount FROM coreln) != (SELECT mbwinln.int_bal_amt FROM mbwinln) THEN
+        INSERT INTO errorln(interest_due_amount) VALUES(OLD.interest_due_amount);
+         WHERE coreln.coreln_id = id;
+    ELSEIF (SELECT coreln.penalty FROM coreln) != (SELECT mbwinln.pen_bal_amt FROM mbwinln) THEN
+        INSERT INTO errorln(penalty) VALUES(OLD.penalty);
+         WHERE coreln.coreln_id = id;
+        
+    END IF;
+END
+?
+
+27.
+DELIMITER ?
+CREATE PROCEDURE errln(IN id INT(11))
+BEGIN
+	
+	IF (SELECT int_rate FROM coreln WHERE coreln_id = id) != (SELECT int_rate FROM mbwinln WHERE mbwinln_id = id) THEN
+        INSERT INTO errorln(int_rate) VALUES(OLD.int_rate);
+    ELSEIF (SELECT penalty_rate FROM coreln WHERE coreln_id = id) != (SELECT pen_rate FROM mbwinln WHERE mbwinln_id = id) THEN
+        INSERT INTO errorln(penalty_rate) VALUES(OLD.penalty_rate);
+    ELSEIF (SELECT loan_amount FROM coreln WHERE coreln_id = id) != (SELECT principal_amt FROM mbwinln WHERE mbwinln_id = id) THEN
+        INSERT INTO errorln(loan_amount) VALUES(OLD.loan_amount);
+    ELSEIF (SELECT outstanding_bal FROM coreln WHERE coreln_id = id) != (SELECT bal_amt FROM mbwinln WHERE mbwinln_id = id) THEN
+        INSERT INTO errorln(outstanding_bal) VALUES(OLD.outstanding_bal);
+    ELSEIF (SELECT overdue_principal FROM coreln WHERE coreln_id = id) != (SELECT over_due_pri_amt FROM mbwinln WHERE mbwinln_id = id) THEN
+        INSERT INTO errorln(overdue_principal) VALUES(OLD.overdue_principal);
+    ELSEIF (SELECT interest_due_amount FROM coreln WHERE coreln_id = id) != (SELECT int_bal_amt FROM mbwinln WHERE mbwinln_id = id) THEN
+        INSERT INTO errorln(interest_due_amount) VALUES(OLD.interest_due_amount);
+    ELSEIF (SELECT penalty FROM coreln WHERE coreln_id = id) != (SELECT pen_bal_amt FROM mbwinln WHERE mbwinln_id = id) THEN
+        INSERT INTO errorln(penalty) VALUES(OLD.penalty);
+        
+    END IF;
+
+28.
+CREATE TRIGGER `insertErrln` AFTER UPDATE ON `coreln`
+ FOR EACH ROW BEGIN
+	IF (SELECT int_rate FROM coreln) != (SELECT int_rate FROM mbwinln) THEN
+        INSERT INTO errorln(account_no, int_rate) VALUES(OLD.account_no, OLD.int_rate);
+    ELSEIF (SELECT penalty_rate FROM coreln) != (SELECT pen_rate FROM mbwinln) THEN
+        INSERT INTO errorln(account_no, penalty_rate) VALUES(OLD.account_no, OLD.penalty_rate);
+    ELSEIF (SELECT loan_amount FROM coreln) != (SELECT principal_amt FROM mbwinln) THEN
+        INSERT INTO errorln(account_no, loan_amount) VALUES(OLD.account_no, OLD.loan_amount);
+    ELSEIF (SELECT outstanding_bal FROM coreln) != (SELECT bal_amt FROM mbwinln) THEN
+        INSERT INTO errorln(account_no, outstanding_bal) VALUES(OLD.account_no, OLD.outstanding_bal);
+    ELSEIF (SELECT overdue_principal FROM coreln) != (SELECT over_due_pri_amt FROM mbwinln) THEN
+        INSERT INTO errorln(account_no, overdue_principal) VALUES(OLD.account_no, OLD.overdue_principal);
+    ELSEIF (SELECT interest_due_amount FROM coreln) != (SELECT int_bal_amt FROM mbwinln) THEN
+        INSERT INTO errorln(account_no, interest_due_amount) VALUES(OLD.account_no, OLD.interest_due_amount);
+    ELSEIF (SELECT penalty FROM coreln) != (SELECT pen_bal_amt FROM mbwinln) THEN
+        INSERT INTO errorln(account_no, penalty) VALUES(OLD.account_no, OLD.penalty);
+        
+    END IF;
+
+END
+END
+?
+
+28. trigger
+
+CREATE TRIGGER `insertValidateln` AFTER UPDATE ON `migratedln`
+ FOR EACH ROW BEGIN
+ 
+    INSERT INTO validateln(coreln_id, mbwinln_id)
+    VALUES(OLD.account_no, OLD.old_account_no);
+
+END

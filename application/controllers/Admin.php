@@ -45,10 +45,9 @@ class Admin extends CI_Controller {
  }
 
   function callcheck($id){
-
     $this->Show_model->checkln($id);
-    redirect('admin');
-    //var_dump($id);
+    $this->index();
 }
+
 
 }
