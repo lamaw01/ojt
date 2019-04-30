@@ -41,7 +41,7 @@ class Errors extends CI_Controller {
     $this->pagination->initialize($config);
 
     $result['data'] = $this->Errors_model->get_joiner($limit,$offset);
-    $this->load->view('admin_errors',$result);
+    $this->load->view('errors',$result);
  }
 
 }

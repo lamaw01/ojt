@@ -113,14 +113,14 @@ class Page extends CI_Controller{
     }
   }*/
 
-  function techhome(){
+  /*function techhome(){
     if($this->session->userdata('level')==='2'){
       $result['data']=$this->Show_model->displaymdata();
       $this->load->view('tech_home',$result);
     }else{
       echo "Access Denied";
     }
-  }
+  }*/
 
   /*function adminhome(){
     if($this->session->userdata('level')==='1'){

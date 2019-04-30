@@ -1,10 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Validated extends CI_Controller {
+class Tech extends CI_Controller {
   function __construct(){
     parent::__construct();
-    $this->load->model('Validated_model');
+    $this->load->model('Show_model');
 }
 
   function index($offset = NULL){
@@ -17,8 +17,8 @@ class Validated extends CI_Controller {
     }
     $this->load->library('pagination');
     $config['uri_segment'] = 3;
-    $config['base_url'] = base_url().'validated/index';
-    $config['total_rows'] = $this->Validated_model->total_recordvl();
+    $config['base_url'] = base_url().'tech/index';
+    $config['total_rows'] = $this->Show_model->total_record();
     $config['per_page'] = $limit;
     $config['num_links'] = 5;
     $config['full_tag_open'] = '<ul class="pagination">';
@@ -40,8 +40,14 @@ class Validated extends CI_Controller {
 
     $this->pagination->initialize($config);
 
-    $result['data'] = $this->Validated_model->get_joinvl($limit,$offset);
-    $this->load->view('validated',$result);
+    $result['data'] = $this->Show_model->get_join($limit,$offset);
+    $this->load->view('tech_home',$result);
  }
+
+  function callcheck($id){
+    $this->Show_model->checkln($id);
+    $this->index();
+}
+
 
 }

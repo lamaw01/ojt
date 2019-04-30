@@ -46,7 +46,8 @@ class Show_model extends CI_Model{
 			AND coreln.overdue_principal = mbwinln.over_due_pri_amt
 			AND coreln.interest_due_amount = mbwinln.int_bal_amt
 			AND coreln.penalty = mbwinln.pen_bal_amt
-			AND migratedln.stat = 0";
+			AND migratedln.stat = 0
+      AND coreln.stat = 0";
   	$this->db->where($where);
     $this->db->limit($limit, $offset);
     $query = $this->db->get();

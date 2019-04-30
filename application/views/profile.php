@@ -38,21 +38,21 @@
               <ul class="nav navbar-nav">
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
-                  <li><a href="#">Admin</a></li>
+                  <li><a href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
                   <li><a href="<?php echo base_url('admin');?>">Home</a></li>
                   <li><a href="<?php echo base_url('validated');?>">Validated</a></li>
                   <li><a href="<?php echo base_url('errors');?>">Errors</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
-                  <li><a href="#">Tech Staff</a></li>
-                  <li><a href="<?php echo base_url('page/techhome');?>">Home</a></li>
-                  <li><a href="<?php echo base_url('page/techvalidated');?>">Validated</a></li>
-                  <li><a href="#">Errors</a></li>
+                  <li><a href="<?php echo base_url('page/displayprofile');?>">Tech Staff</a></li>
+                  <li><a href="<?php echo base_url('tech');?>">Home</a></li>
+                  <li><a href="<?php echo base_url('validated');?>">Validated</a></li>
+                  <li><a href="<?php echo base_url('errors');?>">Errors</a></li>
                 <!--ACCESS MENUS FOR AUTHOR-->
                 <?php else:?>
-                  <li ><a href="#">Coop Staff</a></li>
-                  <li><a href="<?php echo base_url('page/coopvalidated');?>">Validated</a></li>
-                  <li><a href="#">Errors</a></li>
+                  <li><a href="<?php echo base_url('page/displayprofile');?>">Coop Staff</a></li>
+                  <li><a href="<?php echo base_url('validated');?>">Validated</a></li>
+                  <li><a href="<?php echo base_url('errors');?>">Errors</a></li>
                 <?php endif;?>
               </ul>
               <ul class="nav navbar-nav navbar-right">
