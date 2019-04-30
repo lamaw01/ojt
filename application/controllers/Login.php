@@ -33,13 +33,13 @@ class Login extends CI_Controller{
         if($level === '1'){
             redirect('page');
  
-        // access login for staff
+        // access login for tech
         }elseif($level === '2'){
-            redirect('page/staff');
+            redirect('page/tech');
  
-        // access login for author
+        // access login for coop
         }else{
-            redirect('page/author');
+            redirect('page/coop');
         }
     }else{
         echo $this->session->set_flashdata('msg','Username or Password is Wrong');

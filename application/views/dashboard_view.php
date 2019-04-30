@@ -32,28 +32,37 @@
               <a class="navbar-brand" target="_blank" href="https://mass-specc.coop/"><img style="position:relative; top:-18px; left: -15px;" src="<?php echo base_url('assets/logo.png'); ?>"></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
+              <ul class="nav navbar-nav nav-tabs">
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
-                  <li><a href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
-                  <li><a href="<?php echo base_url('admin');?>">Data</a></li>
-                  <li><a href="<?php echo base_url('validated');?>">Validated</a></li>
-                  <li><a href="<?php echo base_url('errors');?>">Errors</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('page');?>">Landing</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('loan');?>">Data</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('validated');?>">Validated</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('errors');?>">Errors</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
-                  <li><a href="<?php echo base_url('page/displayprofile');?>">Tech Staff</a></li>
-                  <li><a href="<?php echo base_url('tech');?>">Data</a></li>
-                  <li><a href="<?php echo base_url('validated');?>">Validated</a></li>
-                  <li><a href="<?php echo base_url('errors');?>">Errors</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('page/tech');?>">Landing</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('tech');?>">Data</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('validated');?>">Validated</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('errors');?>">Errors</a></li>
                 <!--ACCESS MENUS FOR AUTHOR-->
                 <?php else:?>
-                  <li><a href="<?php echo base_url('page/displayprofile');?>">Coop Staff</a></li>
-                  <li><a href="<?php echo base_url('validated');?>">Validated</a></li>
-                  <li><a href="<?php echo base_url('errors');?>">Errors</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('page/coop');?>">Landing</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('validated');?>">Validated</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('errors');?>">Errors</a></li>
                 <?php endif;?>
               </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
+              <ul class="nav navbar-nav navbar-right nav-tabs" >
+                <?php if($this->session->userdata('level')==='1'):?>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
+                  <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
+                <?php elseif($this->session->userdata('level')==='2'):?>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Tech Staff</a></li>
+                  <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
+                <?php else:?>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Coop Staff</a></li>
+                  <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
+                <?php endif;?>
               </ul>
             </div><!--/.nav-collapse -->
           </div><!--/.container-fluid -->
@@ -64,20 +73,38 @@
     <!--DISPLAY MIGRATED DATA FOR ADMIN-->
     <?php if($this->session->userdata('level')==='1'):?>
       <div class="container">
-        <div class="jumbotron">
-            <h2>Welcome <?php echo $this->session->userdata('user_fname','user_lname');?></h2>
+        <div class="page-header">
+            <h3>Welcome <?php echo $this->session->userdata('user_fname');?></h3>
         </div>
       </div>
+      <center>
+      <div class="container" style="width: 200px;">
+          <h2 class="form-signin-heading">Validate</h2>
+          <br>
+          <form action="<?php echo site_url('choose');?>" method="post">
+            <div class="form-group">
+              <select class="form-control" name="type_no">
+                <option value="1">Loan</option>
+                <option value="2">Savings</option>
+                <option value="3">Time Deposit</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="submit" name="insert" value="Choose" class="btn btn-lg btn-primary btn-block">
+            </div>
+          </form>
+      </div>
+      </center>
     <?php elseif($this->session->userdata('level')==='2'):?>
        <div class="container">
-        <div class="jumbotron">
-            <h2>Welcome <?php echo $this->session->userdata('user_fname','user_lname');?></h2>
+        <div class="page-header">
+            <h3>Welcome <?php echo $this->session->userdata('user_fname');?></h3>
         </div>
       </div>
     <?php else:?>
        <div class="container">
-        <div class="jumbotron">
-            <h2>Welcome <?php echo $this->session->userdata('user_fname','user_lname');?></h2>
+        <div class="page-header">
+            <h3>Welcome <?php echo $this->session->userdata('user_fname');?></h3>
         </div>
       </div>
     <?php endif;?>

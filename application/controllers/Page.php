@@ -12,87 +12,33 @@ class Page extends CI_Controller{
   function index(){
     //Allowing access to admin only
       if($this->session->userdata('level')==='1'){
-        $data['title'] = 'Admin Dashboard';
-        $this->load->view('dashboard_view',$data);
+        $this->load->view('dashboard_view');
       }else{
-          echo "Access Denied";
+          $this->session->sess_destroy();
+          redirect(base_url());
       }
- 
   }
  
-  function staff(){
-    //Allowing access to staff only
+  function tech(){
+    //Allowing access to tech only
     if($this->session->userdata('level')==='2'){
-      $data['title'] = 'Tech Dashboard';
-      $this->load->view('dashboard_view',$data);
+      $this->load->view('dashboard_view');
     }else{
-        echo "Access Denied";
+        $this->session->sess_destroy();
+        redirect(base_url());
     }
   }
  
-  function author(){
-    //Allowing access to author only
+  function coop(){
+    //Allowing access to coop only
     if($this->session->userdata('level')==='3'){
-      $data['title'] = 'Coop Dashboard';
-      $this->load->view('dashboard_view',$data);
+      $this->load->view('dashboard_view');
     }else{
-        echo "Access Denied";
+        $this->session->sess_destroy();
+        redirect(base_url());
     }
   }
 
-  function adminerrors(){
-
-      if($this->session->userdata('level')==='1'){
-          $data['title'] = 'Admin Errors';
-          $this->load->view('errors',$data);
-      }else{
-          echo "Access Denied";
-      }
- 
-  }
- 
-
-  function techvalidated(){
-
-      if($this->session->userdata('level')==='2'){
-          $data['title'] = 'Tech Validated';
-          $this->load->view('validated',$data);
-      }else{
-          echo "Access Denied";
-      }
- 
-  }
-
-  function techerrors(){
-
-      if($this->session->userdata('level')==='2'){
-          $data['title'] = 'Tech Errors';
-          $this->load->view('errors',$data);
-      }else{
-          echo "Access Denied";
-      }
- 
-  }
-
-  function coopvalidated(){
-
-    if($this->session->userdata('level')==='3'){
-      $data['title'] = 'Coop Validated';
-      $this->load->view('validated',$data);
-    }else{
-        echo "Access Denied";
-    }
-  }
-
-  function cooperrors(){
-
-    if($this->session->userdata('level')==='3'){
-      $data['title'] = 'Coop Errors';
-      $this->load->view('errors',$data);
-    }else{
-        echo "Access Denied";
-    }
-  }
 
   function regis(){
     $this->load->view('reg');
@@ -104,31 +50,5 @@ class Page extends CI_Controller{
     $this->load->view('profile',$result);
   }
 
-  /*function adminhome(){
-    if($this->session->userdata('level')==='1'){
-      $result['data']=$this->Show_model->displaymdata();
-      $this->load->view('admin_home',$result);
-    }else{
-      echo "Access Denied";
-    }
-  }*/
-
-  /*function techhome(){
-    if($this->session->userdata('level')==='2'){
-      $result['data']=$this->Show_model->displaymdata();
-      $this->load->view('tech_home',$result);
-    }else{
-      echo "Access Denied";
-    }
-  }*/
-
-  /*function adminhome(){
-    if($this->session->userdata('level')==='1'){
-      $result['data']=$this->Show_model->get_join();
-      $this->load->view('admin_home',$result);
-    }else{
-      echo "Access Denied";
-    }
-  }*/
 
 }

@@ -20,7 +20,6 @@
         echo '<p class="text-success">Account Registered</p>';
       }
       ?>
-
       <div class="form-group">
         <input type="text" name="user_email" class="form-control" placeholder="Email">
         <span class="text-danger"><?php echo form_error("user_email"); ?></span>

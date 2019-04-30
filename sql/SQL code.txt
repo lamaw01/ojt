@@ -518,3 +518,9 @@ LINES TERMINATED BY '\n'
 IGNORE 1 ROWS
 (account_no, product_code, @open_date, current_bal, available_bal, interest, customer_no, customer_name, account_name, account_status)
 SET open_date = STR_TO_DATE(@open_date, '%m/%d/%Y');
+
+31. SAVINGS SHOW DATA
+SELECT migratedsv.migratedsv_id, coresv.account_no AS coresv_account_no, mbwinsv.account_no AS mbwinsv_account_no, coresv.account_name
+FROM coresv
+INNER JOIN migratedsv ON migratedsv.account_no = coresv.account_no
+INNER JOIN mbwinsv ON migratedsv.old_account_no = mbwinsv.account_no

@@ -38,25 +38,34 @@
               <ul class="nav navbar-nav nav-tabs">
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('admin');?>">Data</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page');?>">Landing</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('loan');?>">Data</a></li>
                   <li><a data-toggle="tab" href="<?php echo base_url('validated');?>">Validated</a></li>
                   <li><a data-toggle="tab" href="<?php echo base_url('errors');?>">Errors</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Tech Staff</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/tech');?>">Landing</a></li>
                   <li><a data-toggle="tab" href="<?php echo base_url('tech');?>">Data</a></li>
                   <li><a data-toggle="tab" href="<?php echo base_url('validated');?>">Validated</a></li>
                   <li><a data-toggle="tab" href="<?php echo base_url('errors');?>">Errors</a></li>
                 <!--ACCESS MENUS FOR AUTHOR-->
                 <?php else:?>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Coop Staff</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/coop');?>">Landing</a></li>
                   <li><a data-toggle="tab" href="<?php echo base_url('validated');?>">Validated</a></li>
                   <li><a data-toggle="tab" href="<?php echo base_url('errors');?>">Errors</a></li>
                 <?php endif;?>
               </ul>
-              <ul class="nav navbar-nav navbar-right nav-tabs">
-                <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
+              <ul class="nav navbar-nav navbar-right nav-tabs" >
+                <?php if($this->session->userdata('level')==='1'):?>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
+                  <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
+                <?php elseif($this->session->userdata('level')==='2'):?>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Tech Staff</a></li>
+                  <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
+                <?php else:?>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Coop Staff</a></li>
+                  <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
+                <?php endif;?>
               </ul>
             </div><!--/.nav-collapse -->
           </div><!--/.container-fluid -->
