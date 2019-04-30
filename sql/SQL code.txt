@@ -500,3 +500,21 @@ CREATE TRIGGER `insertValidateln` AFTER UPDATE ON `migratedln`
     VALUES(OLD.account_no, OLD.old_account_no);
 
 END
+
+29.
+LOAD DATA LOCAL INFILE 'c:/tmp/import4_mbwinsv.csv'
+INTO TABLE mbwinsv
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(account_no, check_digit, @open_date, bal_amt, int_bal_amt, account_name)
+SET open_date = STR_TO_DATE(@open_date, '%m/%d/%Y');
+
+30.
+LOAD DATA LOCAL INFILE 'c:/tmp/import5_coresv.csv'
+INTO TABLE coresv
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(account_no, product_code, @open_date, current_bal, available_bal, interest, customer_no, customer_name, account_name, account_status)
+SET open_date = STR_TO_DATE(@open_date, '%m/%d/%Y');

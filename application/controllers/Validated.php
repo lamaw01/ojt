@@ -4,6 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Validated extends CI_Controller {
   function __construct(){
     parent::__construct();
+
+    $loginstatus = $this->session->userdata('level');
+        if($loginstatus != 1 && $loginstatus != 2 && $loginstatus != 3){
+            $this->session->sess_destroy();
+            redirect(base_url());
+        }
+
     $this->load->model('Validated_model');
 }
 

@@ -6,11 +6,11 @@
 
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
-    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
       <style>
         a,p{
-        font-family: 'Fjalla One', sans-serif;
+        font-family: 'Open Sans', sans-serif;
       }
         p{
           text-align: center;
@@ -36,13 +36,13 @@
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
                   <li><a href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
-                  <li><a href="<?php echo base_url('admin');?>">Home</a></li>
+                  <li><a href="<?php echo base_url('admin');?>">Data</a></li>
                   <li><a href="<?php echo base_url('validated');?>">Validated</a></li>
                   <li><a href="<?php echo base_url('errors');?>">Errors</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a href="<?php echo base_url('page/displayprofile');?>">Tech Staff</a></li>
-                  <li><a href="<?php echo base_url('tech');?>">Home</a></li>
+                  <li><a href="<?php echo base_url('tech');?>">Data</a></li>
                   <li><a href="<?php echo base_url('validated');?>">Validated</a></li>
                   <li><a href="<?php echo base_url('errors');?>">Errors</a></li>
                 <!--ACCESS MENUS FOR AUTHOR-->

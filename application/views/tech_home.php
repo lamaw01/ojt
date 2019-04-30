@@ -6,14 +6,17 @@
 
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
-    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
       <style>
         a,p{
-        font-family: 'Fjalla One', sans-serif;
+        font-family: 'Open Sans', sans-serif;
         }
         p{
           text-align: center;
+        }
+        .container_size{
+        width: 60%;
         }
       </style>
   </head>
@@ -35,7 +38,7 @@
               <ul class="nav navbar-nav">
                 <!--ACCESS MENUS FOR ADMIN-->
                   <li><a href="<?php echo base_url('page/displayprofile');?>">Tech Staff</a></li>
-                  <li><a href="<?php echo base_url('tech');?>">Home</a></li>
+                  <li><a href="<?php echo base_url('tech');?>">Data</a></li>
                   <li><a href="<?php echo base_url('validated');?>">Validated</a></li>
                   <li><a href="<?php echo base_url('errors');?>">Errors</a></li>
               </ul>
@@ -48,15 +51,16 @@
       </div>
     </div>
         <center>
-          <div class="container">
+          <div class="container container_size">
             
-            <table width="600" border="0" cellspacing="5" cellpadding="5">
-              <form method="POST" action="<?php echo base_url()?>admin/callcheck">
+            <table class="table table-striped" width="600" border="0" cellspacing="5" cellpadding="5">
+              <form method="POST" action="<?php echo base_url()?>tech/callcheck">
               <tr style="background:#CCC">
                 <th><p>No</p></th>
                 <th><p>CoreLN No</p></th>
                 <th><p>MBWINLN No</p></th>
                 <th><p>Account Name</p></th>
+                <th><p></p></th>
               </tr>
               <?php if(count($data)): foreach($data as $row): ?>
 
@@ -65,7 +69,7 @@
               <td><p><?php echo $row->coreln_account_no; ?></p></td>
               <td><p><?php echo $row->mbwinln_acc_no; ?></p></td>
               <td><p><?php echo $row->account_name; ?></p></td>
-              <td><a class='btn btn-primary btn-xs' href='<?php echo base_url()?>tech/callcheck/<?php echo $row->migratedln_id; ?>'>Check</a></td>
+              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>tech/callcheck/<?php echo $row->migratedln_id; ?>'>Check</a></td>
               </tr>
 
               <?php endforeach; ?>

@@ -4,6 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin extends CI_Controller {
   function __construct(){
     parent::__construct();
+
+    $loginstatus = $this->session->userdata('level');
+        if($loginstatus != 1){
+            $this->session->sess_destroy();
+            redirect(base_url());
+        }
+
     $this->load->model('Show_model');
 }
 
