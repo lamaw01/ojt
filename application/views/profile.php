@@ -73,13 +73,13 @@
               </ul>
               <ul class="nav navbar-nav navbar-right nav-tabs" >
                 <?php if($this->session->userdata('level')==='1'):?>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
                   <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
                 <?php elseif($this->session->userdata('level')==='2'):?>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Tech Staff</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Tech Staff</a></li>
                   <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
                 <?php else:?>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Coop Staff</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Coop Staff</a></li>
                   <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
                 <?php endif;?>
               </ul>

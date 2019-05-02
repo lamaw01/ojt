@@ -513,7 +513,7 @@ SET open_date = STR_TO_DATE(@open_date, '%m/%d/%Y');
 30.
 LOAD DATA LOCAL INFILE 'c:/tmp/import6_migratedsv.csv'
 INTO TABLE migratedsv
-FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+FIELDS TERMINATED BY ',' ENCLOSED BY '.'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS
 (account_no, old_account_no, check_digit, branch);
@@ -591,3 +591,21 @@ BEGIN
 	END IF;
 END
 ?
+
+36.
+LOAD DATA LOCAL INFILE 'c:/tmp/import7_mbwintd.csv'
+INTO TABLE mbwintd
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\r'
+IGNORE 1 ROWS
+(account_no, check_digit, @open_date, bal_amt, int_bal_amt, account_name)
+SET open_date = STR_TO_DATE(@open_date, '%m/%d/%Y');
+
+37.
+LOAD DATA LOCAL INFILE 'c:/tmp/import7_mbwintd.csv'
+INTO TABLE mbwintd
+FIELDS TERMINATED BY '\t' ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(account_no, check_digit, @open_date, bal_amt, int_bal_amt, account_name)
+SET open_date = STR_TO_DATE(@open_date, '%m/%d/%Y');

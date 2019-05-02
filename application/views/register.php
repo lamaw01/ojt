@@ -13,6 +13,7 @@
 <body>
   <center>
 <div class="container" style="width: 400px;">
+  <br>
     <h2 class="form-signin-heading">Register</h2>
     <form method="POST" action="<?php echo base_url()?>reg/form_validation">
       <?php
@@ -20,6 +21,7 @@
         echo '<p class="text-success">Account Registered</p>';
       }
       ?>
+  <br>    
       <div class="form-group">
         <input type="text" name="user_email" class="form-control" placeholder="Email">
         <span class="text-danger"><?php echo form_error("user_email"); ?></span>

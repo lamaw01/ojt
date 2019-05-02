@@ -110,6 +110,7 @@
           <form action="<?php echo site_url('choose/check');?>" method="post">
             <div class="form-group">
               <select class="form-control" name="check_type">
+                <option hidden selected>---Select---</option>
                 <option value="1">Loan</option>
                 <option value="2">Savings</option>
                 <option value="3">Time Deposit</option>
@@ -126,6 +127,7 @@
           <form action="<?php echo site_url('choose/errors');?>" method="post">
             <div class="form-group">
               <select class="form-control" name="errors_type">
+                <option hidden selected>---Select---</option>
                 <option value="7">Loan</option>
                 <option value="8">Savings</option>
                 <option value="9">Time Deposit</option>
@@ -142,6 +144,7 @@
           <form action="<?php echo site_url('choose/validated');?>" method="post">
             <div class="form-group">
               <select class="form-control" name="validated_type">
+                <option hidden selected>---Select---</option>
                 <option value="4">Loan</option>
                 <option value="5">Savings</option>
                 <option value="6">Time Deposit</option>
