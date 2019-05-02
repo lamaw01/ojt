@@ -38,24 +38,48 @@
               <ul class="nav navbar-nav nav-tabs">
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page');?>">Landing</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('loan');?>">Data</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('validated');?>">Validated</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('errors');?>">Errors</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page');?>">Home</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('loan');?>">L</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('savings');?>">S</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('time_deposit');?>">TD</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('validated_loan');?>">VL</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('validated_savings');?>">VS</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('validated_time_deposit');?>">VTD</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('errors_loan');?>">EL</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('errors_savings');?>">ES</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('errors_time_deposit');?>">ETD</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
-                <?php else:?>
+                <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/tech');?>">Landing</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('tech');?>">Data</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('validated');?>">Validated</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('errors');?>">Errors</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('loan');?>">L</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('savings');?>">S</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('time_deposit');?>">TD</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('validated_loan');?>">VL</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('validated_savings');?>">VS</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('validated_time_deposit');?>">VTD</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('errors_loan');?>">EL</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('errors_savings');?>">ES</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('errors_time_deposit');?>">ETD</a></li>
+                <!--ACCESS MENUS FOR AUTHOR-->
+                <?php else:?>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/coop');?>">Home</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('validated_loan');?>">VL</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('validated_savings');?>">VS</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('validated_time_deposit');?>">VTD</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('errors_loan');?>">EL</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('errors_savings');?>">ES</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('errors_time_deposit');?>">ETD</a></li>
                 <?php endif;?>
               </ul>
               <ul class="nav navbar-nav navbar-right nav-tabs" >
                 <?php if($this->session->userdata('level')==='1'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
                   <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
-                <?php else:?>
+                <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Tech Staff</a></li>
+                  <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
+                <?php else:?>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Coop Staff</a></li>
                   <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
                 <?php endif;?>
               </ul>

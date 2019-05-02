@@ -55,19 +55,15 @@ class Show_model extends CI_Model{
  }
 
  function get_joinsv($limit,$offset){
-    $this->db->select('migratedln.migratedln_id, coreln.account_no AS coreln_account_no, mbwinln.account_no AS mbwinln_acc_no, coreln.account_name');
-    $this->db->from('coreln');
-    $this->db->join('migratedln','migratedln.account_no = coreln.account_no','left');
-    $this->db->join('mbwinln','migratedln.old_account_no = mbwinln.account_no','left');
-    $where = "coreln.int_rate = mbwinln.int_rate
-      AND coreln.penalty_rate = mbwinln.pen_rate
-      AND coreln.loan_amount = mbwinln.principal_amt
-      AND coreln.outstanding_bal = mbwinln.bal_amt
-      AND coreln.overdue_principal = mbwinln.over_due_pri_amt
-      AND coreln.interest_due_amount = mbwinln.int_bal_amt
-      AND coreln.penalty = mbwinln.pen_bal_amt
-      AND migratedln.stat = 0
-      AND coreln.stat = 0";
+    $this->db->select('migratedsv.migratedsv_id, coresv.account_no AS coresv_account_no, mbwinsv.account_no AS mbwinsv_acc_no, coresv.account_name');
+    $this->db->from('coresv');
+    $this->db->join('migratedsv','migratedsv.account_no = coresv.account_no','left');
+    $this->db->join('mbwinsv','migratedsv.old_account_no = mbwinsv.account_no','left');
+    $where = "coresv.open_date = mbwinsv.open_date
+      AND coresv.current_bal = mbwinsv.bal_amt
+      AND coresv.interest = mbwinsv.int_bal_amt
+      AND migratedsv.stat = 0
+      AND coresv.stat = 0";
     $this->db->where($where);
     $this->db->limit($limit, $offset);
     $query = $this->db->get();

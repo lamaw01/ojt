@@ -511,16 +511,83 @@ IGNORE 1 ROWS
 SET open_date = STR_TO_DATE(@open_date, '%m/%d/%Y');
 
 30.
-LOAD DATA LOCAL INFILE 'c:/tmp/import5_coresv.csv'
-INTO TABLE coresv
+LOAD DATA LOCAL INFILE 'c:/tmp/import6_migratedsv.csv'
+INTO TABLE migratedsv
 FIELDS TERMINATED BY ',' ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS
-(account_no, product_code, @open_date, current_bal, available_bal, interest, customer_no, customer_name, account_name, account_status)
-SET open_date = STR_TO_DATE(@open_date, '%m/%d/%Y');
+(account_no, old_account_no, check_digit, branch);
+
+31.
+LOAD DATA LOCAL INFILE 'c:/tmp/import6_migratedsv.csv'
+INTO TABLE migratedsv
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(account_no, account_no, old_account_no, check_digit, branch, stat)
+
 
 31. SAVINGS SHOW DATA
 SELECT migratedsv.migratedsv_id, coresv.account_no AS coresv_account_no, mbwinsv.account_no AS mbwinsv_account_no, coresv.account_name
 FROM coresv
 INNER JOIN migratedsv ON migratedsv.account_no = coresv.account_no
 INNER JOIN mbwinsv ON migratedsv.old_account_no = mbwinsv.account_no
+
+32. show data sv
+SELECT migratedsv.migratedsv_id, coresv.account_no AS coresv_account_no, mbwinsv.account_no AS mbwinsv_account_no, coresv.account_name
+FROM coresv
+INNER JOIN migratedsv ON migratedsv.account_no = coresv.account_no
+INNER JOIN mbwinsv ON migratedsv.old_account_no = mbwinsv.account_no
+WHERE coresv.open_date = mbwinsv.open_date
+AND coresv.current_bal = mbwinsv.bal_amt
+AND coresv.interest = mbwinsv.int_bal_amt
+AND coresv.account_name = mbwinsv.account_name
+
+33.
+DELIMITER ?
+CREATE PROCEDURE checkvalsv(IN id INT(11))
+BEGIN
+    SELECT migratedsv.migratedsv_id, coresv.account_no AS coresv_account_no, mbwinsv.account_no AS mbwinsv_acc_no, coresv.open_date AS coresv_open_date, mbwinsv.open_date AS mbwinsv_open_date, coresv.current_bal AS coresv_current_bal, mbwinsv.bal_amt AS mbwinsv_bal_amt, coresv.interest AS coresv_interest, mbwinsv.int_bal_amt AS mbwinsv_int_bal_amt, coresv.account_name AS coresv_acc_name, mbwinsv.account_name AS mbwinsv_acc_name
+    FROM coresv
+    INNER JOIN migratedsv ON migratedsv.account_no = coresv.account_no
+    INNER JOIN mbwinsv ON migratedsv.old_account_no = mbwinsv.account_no
+    WHERE coresv.open_date = mbwinsv.open_date
+    AND coresv.current_bal = mbwinsv.bal_amt
+    AND coresv.interest = mbwinsv.int_bal_amt
+    AND coresv.account_name = mbwinsv.account_name;
+
+END
+?
+
+34.
+DELIMITER ?
+CREATE PROCEDURE errsv(IN id INT(11))
+BEGIN 
+
+    IF (SELECT coresv.open_date, coresv.current_bal, coresv.interest FROM coresv WHERE coresv.coresv_id = id) <> (SELECT mbwinsv.open_date, mbwinsv.bal_amt, mbwinsv.int_bal_amt FROM mbwinsv WHERE mbwinsv.mbwinsv_id = id)
+        
+        THEN
+
+        UPDATE coresv
+        SET stat = 2
+        WHERE coresv_id = id;
+        
+    END IF;
+END
+?
+
+35.
+DELIMITER ?
+CREATE TRIGGER insertValidatesv
+AFTER UPDATE ON migratedsv
+FOR EACH ROW
+BEGIN
+
+	IF migratedsv.stat = 1 THEN 
+    
+    	INSERT INTO validatesv(coresv_id, mbwinsv_id)
+        VALUES(OLD.account_no, OLD.old_account_no);
+    
+	END IF;
+END
+?
