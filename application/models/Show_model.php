@@ -30,6 +30,7 @@ class Show_model extends CI_Model{
 			AND migratedln.stat = 0
       AND coreln.stat = 0";
   	$this->db->where($where);
+    $this->db->order_by('migratedln_id', 'ASC');
     $this->db->limit($limit, $offset);
     $query = $this->db->get();
     return $query->result();
@@ -65,6 +66,7 @@ class Show_model extends CI_Model{
       AND migratedsv.stat = 0
       AND coresv.stat = 0";
     $this->db->where($where);
+    $this->db->order_by('migratedsv_id', 'ASC');
     $this->db->limit($limit, $offset);
     $query = $this->db->get();
     return $query->result();
@@ -84,5 +86,39 @@ class Show_model extends CI_Model{
     
  }
 
+ function total_recordtd(){
+    return $this->db->count_all('coretd','mbwintd','migratedtd');
+ }
+
+ function get_jointd($limit,$offset){
+    $this->db->select('migratedtd.migratedtd_id, coretd.account_no AS coretd_account_no, mbwintd.account_no AS mbwintd_acc_no, coretd.account_name');
+    $this->db->from('coretd');
+    $this->db->join('migratedtd','migratedtd.account_no = coretd.account_no','left');
+    $this->db->join('mbwintd','migratedtd.old_account_no = mbwintd.account_no','left');
+    $where = "coretd.open_date = mbwintd.open_date
+      AND coretd.principal_amount = mbwintd.bal_amt
+      AND coretd.interest = mbwintd.int_bal_amt
+      AND migratedtd.stat = 0
+      AND coretd.stat = 0";
+    $this->db->where($where);
+    $this->db->order_by('migratedtd_id', 'ASC');
+    $this->db->limit($limit, $offset);
+    $query = $this->db->get();
+    return $query->result();
+ }
+
+
+ function checktd($id){
+
+    $query = $this->db->query("call checkvaltd('$id')");
+    mysqli_next_result($this->db->conn_id);
+
+    if($query->num_rows() > 0){
+      $query = $this->db->query("call valtd('$id')");
+    }else{
+      $query = $this->db->query("call errtd('$id')");
+    }
+    
+ }
 
 }

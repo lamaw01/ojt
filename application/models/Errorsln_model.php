@@ -15,6 +15,7 @@ class Errorsln_model extends CI_Model{
     $this->db->from('errorln');
     $this->db->join('coreln','coreln.account_no = errorln.account_no','left');
     $this->db->where('coreln.stat = 2');
+    $this->db->order_by('errorln_id', 'ASC');
     $this->db->limit($limit, $offset);
     $query = $this->db->get();
     return $query->result();

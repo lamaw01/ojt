@@ -15,6 +15,7 @@ class Errorssv_model extends CI_Model{
     $this->db->from('errorsv');
     $this->db->join('coresv','coresv.account_no = errorsv.account_no','left');
     $this->db->where('coresv.stat = 2');
+    $this->db->order_by('errorsv_id', 'ASC');
     $this->db->limit($limit, $offset);
     $query = $this->db->get();
     return $query->result();

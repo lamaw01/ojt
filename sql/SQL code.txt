@@ -609,3 +609,48 @@ LINES TERMINATED BY '\n'
 IGNORE 1 ROWS
 (account_no, check_digit, @open_date, bal_amt, int_bal_amt, account_name)
 SET open_date = STR_TO_DATE(@open_date, '%m/%d/%Y');
+
+38.
+LOAD DATA LOCAL INFILE 'c:/tmp/import8_coretd.csv'
+INTO TABLE coretd
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(account_no, product_code, @open_date, issue_amount, principal_amount, interest, customer_no, customer_name, account_name, account_status)
+SET open_date = STR_TO_DATE(@open_date, '%m/%d/%Y');
+
+39.
+LOAD DATA LOCAL INFILE 'c:/tmp/import9_migratedtd.csv'
+INTO TABLE migratedtd
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(account_no, old_account_no, check_digit, branch)
+
+40.
+DELIMITER ?
+CREATE PROCEDURE checkvaltd(IN id INT(11))
+BEGIN
+    SELECT migratedtd.migratedtd_id, coretd.account_no AS coretd_account_no, mbwintd.account_no AS mbwintd_acc_no
+    FROM coretd
+    INNER JOIN migratedtd ON migratedtd.account_no = coretd.account_no
+    INNER JOIN mbwintd ON migratedtd.old_account_no = mbwintd.account_no
+    WHERE coretd.open_date = mbwintd.open_date
+    AND coretd.principal_amount = mbwintd.bal_amt
+    AND coretd.interest = mbwintd.int_bal_amt
+    AND migratedtd.migratedtd_id = id;
+
+END
+?
+
+41.
+SELECT migratedtd.migratedtd_id, coretd.account_no AS coretd_account_no, mbwintd.account_no AS mbwintd_acc_no 
+FROM coretd 
+INNER JOIN migratedtd ON migratedtd.account_no = coretd.account_no 
+INNER JOIN mbwintd ON migratedtd.old_account_no = mbwintd.account_no 
+WHERE coretd.open_date = mbwintd.open_date 
+AND coretd.principal_amount = mbwintd.bal_amt
+AND coretd.interest = mbwintd.int_bal_amt
+
+42. erase \n
+UPDATE mbwintd SET account_no = REPLACE(account_no, '\n', '')

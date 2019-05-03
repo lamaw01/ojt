@@ -14,6 +14,7 @@ class Validatedsv_model extends CI_Model{
     $this->db->select('validatesv_id, validatesv.coresv_id AS val_coresv, validatesv.mbwinsv_id AS val_mbwinsv, coresv.account_name AS coresv_acc');
   	$this->db->from('validatesv');
     $this->db->join('coresv','validatesv.coresv_id = coresv.account_no','left');
+    $this->db->order_by('validatesv_id', 'ASC');
     $this->db->limit($limit, $offset);
     $query = $this->db->get();
     return $query->result();

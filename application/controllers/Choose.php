@@ -12,7 +12,7 @@ class Choose extends CI_Controller{
     }elseif($type == 2){
       redirect('savings');
     }else{
-      echo "time deposit";
+      redirect('time_deposit');
     }
   }
 
@@ -24,7 +24,7 @@ class Choose extends CI_Controller{
     }elseif($type == 5){
       redirect('validated_savings');
     }else{
-      echo "time deposit";
+      redirect('validated_time_deposit');
     }
   }
 
@@ -36,7 +36,7 @@ class Choose extends CI_Controller{
     }elseif($type == 8){
       redirect('errors_savings');
     }else{
-      echo "time deposit";
+      redirect('errors_time_deposit');
     }
   }
 }
