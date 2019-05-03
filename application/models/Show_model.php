@@ -30,7 +30,6 @@ class Show_model extends CI_Model{
 			AND migratedln.stat = 0
       AND coreln.stat = 0";
   	$this->db->where($where);
-    $this->db->order_by('migratedln_id', 'ASC');
     $this->db->limit($limit, $offset);
     $query = $this->db->get();
     return $query->result();
@@ -66,7 +65,6 @@ class Show_model extends CI_Model{
       AND migratedsv.stat = 0
       AND coresv.stat = 0";
     $this->db->where($where);
-    $this->db->order_by('migratedsv_id', 'ASC');
     $this->db->limit($limit, $offset);
     $query = $this->db->get();
     return $query->result();
@@ -101,7 +99,6 @@ class Show_model extends CI_Model{
       AND migratedtd.stat = 0
       AND coretd.stat = 0";
     $this->db->where($where);
-    $this->db->order_by('migratedtd_id', 'ASC');
     $this->db->limit($limit, $offset);
     $query = $this->db->get();
     return $query->result();

@@ -17,7 +17,7 @@ class Validated_time_deposit extends CI_Controller {
   function index($offset = NULL){
     $this->load->library('table');
     //pagination
-    $limit = 15;
+    $limit = 10;
     if(!is_null($offset))
     {
         $offset = $this->uri->segment(3);

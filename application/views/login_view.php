@@ -12,7 +12,7 @@
   </head>
   <body>
   <center>
-      <div class="container">
+      <div class="container-fluid">
        <div class="col-md-4 col-md-offset-4">
          <form class="form-signin" action="<?php echo site_url('login/auth');?>" method="post">
           <br>
@@ -39,5 +39,6 @@
        </div> <!-- /container -->
   </center>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
+    <script src="<?= base_url('assets/plugins/pace/pace.js'); ?>"></script>
   </body>
 </html>

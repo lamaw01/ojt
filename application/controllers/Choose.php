@@ -11,8 +11,12 @@ class Choose extends CI_Controller{
       redirect('loan');
     }elseif($type == 2){
       redirect('savings');
-    }else{
+    }elseif($type == 3){
       redirect('time_deposit');
+    }
+    else{
+      $this->load->view('dashboard_view');
+
     }
   }
 
@@ -23,8 +27,11 @@ class Choose extends CI_Controller{
       redirect('validated_loan');
     }elseif($type == 5){
       redirect('validated_savings');
-    }else{
+    }elseif($type == 6){
       redirect('validated_time_deposit');
+    }
+    else{
+      $this->load->view('dashboard_view');
     }
   }
 
@@ -35,8 +42,11 @@ class Choose extends CI_Controller{
       redirect('errors_loan');
     }elseif($type == 8){
       redirect('errors_savings');
-    }else{
+    }elseif ($type == 9) {
       redirect('errors_time_deposit');
+    }
+    else{
+      $this->load->view('dashboard_view');
     }
   }
 }

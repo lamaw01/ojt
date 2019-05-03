@@ -8,6 +8,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
+    <link href="<?= base_url('assets/plugins/pace/pace.css'); ?>" rel="stylesheet">
       <style>
         a,p{
         font-family: 'Open Sans', sans-serif;
@@ -21,7 +22,7 @@
       </style>
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
       <nav class="navbar navbar-default">
           <div class="container-fluid">
@@ -39,36 +40,15 @@
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page');?>">Home</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('loan');?>">L</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('savings');?>">S</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('time_deposit');?>">TD</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('validated_loan');?>">VL</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('validated_savings');?>">VS</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('validated_time_deposit');?>">VTD</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('errors_loan');?>">EL</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('errors_savings');?>">ES</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('errors_time_deposit');?>">ETD</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('validated_savings');?>">Validated Savings</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/tech');?>">Home</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('loan');?>">L</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('savings');?>">S</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('time_deposit');?>">TD</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('validated_loan');?>">VL</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('validated_savings');?>">VS</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('validated_time_deposit');?>">VTD</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('errors_loan');?>">EL</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('errors_savings');?>">ES</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('errors_time_deposit');?>">ETD</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('validated_savings');?>">Validated Savings</a></li>
                 <!--ACCESS MENUS FOR AUTHOR-->
                 <?php else:?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/coop');?>">Home</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('validated_loan');?>">VL</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('validated_savings');?>">VS</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('validated_time_deposit');?>">VTD</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('errors_loan');?>">EL</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('errors_savings');?>">ES</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('errors_time_deposit');?>">ETD</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('validated_savings');?>">Validated Savings</a></li>
                 <?php endif;?>
               </ul>
               <ul class="nav navbar-nav navbar-right nav-tabs" >
@@ -117,5 +97,6 @@
             </center>
           </div>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
+    <script src="<?= base_url('assets/plugins/pace/pace.js'); ?>"></script>
   </body>
 </html>
