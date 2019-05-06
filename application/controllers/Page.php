@@ -12,6 +12,7 @@ class Page extends CI_Controller{
   function index(){
     //Allowing access to admin only
       if($this->session->userdata('level')==='1'){
+        $this->load->view('header');
         $this->load->view('dashboard_view');
       }else{
           $this->session->sess_destroy();
@@ -22,6 +23,7 @@ class Page extends CI_Controller{
   function tech(){
     //Allowing access to tech only
     if($this->session->userdata('level')==='2'){
+      $this->load->view('header');
       $this->load->view('dashboard_view');
     }else{
         $this->session->sess_destroy();
@@ -32,6 +34,7 @@ class Page extends CI_Controller{
   function coop(){
     //Allowing access to coop only
     if($this->session->userdata('level')==='3'){
+      $this->load->view('header');
       $this->load->view('dashboard_view');
     }else{
         $this->session->sess_destroy();

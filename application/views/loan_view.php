@@ -9,17 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
     <link href="<?= base_url('assets/plugins/pace/pace.css'); ?>" rel="stylesheet">
-      <style>
-        a,p{
-        font-family: 'Open Sans', sans-serif;
-        }
-        p{
-          text-align: center;
-        }
-        .container_size{
-        width: 60%;
-      }
-      </style>
+    <link href="<?php echo base_url('assets/css/mystyle.css');?>" rel="stylesheet">
   </head>
   <body>
     <div class="container-fluid">
@@ -33,7 +23,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" target="_blank" href="https://mass-specc.coop/"><img style="position:relative; top:-18px; left: -15px;" src="<?php echo base_url('assets/logo.png'); ?>"></a>
+              <a class="navbar-brand" target="_blank" href="https://mass-specc.coop/"><img style="position:relative; top:-18px; left: -15px;" src="<?php echo base_url('assets/likeAlogo.png'); ?>"></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav nav-tabs">
@@ -68,7 +58,7 @@
       </div>
     </div>
         <center>
-          <div class="container container_size">
+          <div class="container container_size divTB">
             
             <table class="table table-striped" width="600" border="0" cellspacing="5" cellpadding="5">
               <form method="POST" action="<?php echo base_url()?>loan/callcheckln">

@@ -9,88 +9,22 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
     <link href="<?= base_url('assets/plugins/pace/pace.css'); ?>" rel="stylesheet">
-      <style>
-        a,p{
-        font-family: 'Open Sans', sans-serif;
-        }
-        #left{
-          float:left;width:100px;
-        }
-        #right{
-          float:right;width:100px;
-        }
-        #center{
-          margin:0 auto;width:100px;
-        }
-        #leftv2{
-          float:left;width:100px;
-          margin-left: 230px;
-        }
-        #rightv2{
-          float:right;width:100px;
-          margin-right: 230px;
-        }
-        h2{
-          text-align: center;
-        }
-
-      </style>
+    <link href="<?php echo base_url('assets/css/mystyle.css');?>" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Spectral" rel="stylesheet">
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row">
-      <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" target="_blank" href="https://mass-specc.coop/"><img style="position:relative; top:-18px; left: -15px;" src="<?php echo base_url('assets/logo.png'); ?>"></a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav nav-tabs">
-                <!--ACCESS MENUS FOR ADMIN-->
-                <?php if($this->session->userdata('level')==='1'):?>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('page');?>">Home</a></li>
-                <!--ACCESS MENUS FOR STAFF-->
-                <?php elseif($this->session->userdata('level')==='2'):?>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('page/tech');?>">Home</a></li>
-                <!--ACCESS MENUS FOR AUTHOR-->
-                <?php else:?>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('page/coop');?>">Home</a></li>
-                <?php endif;?>
-              </ul>
-              <ul class="nav navbar-nav navbar-right nav-tabs" >
-                <?php if($this->session->userdata('level')==='1'):?>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
-                  <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
-                <?php elseif($this->session->userdata('level')==='2'):?>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Tech Staff</a></li>
-                  <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
-                <?php else:?>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Coop Staff</a></li>
-                  <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
-                <?php endif;?>
-              </ul>
-            </div><!--/.nav-collapse -->
-          </div><!--/.container-fluid -->
-        </nav>
-      </div>
-    </div>
+
 
     <!--DISPLAY MIGRATED DATA FOR ADMIN-->
     <?php if($this->session->userdata('level')==='1'):?>
   <div class="container">    
       <div class="container">
         <div class="page-header">
-            <h3>Welcome <?php echo $this->session->userdata('user_fname');?></h3>
+            <h3 class="firstfont"><strong>Welcome</strong> <strong><?php echo $this->session->userdata('user_fname');?></strong></h3>
         </div>
       </div>
-      <div class="container" id="left" style="width: 200px;">
-          <h2 class="form-signin-heading">Check</h2>
+      <div class="container" id="left">
+          <h2 class="form-signin-heading"><font size="6" color="white">Check</font></h2>
           <br>
           <form action="<?php echo site_url('choose/check');?>" method="post">
             <div class="form-group">
@@ -102,12 +36,15 @@
               </select>
             </div>
             <div class="form-group">
-              <input type="submit" name="insert" value="Choose" class="btn btn-lg btn-primary btn-block">
+              <input type="submit" name="insert" value="Choose" class="btn btn-lg btn-default btn-block">
+              <br>
+              <br>
+              <p><font size="3" color="white">This is a sample discription only, nothing is true about this sentence. thank you for consideration</font></p>
             </div>
           </form>
       </div>
-      <div class="container" id="right" style="width: 200px;">
-          <h2 class="form-signin-heading">Errors</h2>
+      <div class="container" id="right">
+          <h2 class="form-signin-heading"><font size="6" color="white">Errors</font></h2>
           <br>
           <form action="<?php echo site_url('choose/errors');?>" method="post">
             <div class="form-group">
@@ -119,12 +56,15 @@
               </select>
             </div>
             <div class="form-group">
-              <input type="submit" name="insert" value="Choose" class="btn btn-lg btn-primary btn-block">
+              <input type="submit" name="insert" value="Choose" class="btn btn-lg btn-default btn-block">
+              <br>
+              <br>
+              <p><font size="3" color="white">This is a sample discription only, nothing is true about this sentence. thank you for consideration</font></p>
             </div>
           </form>
       </div>
-      <div class="container" id="center" style="width: 200px;">
-          <h2 class="form-signin-heading">Validated</h2>
+      <div class="container" id="center">
+          <h2 class="form-signin-heading"><font size="6" color="white">Validated</font></h2>
           <br>
           <form action="<?php echo site_url('choose/validated');?>" method="post">
             <div class="form-group">
@@ -136,7 +76,10 @@
               </select>
             </div>
             <div class="form-group">
-              <input type="submit" name="insert" value="Choose" class="btn btn-lg btn-primary btn-block">
+              <input type="submit" name="insert" value="Choose" class="btn btn-lg btn-default btn-block" >
+              <br>
+              <br>
+              <p><font size="3" color="white">This is a sample discription only, nothing is true about this sentence. thank you for consideration</font></p>
             </div>
           </form>
       </div>

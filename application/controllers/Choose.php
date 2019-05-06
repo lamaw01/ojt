@@ -15,6 +15,7 @@ class Choose extends CI_Controller{
       redirect('time_deposit');
     }
     else{
+      $this->load->view('header');
       $this->load->view('dashboard_view');
 
     }
@@ -31,6 +32,7 @@ class Choose extends CI_Controller{
       redirect('validated_time_deposit');
     }
     else{
+      $this->load->view('header');
       $this->load->view('dashboard_view');
     }
   }
@@ -46,6 +48,7 @@ class Choose extends CI_Controller{
       redirect('errors_time_deposit');
     }
     else{
+      $this->load->view('header');
       $this->load->view('dashboard_view');
     }
   }
