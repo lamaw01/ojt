@@ -62,10 +62,10 @@
             
             <table class="table table-striped" width="600" border="0" cellspacing="5" cellpadding="5">
               <form method="POST" action="<?php echo base_url()?>savings/callchecksv">
-              <tr style="background:#CCC">
-                <th><p>No</p></th>
-                <th><p>CoreSV No</p></th>
-                <th><p>MBWINSV No</p></th>
+              <tr style="background-color: grey;">
+                <th><p>No.</p></th>
+                <th><p>Core No.</p></th>
+                <th><p>MBWIN No.</p></th>
                 <th><p>Account Name</p></th>
                 <th><p></p></th>
               </tr>

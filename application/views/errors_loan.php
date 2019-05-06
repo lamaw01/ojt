@@ -62,9 +62,9 @@
       <center>
           <div class="container container_size divTB">
             <table class="table table-striped" width="600" border="0" cellspacing="5" cellpadding="5">
-              <tr style="background:#CCC">
-                <th><p>No</p></th>
-                <th><p>CoreLN No</p></th>
+              <tr style="background-color: grey;">
+                <th><p>No.</p></th>
+                <th><p>Core Account No.</p></th>
                 <th><p>Int Rate</p></th>
                 <th><p>Pen Rate</p></th>
                 <th><p>Loan Amt</p></th>

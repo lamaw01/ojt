@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
     <link href="<?= base_url('assets/plugins/pace/pace.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/css/mystyle.css');?>" rel="stylesheet">
     <style>
       th {
         text-align: center;
@@ -66,7 +67,7 @@
       </div>
     </div>
     <div class="container">
-      <h3 class="form-signin-heading">Profile</h3>
+      <h3 class="form-signin-heading firstfont"><b>Profile<b></h3>
       <br>
       
       <?php

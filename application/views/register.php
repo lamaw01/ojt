@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
   <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
   <link href="<?= base_url('assets/plugins/pace/pace.css'); ?>" rel="stylesheet">
+  <link href="<?php echo base_url('assets/css/mystyle.css');?>" rel="stylesheet">
 
 </head>
 <body>

@@ -61,9 +61,9 @@
       <center>
           <div class="container container_size divTB">
             <table class="table table-striped" width="600" border="0" cellspacing="5" cellpadding="5">
-              <tr style="background:#CCC">
-                <th><p>No</p></th>
-                <th><p>CoreTD No</p></th>
+              <tr style="background-color: grey;">
+                <th><p>No.</p></th>
+                <th><p>Core No.</p></th>
                 <th><p>Open Date</p></th>
                 <th><p>Current Balance</p></th>
                 <th><p>Interest</p></th>
