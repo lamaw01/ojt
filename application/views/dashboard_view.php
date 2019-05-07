@@ -9,6 +9,7 @@
     <link href="<?= base_url('assets/plugins/pace/pace.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/mystyle.css');?>" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Spectral" rel="stylesheet">
+    
   </head>
   <body>
 
@@ -27,9 +28,9 @@
             <div class="form-group">
               <select class="form-control" name="check_type">
                 <option hidden selected>Select</option>
-                <option class="#opt_indent" value="1">Loan</option>
-                <option class="#opt_indent" value="2">Savings</option>
-                <option class="#opt_indent" value="3">Time Deposit</option>
+                <option value="1">Loan</option>
+                <option value="2">Savings</option>
+                <option value="3">Time Deposit</option>
               </select>
             </div>
             <div class="form-group">

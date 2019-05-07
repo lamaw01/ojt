@@ -19,6 +19,7 @@
         font-family: 'Open Sans', sans-serif;
       }
     </style>
+    
   </head>
   <body>
     <div class="container-fluid">
