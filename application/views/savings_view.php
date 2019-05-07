@@ -4,12 +4,11 @@
     <meta charset="utf-8">
     <title>Savings</title>
 
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
     <link href="<?= base_url('assets/plugins/pace/pace.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/mystyle.css');?>" rel="stylesheet">
+    
   </head>
   <body>
     <div class="container-fluid">
