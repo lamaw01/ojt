@@ -24,7 +24,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" target="_blank" href="https://mass-specc.coop/"><img style="position:relative; top:-18px; left: -15px;" src="<?php echo base_url('assets/likeAlogo.png'); ?>"></a>
+              <a class="navbar-brand" target="_blank" href="https://mass-specc.coop/"><img style="position:relative; top:-18px; left: -15px;" src="<?php echo base_url('assets/img/likeAlogo.png'); ?>"></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav nav-tabs">
@@ -60,32 +60,19 @@
       </div>
     </div>
       <center>
-          <div class="container container_size divTB">
+          <div class="container" style="width: 450px">
             <table class="table table-striped" width="600" border="0" cellspacing="5" cellpadding="5">
               <tr style="background-color: grey;">
                 <th><p>No.</p></th>
                 <th><p>Core Account No.</p></th>
-                <th><p>Int Rate</p></th>
-                <th><p>Pen Rate</p></th>
-                <th><p>Loan Amt</p></th>
-                <th><p>Outs Bal</p></th>
-                <th><p>Overdue Prin</p></th>
-                <th><p>Int Due Amt</p></th>
-                <th><p>Penalty</p></th>
+                <th><p></p></th>
               </tr>
               <?php if(count($data)): foreach($data as $row): ?>
 
               <tr>
               <td><p><?php echo $row->errorln_id; ?></p></td>
               <td><p><?php echo $row->errln_account_no; ?></p></td>
-              <td><p><?php echo $row->errln_int_rate; ?></p></td>
-              <td><p><?php echo $row->errln_penalty_rate; ?></p></td>
-              <td><p><?php echo $row->errln_loan_amount; ?></p></td>
-              <td><p><?php echo $row->errln_outstanding_bal; ?></p></td>
-              <td><p><?php echo $row->errln_overdue_principal; ?></p></td>
-              <td><p><?php echo $row->errln_interest_due_amount; ?></p></td>
-              <td><p><?php echo $row->errln_penalty; ?></p></td>
-
+              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/loan_details/<?php echo $row->errln_account_no; ?>'>Details</a></td>
               <?php endforeach; ?>
               <?php else: ?>
 

@@ -654,3 +654,18 @@ AND coretd.interest = mbwintd.int_bal_amt
 
 42. erase \n
 UPDATE mbwintd SET account_no = REPLACE(account_no, '\n', '')
+
+43.
+BEGIN
+
+	SELECT migratedln.migratedln_id, mbwinln.open_date AS mbwinln_open_date, mbwinln.int_rate AS mbwinln_int_rate, mbwinln.pen_rate AS mbwinln_pen_rate, mbwinln.principal_amt AS mbwinln_principal_amt, mbwinln.bal_amt AS mbwinln_bal_amt, mbwinln.over_due_pri_amt AS mbwinln_over_due, mbwinln.int_bal_amt AS mbwinln_bal_amt, mbwinln.pen_bal_amt AS mbwinln_pen_bal, coreln.open_date AS coreln_open_date, coreln.int_rate AS coreln_int_rate, coreln.penalty_rate AS coreln_pen_rate, coreln.loan_amount AS coreln_loan_amount, coreln.outstanding_bal AS coreln_out_bal, coreln.overdue_principal AS coreln_over_due, coreln.penalty AS coreln_penalty
+	FROM coreln
+    INNER JOIN migratedln ON migratedln.account_no = coreln.account_no
+    INNER JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
+    WHERE coreln.stat = 2
+    AND coreln.account_no = id;
+
+END
+
+44.
+ALTER TABLE `coretd` CHANGE `account_name` `account_name` VARCHAR(60) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;

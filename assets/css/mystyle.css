@@ -19,22 +19,19 @@
         }
 
         .firstfont{
-            font-family: 'Spectral', serif; font-size: 60px; 
+            font-family: 'Spectral', serif; font-size: 40px; 
         }
 
         .container_size{
         width: 60%;
         }
 
-        .divTB{
-            background-color: #e6e6e6;
-        }
 
   body {
   padding-top: 0rem; }
   body:before {
     content: ' ';
-    background-image: url("bg.jpg");
+    background-image: url('../img/bg.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

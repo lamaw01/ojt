@@ -1,4 +1,4 @@
-s<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -23,7 +23,7 @@ s<!DOCTYPE html>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" target="_blank" href="https://mass-specc.coop/"><img style="position:relative; top:-18px; left: -15px;" src="<?php echo base_url('assets/likeAlogo.png'); ?>"></a>
+              <a class="navbar-brand" target="_blank" href="https://mass-specc.coop/"><img style="position:relative; top:-18px; left: -15px;" src="<?php echo base_url('assets/img/likeAlogo.png'); ?>"></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav nav-tabs">
@@ -59,24 +59,20 @@ s<!DOCTYPE html>
       </div>
     </div>
       <center>
-          <div class="container container_size divTB">
+          <div class="container" style="width: 450px">
             <table class="table table-striped" width="600" border="0" cellspacing="5" cellpadding="5">
               <tr style="background-color: grey;">
                 <th><p>No.</p></th>
                 <th><p>Core No.</p></th>
-                <th><p>Open Date</p></th>
-                <th><p>Current Balance</p></th>
-                <th><p>Interest</p></th>
+                <th><p></p></th>
               </tr>
               <?php if(count($data)): foreach($data as $row): ?>
 
               <tr>
               <td><p><?php echo $row->errorsv_id; ?></p></td>
               <td><p><?php echo $row->errsv_acc_no; ?></p></td>
-              <td><p><?php echo $row->errorsv_open_date; ?></p></td>
-              <td><p><?php echo $row->errorsv_current_bal; ?></p></td>
-              <td><p><?php echo $row->errorsv_interest; ?></p></td>
-              
+              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/savings_details/<?php echo $row->errsv_acc_no; ?>'>Details</a></td>
+              </tr>
               <?php endforeach; ?>
               <?php else: ?>
 
