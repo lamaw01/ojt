@@ -12,7 +12,7 @@
   <body>
   <center>
       <div class="container-fluid">
-       <div class="col-md-4 col-md-offset-4">
+       <div class="container" style="width: 370px;">
          <form class="form-signin" action="<?php echo site_url('login/auth');?>" method="post">
           <br>
            <h2 class="form-signin-heading">Please sign in</h2>
@@ -20,17 +20,19 @@
           <br>
            <div class="form-group">
            <label for="username" class="sr-only">Username</label>
-           <input type="email" name="email" class="form-control" placeholder="Email" required autofocus>
+           <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
            </div>
            <div class="form-group">
            <label for="password" class="sr-only">Password</label>
            <input type="password" name="password" class="form-control" placeholder="Password" required>
            </div>
+           <!--
            <div class="checkbox">
              <label>
                <input type="checkbox" value="remember-me"> Remember me
              </label>
            </div>
+         -->
            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
            <a href="<?= base_url('Reg'); ?>" class="btn btn-lg btn-warning btn-block" >Register</a>
          </form>

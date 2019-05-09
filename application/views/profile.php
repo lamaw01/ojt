@@ -76,7 +76,6 @@
 
       echo "<h4><b>First Name :   </b>".$row->user_fname."</h4>";
       echo "<h4><b>Last Name :  </b>".$row->user_lname."</h4>";
-      echo "<h4><b>Email :  </b>".$row->user_email."</h4>";
       echo "<h4><b>User Level :   </b>".$row->user_level."</h4>";
 
       $i++;

@@ -17,7 +17,7 @@ class Reg extends CI_Controller {
 
   public function form_validation(){
     $this->load->library('form_validation');
-    $this->form_validation->set_rules("user_email", "Email", 'required|valid_email|is_unique[tbl_users.user_email]');
+    $this->form_validation->set_rules("user_name", "Username", 'required|is_unique[tbl_users.user_name]');
     $this->form_validation->set_rules("user_password", "Password", 'required');
     $this->form_validation->set_rules("confirm_password", "Confirm Password", 'required|matches[user_password]');
     $this->form_validation->set_rules("user_fname", "First Name", 'required');
@@ -27,7 +27,7 @@ class Reg extends CI_Controller {
     if($this->form_validation->run()){
       $this->load->model("reg_model");
       $data = array(
-        "user_email"     =>$this->input->post("user_email"),
+        "user_name"     =>$this->input->post("user_name"),
         "user_password"     =>md5($this->input->post("user_password")),
         "confirm_password"  =>$this->input->post("confirm_password"),
         "user_fname"     =>$this->input->post("user_fname"),

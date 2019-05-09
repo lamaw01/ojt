@@ -123,7 +123,7 @@
               </select>
             </div>
             <div class="form-group">
-              <input type="submit" name="insert" value="Choose" class="btn btn-lg btn-default btn-block">
+              <input type="submit" name="insert" value="Choose" class="btn btn-lg  btn-default btn-block">
               <br>
               <br>
               <p class="pargh"><font size="3" color="white">Display error data.</font></p>
@@ -158,7 +158,7 @@
             <h3 class="firstfont"><b>Welcome</b> <b><?php echo $this->session->userdata('user_fname');?></b></h3>
         </div>
       </div>
-      <div class="container" id="left">
+      <div class="container" id="right" style="margin-right: 100px; background-color: #ff3333 !important;">
           <h2 class="form-signin-heading"><font size="6" color="white">Errors</font></h2>
           <br>
           <form action="<?php echo site_url('choose/errors');?>" method="post">
@@ -178,7 +178,7 @@
             </div>
           </form>
       </div>
-      <div class="container" id="right">
+      <div class="container" id="left" style="margin-left: 100px; background-color: #00cc44 !important;">
           <h2 class="form-signin-heading"><font size="6" color="white">Validated</font></h2>
           <br>
           <form action="<?php echo site_url('choose/validated');?>" method="post">

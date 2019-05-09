@@ -12,39 +12,39 @@
 </head>
 <body>
   <center>
-<div class="container" style="width: 400px;">
+<div class="container" style="width: 370px;">
   <br>
     <h2 class="form-signin-heading">Register</h2>
     <form method="POST" action="<?php echo base_url()?>reg/form_validation">
+      <br>
       <?php
       if($this->uri->segment(2) == "inserted"){
         echo '<p class="text-success">Account Registered</p>';
       }
       ?>
-  <br>    
       <div class="form-group">
-        <input type="text" name="user_email" class="form-control" placeholder="Email">
-        <span class="text-danger"><?php echo form_error("user_email"); ?></span>
+        <input type="text" name="user_name" class="form-control" placeholder="Username" required>
+        <span class="text-danger"><?php echo form_error("user_name"); ?></span>
       </div>
       <div class="form-group">
-        <input type="password" name="user_password" class="form-control" placeholder="Password">
+        <input type="password" name="user_password" class="form-control" placeholder="Password" required>
         <span class="text-danger"><?php echo form_error("user_password"); ?></span>
       </div>
       <div class="form-group">
-        <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password">
+        <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" required>
         <span class="text-danger"><?php echo form_error("confirm_password"); ?></span>
       </div>
       <div class="form-group">
-        <input type="text" name="user_fname" class="form-control" placeholder="First Name">
+        <input type="text" name="user_fname" class="form-control" placeholder="First Name" required>
         <span class="text-danger"><?php echo form_error("user_fname"); ?></span>
       </div>
       <div class="form-group">
-        <input type="text" name="user_lname" class="form-control" placeholder="Last Name">
+        <input type="text" name="user_lname" class="form-control" placeholder="Last Name" required>
         <span class="text-danger"><?php echo form_error("user_lname"); ?></span>
       </div>
       <div class="form-group">
         <select class="form-control" name="user_level">
-          <option value="1">Admin</option>
+          <!--<option value="1">Admin</option>--->
           <option value="2">Tech staff</option>
           <option value="3">Coop staff</option>
         </select>
