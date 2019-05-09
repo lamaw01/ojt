@@ -17,7 +17,7 @@ class Reg extends CI_Controller {
 
   public function form_validation(){
     $this->load->library('form_validation');
-    $this->form_validation->set_rules("user_name", "Username", 'required|is_unique[tbl_users.user_name]');
+    $this->form_validation->set_rules("user_name", "Username", 'required|min_length[3]|max_length[16]|is_unique[tbl_users.user_name]');
     $this->form_validation->set_rules("user_password", "Password", 'required');
     $this->form_validation->set_rules("confirm_password", "Confirm Password", 'required|matches[user_password]');
     $this->form_validation->set_rules("user_fname", "First Name", 'required');
