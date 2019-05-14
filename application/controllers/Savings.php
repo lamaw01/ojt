@@ -17,6 +17,7 @@ class Savings extends CI_Controller {
     }
     $this->load->library('pagination');
     $config['uri_segment'] = 3;
+    $config['use_page_numbers'] = TRUE;
     $config['base_url'] = base_url().'savings/index';
     $config['total_rows'] = $this->Show_model->total_recordsv();
     $config['per_page'] = $limit;

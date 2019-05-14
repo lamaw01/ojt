@@ -24,6 +24,7 @@ class Errors_savings extends CI_Controller {
     }
     $this->load->library('pagination');
     $config['uri_segment'] = 3;
+    $config['use_page_numbers'] = TRUE;
     $config['base_url'] = base_url().'errors_savings/index';
     $config['total_rows'] = $this->Errorssv_model->total_recordsv();
     $config['per_page'] = $limit;

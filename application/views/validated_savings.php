@@ -58,6 +58,17 @@
       </div>
     </div>
       <center>
+        <div class="container_size">
+         <form method='post' action="<?= base_url() ?>search/search_savings">
+          <div class="col-md-10">
+            <input class="form-control" type='text' name='search' value='<?php $search ?>' placeholder='Search'>
+          </div>
+          <div>
+           <input class="btn btn-info" type='submit' name='submit' value='Submit'>
+          </div>
+         </form>  
+       </div>
+       <br>
           <div class="container container_size divTB">
             <table class="table table-striped" width="600" border="0" cellspacing="5" cellpadding="5">
               <tr style="background-color: grey;">

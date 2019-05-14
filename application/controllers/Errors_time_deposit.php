@@ -24,6 +24,7 @@ class Errors_time_deposit extends CI_Controller {
     }
     $this->load->library('pagination');
     $config['uri_segment'] = 3;
+    $config['use_page_numbers'] = TRUE;
     $config['base_url'] = base_url().'errors_time_deposit/index';
     $config['total_rows'] = $this->Errorstd_model->total_recordtd();
     $config['per_page'] = $limit;

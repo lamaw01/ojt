@@ -24,6 +24,7 @@ class Validated_time_deposit extends CI_Controller {
     }
     $this->load->library('pagination');
     $config['uri_segment'] = 3;
+    $config['use_page_numbers'] = TRUE;
     $config['base_url'] = base_url().'validated_time_deposit/index';
     $config['total_rows'] = $this->Validatedtd_model->total_recordtd();
     $config['per_page'] = $limit;

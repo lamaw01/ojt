@@ -24,6 +24,7 @@ class Validated_loan extends CI_Controller {
     }
     $this->load->library('pagination');
     $config['uri_segment'] = 3;
+    $config['use_page_numbers'] = TRUE;
     $config['base_url'] = base_url().'validated_loan/index';
     $config['total_rows'] = $this->Validatedln_model->total_recordln();
     $config['per_page'] = $limit;
@@ -50,5 +51,7 @@ class Validated_loan extends CI_Controller {
     $result['data'] = $this->Validatedln_model->get_joinln($limit,$offset);
     $this->load->view('validated_loan',$result);
  }
+
+ 
 
 }

@@ -17,6 +17,7 @@ class Loan extends CI_Controller {
     }
     $this->load->library('pagination');
     $config['uri_segment'] = 3;
+    $config['use_page_numbers'] = TRUE;
     $config['base_url'] = base_url().'loan/index';
     $config['total_rows'] = $this->Show_model->total_recordln();
     $config['per_page'] = $limit;
