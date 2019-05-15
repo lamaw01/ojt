@@ -12,7 +12,7 @@
 </head>
 <body>
   <center>
-<div class="container" style="width: 370px;">
+<div class="container" id="register_design">
   <br>
     <h2 class="form-signin-heading">Register</h2>
     <form method="POST" action="<?php echo base_url()?>reg/form_validation">

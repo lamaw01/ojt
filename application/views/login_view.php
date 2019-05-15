@@ -11,7 +11,7 @@
   </head>
   <body>
   <center>
-      <div class="container-fluid">
+      <div class="container" id="login_design">
        <div class="container" style="width: 370px;">
          <form class="form-signin" action="<?php echo site_url('login/auth');?>" method="post">
           <br>
