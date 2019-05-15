@@ -59,7 +59,7 @@
     </div>
       <center>
         <div class="container_size">
-         <form method='post' action="<?= base_url() ?>search/search_loan">
+         <form method='post' action="<?= base_url() ?>search_validated/loan">
           <div class="col-md-10">
             <input class="form-control" type='text' name='search' value='<?php $search ?>' placeholder='Search'>
           </div>

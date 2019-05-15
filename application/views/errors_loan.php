@@ -58,11 +58,23 @@
       </div>
     </div>
       <center>
-          <div class="container" style="width: 450px">
+        <div class="container_size">
+         <form method='post' action="<?= base_url() ?>search_errors/loan">
+          <div class="col-md-10">
+            <input class="form-control" type='text' name='search' value='<?php $search ?>' placeholder='Search'>
+          </div>
+          <div>
+           <input class="btn btn-info" type='submit' name='submit' value='Submit'>
+          </div>
+         </form>  
+       </div>
+       <br>
+          <div class="container container_size divTB">
             <table class="table table-striped" width="600" border="0" cellspacing="5" cellpadding="5">
               <tr style="background-color: grey;">
                 <th><p>No.</p></th>
                 <th><p>Core Account No.</p></th>
+                <th><p>Account Name</p></th>
                 <th><p></p></th>
               </tr>
               <?php if(count($data)): foreach($data as $row): ?>
@@ -70,6 +82,7 @@
               <tr>
               <td><p><?php echo $row->errorln_id; ?></p></td>
               <td><p><?php echo $row->errln_account_no; ?></p></td>
+              <td><p><?php echo $row->coreln_acc_name; ?></p></td>
               <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/loan/<?php echo $row->errln_account_no; ?>'>Details</a></td>
               <?php endforeach; ?>
               <?php else: ?>

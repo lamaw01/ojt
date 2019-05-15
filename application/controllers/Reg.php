@@ -11,8 +11,7 @@ class Reg extends CI_Controller {
 
   function index()
   { 
-    $data['title'] = 'Register';
-    $this->load->view('register',$data);
+    $this->load->view('register');
   }
 
   function form_validation(){

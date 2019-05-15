@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title><?php echo $title ?></title>
+  <title>Register</title>
 
   <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
   <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">

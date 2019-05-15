@@ -60,7 +60,7 @@
     <center>
    <!-- Search form (start) -->
    <div class="container_size">
-     <form method='post' action="<?= base_url() ?>search/search_savings">
+     <form method='post' action="<?= base_url() ?>search_validated/savings">
       <div class="col-md-10">
         <input class="form-control" type='text' name='search' value='<?php $search ?>' placeholder='Search'>
       </div>
@@ -87,12 +87,14 @@
       $mbwinsv_id = substr($data['mbwinsv_id'],0, 180)."";
       $coresv_id = substr($data['coresv_id'],0, 180)."";
       $coresv_acc_name = substr($data['coresv_acc_name'],0, 180)."";
-      echo "<tr>";
-      echo "<td><p>".$validatesv_id."</p></td>";
-      echo "<td><p>".$coresv_id."</p></td>";
-      echo "<td><p>".$mbwinsv_id."</p></td>";
-      echo "<td><p>".$coresv_acc_name."</p></td>";
-      echo "</tr>";
+      ?>
+      <tr>
+      <td><p><?php print_r($validatesv_id); ?></p></td>
+      <td><p><?php print_r($coresv_id); ?></p></td>
+      <td><p><?php print_r($mbwinsv_id); ?></p></td>
+      <td><p><?php print_r($coresv_acc_name); ?></p></td>
+      </tr>
+      <?php
 
       $validatesv_id++;
 

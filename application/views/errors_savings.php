@@ -29,15 +29,15 @@
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/savings');?>">Errors Saving</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/savings');?>">Error Savings</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/tech');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/savings');?>">Errors Saving</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/savings');?>">Error Savings</a></li>
                 <!--ACCESS MENUS FOR AUTHOR-->
                 <?php else:?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/coop');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/savings');?>">Errors Saving</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/savings');?>">Error Savings</a></li>
                 <?php endif;?>
               </ul>
               <ul class="nav navbar-nav navbar-right nav-tabs" >
@@ -58,11 +58,23 @@
       </div>
     </div>
       <center>
-          <div class="container" style="width: 450px">
+        <div class="container_size">
+         <form method='post' action="<?= base_url() ?>search_errors/savings">
+          <div class="col-md-10">
+            <input class="form-control" type='text' name='search' value='<?php $search ?>' placeholder='Search'>
+          </div>
+          <div>
+           <input class="btn btn-info" type='submit' name='submit' value='Submit'>
+          </div>
+         </form>  
+       </div>
+       <br>
+          <div class="container container_size divTB">
             <table class="table table-striped" width="600" border="0" cellspacing="5" cellpadding="5">
               <tr style="background-color: grey;">
                 <th><p>No.</p></th>
                 <th><p>Core No.</p></th>
+                <th><p>Account Name</p></th>
                 <th><p></p></th>
               </tr>
               <?php if(count($data)): foreach($data as $row): ?>
@@ -70,6 +82,7 @@
               <tr>
               <td><p><?php echo $row->errorsv_id; ?></p></td>
               <td><p><?php echo $row->errsv_acc_no; ?></p></td>
+              <td><p><?php echo $row->coresv_acc_name; ?></p></td>
               <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/savings/<?php echo $row->errsv_acc_no; ?>'>Details</a></td>
               </tr>
               <?php endforeach; ?>

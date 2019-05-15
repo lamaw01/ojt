@@ -13,7 +13,7 @@ class Errors_model extends CI_Model{
  }
 
  function get_joinln($limit,$offset){
-    $this->db->select('errorln_id, errorln.account_no AS errln_account_no');
+    $this->db->select('errorln_id, errorln.account_no AS errln_account_no, coreln.account_name AS coreln_acc_name');
     $this->db->from('errorln');
     $this->db->join('coreln','coreln.account_no = errorln.account_no','left');
     $this->db->where('coreln.stat = 2');
@@ -28,7 +28,7 @@ class Errors_model extends CI_Model{
  }
 
  function get_joinsv($limit,$offset){
-    $this->db->select('errorsv_id, errorsv.account_no AS errsv_acc_no, errorsv.open_date AS errorsv_open_date, errorsv.current_bal AS errorsv_current_bal, errorsv.interest AS errorsv_interest');
+    $this->db->select('errorsv_id, errorsv.account_no AS errsv_acc_no, coresv.account_name AS coresv_acc_name');
     $this->db->from('errorsv');
     $this->db->join('coresv','coresv.account_no = errorsv.account_no','left');
     $this->db->where('coresv.stat = 2');
@@ -43,7 +43,7 @@ class Errors_model extends CI_Model{
  }
 
  function get_jointd($limit,$offset){
-    $this->db->select('errortd_id, errortd.account_no AS errtd_acc_no, errortd.open_date AS errortd_open_date, errortd.principal_amount AS errortd_principal_amount, errortd.interest AS errortd_interest');
+    $this->db->select('errortd_id, errortd.account_no AS errtd_acc_no, coretd.account_name AS coretd_acc_name');
     $this->db->from('errortd');
     $this->db->join('coretd','coretd.account_no = errortd.account_no','left');
     $this->db->where('coretd.stat = 2');
