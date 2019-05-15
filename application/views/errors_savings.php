@@ -29,15 +29,15 @@
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors_savings');?>">Errors Saving</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/savings');?>">Errors Saving</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/tech');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors_savings');?>">Errors Saving</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/savings');?>">Errors Saving</a></li>
                 <!--ACCESS MENUS FOR AUTHOR-->
                 <?php else:?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/coop');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors_savings');?>">Errors Saving</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/savings');?>">Errors Saving</a></li>
                 <?php endif;?>
               </ul>
               <ul class="nav navbar-nav navbar-right nav-tabs" >
@@ -70,7 +70,7 @@
               <tr>
               <td><p><?php echo $row->errorsv_id; ?></p></td>
               <td><p><?php echo $row->errsv_acc_no; ?></p></td>
-              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/savings_details/<?php echo $row->errsv_acc_no; ?>'>Details</a></td>
+              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/savings/<?php echo $row->errsv_acc_no; ?>'>Details</a></td>
               </tr>
               <?php endforeach; ?>
               <?php else: ?>

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Details</title>
+    <title><?php echo $title ?></title>
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
@@ -29,15 +29,15 @@
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors_loan');?>">Error Details</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/time_deposit');?>">Error Details</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/tech');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors_loan');?>">Error Details</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/time_deposit');?>">Error Details</a></li>
                 <!--ACCESS MENUS FOR AUTHOR-->
                 <?php else:?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/coop');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors_loan');?>">Error Details</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/time_deposit');?>">Error Details</a></li>
                 <?php endif;?>
               </ul>
               <ul class="nav navbar-nav navbar-right nav-tabs" >

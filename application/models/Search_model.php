@@ -1,13 +1,14 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 Class Search_model extends CI_Model {
 
-  public function __construct() {
+  function __construct() {
     parent::__construct(); 
   }
 
   // Fetch records
-  public function getDataln($rowno,$rowperpage,$search="") {
+  function getDataln($rowno,$rowperpage,$search="") {
  
     $this->db->select('validateln.*, coreln.account_name AS coreln_acc_name');
     $this->db->from('validateln');
@@ -26,7 +27,7 @@ Class Search_model extends CI_Model {
   }
 
   // Select total records
-  public function getrecordCountln($search = '') {
+  function getrecordCountln($search = '') {
 
     $this->db->select('count(*) as allcount, coreln.account_name AS coreln_acc_name');
     $this->db->from('validateln');
@@ -45,7 +46,7 @@ Class Search_model extends CI_Model {
   }
 
 
-public function getDatasv($rowno,$rowperpage,$search="") {
+  function getDatasv($rowno,$rowperpage,$search="") {
  
     $this->db->select('validatesv.*, coresv.account_name AS coresv_acc_name');
     $this->db->from('validatesv');
@@ -64,7 +65,7 @@ public function getDatasv($rowno,$rowperpage,$search="") {
   }
 
   // Select total records
-  public function getrecordCountsv($search = '') {
+  function getrecordCountsv($search = '') {
 
     $this->db->select('count(*) as allcount, coresv.account_name AS coresv_acc_name');
     $this->db->from('validatesv');
@@ -82,7 +83,7 @@ public function getDatasv($rowno,$rowperpage,$search="") {
     return $result[0]['allcount'];
   }
 
-  public function getDatatd($rowno,$rowperpage,$search="") {
+  function getDatatd($rowno,$rowperpage,$search="") {
  
     $this->db->select('validatetd.*, coretd.account_name AS coretd_acc_name');
     $this->db->from('validatetd');
@@ -101,7 +102,7 @@ public function getDatasv($rowno,$rowperpage,$search="") {
   }
 
   // Select total records
-  public function getrecordCounttd($search = '') {
+  function getrecordCounttd($search = '') {
 
     $this->db->select('count(*) as allcount, coretd.account_name AS coretd_acc_name');
     $this->db->from('validatetd');

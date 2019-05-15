@@ -29,15 +29,15 @@
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors_loan');?>">Error Loans</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/loan');?>">Error Loans</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/tech');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors_loan');?>">Error Loans</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/loan');?>">Error Loans</a></li>
                 <!--ACCESS MENUS FOR AUTHOR-->
                 <?php else:?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/coop');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors_loan');?>">Error Loans</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/loan');?>">Error Loans</a></li>
                 <?php endif;?>
               </ul>
               <ul class="nav navbar-nav navbar-right nav-tabs" >
@@ -70,7 +70,7 @@
               <tr>
               <td><p><?php echo $row->errorln_id; ?></p></td>
               <td><p><?php echo $row->errln_account_no; ?></p></td>
-              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/loan_details/<?php echo $row->errln_account_no; ?>'>Details</a></td>
+              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/loan/<?php echo $row->errln_account_no; ?>'>Details</a></td>
               <?php endforeach; ?>
               <?php else: ?>
 

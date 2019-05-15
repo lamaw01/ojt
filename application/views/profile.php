@@ -74,9 +74,9 @@
       foreach($data as $row)
       {
 
-      echo "<h4><b>First Name :   </b>".$row->user_fname."</h4>";
-      echo "<h4><b>Last Name :  </b>".$row->user_lname."</h4>";
-      echo "<h4><b>User Level :   </b>".$row->user_level."</h4>";
+      echo "<h4><p><b>First Name :   </b>".$row->user_fname."<p></h4>";
+      echo "<h4><p><b>Last Name :  </b>".$row->user_lname."</p></h4>";
+      echo "<h4><p><b>User Level :   </b>".$row->user_level."</p></h4>";
 
       $i++;
       }

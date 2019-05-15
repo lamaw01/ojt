@@ -1,4 +1,6 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 class Choose extends CI_Controller{
   function __construct(){
     parent::__construct();
@@ -25,11 +27,11 @@ class Choose extends CI_Controller{
     $type = $this->input->post('validated_type');
     
     if($type == 4){
-      redirect('validated_loan');
+      redirect('validated/loan');
     }elseif($type == 5){
-      redirect('validated_savings');
+      redirect('validated/savings');
     }elseif($type == 6){
-      redirect('validated_time_deposit');
+      redirect('validated/time_deposit');
     }
     else{
       $this->load->view('header');
@@ -41,11 +43,11 @@ class Choose extends CI_Controller{
     $type = $this->input->post('errors_type');
     
     if($type == 7){
-      redirect('errors_loan');
+      redirect('errors/loan');
     }elseif($type == 8){
-      redirect('errors_savings');
+      redirect('errors/savings');
     }elseif ($type == 9) {
-      redirect('errors_time_deposit');
+      redirect('errors/time_deposit');
     }
     else{
       $this->load->view('header');

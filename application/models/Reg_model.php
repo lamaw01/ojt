@@ -1,7 +1,9 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 class Reg_model extends CI_Model {
 
-	public function __construct()
+	function __construct()
 	{
 		parent::__construct();
 	}

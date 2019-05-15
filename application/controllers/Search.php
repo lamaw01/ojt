@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Search extends CI_Controller {
 
-  public function __construct(){
+  function __construct(){
  
     parent::__construct();
     $this->load->helper('url');
@@ -18,11 +18,7 @@ class Search extends CI_Controller {
     $this->load->model('Search_model');
   }
 
-  /*public function index(){
-    redirect('search_loan/loadRecord');
-  }*/
-
-  public function search_loan($rowno=NULL){
+  function search_loan($rowno=NULL){
 
     // Search text
     $search_text = "";
@@ -85,7 +81,7 @@ class Search extends CI_Controller {
  
   }
 
-  public function search_savings($rowno=0){
+  function search_savings($rowno=0){
 
     // Search text
     $search_text = "";
@@ -148,7 +144,7 @@ class Search extends CI_Controller {
  
   }
 
-  public function search_time_deposit($rowno=0){
+  function search_time_deposit($rowno=0){
 
     // Search text
     $search_text = "";

@@ -29,15 +29,15 @@
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors_loan');?>">Error Details</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/savings');?>">Error Details</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/tech');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors_loan');?>">Error Details</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/savings');?>">Error Details</a></li>
                 <!--ACCESS MENUS FOR AUTHOR-->
                 <?php else:?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/coop');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors_loan');?>">Error Details</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/savings');?>">Error Details</a></li>
                 <?php endif;?>
               </ul>
               <ul class="nav navbar-nav navbar-right nav-tabs" >

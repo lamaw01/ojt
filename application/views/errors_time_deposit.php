@@ -29,15 +29,15 @@
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors_time_deposit');?>">Errors Time Deposit</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/time_deposit');?>">Errors Time Deposit</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/tech');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors_time_deposit');?>">Errors Time Deposit</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/time_deposit');?>">Errors Time Deposit</a></li>
                 <!--ACCESS MENUS FOR AUTHOR-->
                 <?php else:?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/coop');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors_time_deposit');?>">Errors Time Deposit</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/time_deposit');?>">Errors Time Deposit</a></li>
                 <?php endif;?>
               </ul>
               <ul class="nav navbar-nav navbar-right nav-tabs" >
@@ -70,7 +70,7 @@
               <tr>
               <td><p><?php echo $row->errortd_id; ?></p></td>
               <td><p><?php echo $row->errtd_acc_no; ?></p></td>
-              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/time_deposit_details/<?php echo $row->errtd_acc_no; ?>'>Details</a></td>
+              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/time_deposit/<?php echo $row->errtd_acc_no; ?>'>Details</a></td>
               <?php endforeach; ?>
               <?php else: ?>
 

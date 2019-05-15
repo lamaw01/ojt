@@ -7,21 +7,21 @@ class Details extends CI_Controller {
     $this->load->model('Details_model');
 }
 
- function loan_details($id){
+ function loan($id){
     
     $result['data'] = $this->Details_model->get_detailsln($id);
     $this->load->view('loan_details_view',$result);
 
 }
 
- function savings_details($id){
+ function savings($id){
     
     $result['data'] = $this->Details_model->get_detailssv($id);
     $this->load->view('savings_details_view',$result);
 
 }
 
- function time_deposit_details($id){
+ function time_deposit($id){
     
     $result['data'] = $this->Details_model->get_detailstd($id);
     $this->load->view('time_deposit_details_view',$result);

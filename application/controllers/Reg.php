@@ -3,19 +3,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Reg extends CI_Controller {
 
-  public function __construct()
+  function __construct()
   {
     parent::__construct();
     $this->load->model('reg_model');
   }
 
-  public function index()
+  function index()
   { 
     $data['title'] = 'Register';
     $this->load->view('register',$data);
   }
 
-  public function form_validation(){
+  function form_validation(){
     $this->load->library('form_validation');
     $this->form_validation->set_rules("user_name", "Username", 'required|min_length[3]|max_length[16]|is_unique[tbl_users.user_name]');
     $this->form_validation->set_rules("user_password", "Password", 'required');
@@ -44,7 +44,7 @@ class Reg extends CI_Controller {
     }
   }
 
-  public function inserted(){
+  function inserted(){
     $this->index();
   }
 

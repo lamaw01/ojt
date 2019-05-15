@@ -29,15 +29,15 @@
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('validated_time_deposit');?>">Validated Time Deposit</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('validated/time_deposit');?>">Validated Time Deposit</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/tech');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('validated_time_deposit');?>">Validated Time Deposit</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('validated/time_deposit');?>">Validated Time Deposit</a></li>
                 <!--ACCESS MENUS FOR AUTHOR-->
                 <?php else:?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/coop');?>">Home</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('validated_time_deposit');?>">Validated Time Deposit</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('validated/time_deposit');?>">Validated Time Deposit</a></li>
                 <?php endif;?>
               </ul>
               <ul class="nav navbar-nav navbar-right nav-tabs" >
