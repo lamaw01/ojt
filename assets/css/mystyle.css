@@ -107,3 +107,11 @@ select{
 .this-size{
     width: 150px;
 }
+
+#flesh{
+border-radius: 4px;
+padding-top: 7px;
+background: linear-gradient(45deg,  rgba(73, 198, 209,.2) 7%, rgba(73, 198, 209,.2) 0%,rgba(114,190,184,.7) 75%, rgba(203,209,208,0) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8e9c9b', endColorstr='#00cbd1d0',GradientType=1 );
+
+}

@@ -66,7 +66,7 @@
     <center>
     <div class="container" id="div-chk-back">
       <div class="container-fluid">
-        <div class="page-header">
+        <div class="page-header" id="flesh">
             <h3 class="pargh"><strong>Validated</strong></h3>
         </div>
       </div>
