@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Search</title>
+    <title>Check</title>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
@@ -29,23 +29,20 @@
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page');?>">Home</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/check');?>">Check</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('page/check');?>">Check</a></li>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/validated');?>">Validated</a></li>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/errors');?>">Errors</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/time_deposit');?>">Errors Time Deposit</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/tech');?>">Home</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/check');?>">Check</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('page/check');?>">Check</a></li>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/validated');?>">Validated</a></li>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/errors');?>">Errors</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/time_deposit');?>">Errors Time Deposit</a></li>
                 <!--ACCESS MENUS FOR AUTHOR-->
                 <?php else:?>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/coop');?>">Home</a></li>
+                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('page/coop');?>">Home</a></li>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/validated');?>">Validated</a></li>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/errors');?>">Errors</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/time_deposit');?>">Errors Time Deposit</a></li>
                 <?php endif;?>
               </ul>
               <ul class="nav navbar-nav navbar-right nav-tabs" >
@@ -65,62 +62,35 @@
         </nav>
       </div>
     </div>
+
     <center>
-   <!-- Search form (start) -->
-   <div class="container" id="srch-bar">
-     <form method='post' action="<?= base_url() ?>search_errors/time_deposit">
-      <div class="col-md-10">
-        <input class="form-control" type='text' name='search' value='<?php $search ?>' placeholder='Search'>
+    <div class="container" id="div-chk-back">
+      <div class="container-fluid">
+        <div class="page-header">
+            <h3 class="pargh"><strong>Check</strong></h3>
+        </div>
       </div>
-      <div>
-       <input class="btn btn-info" type='submit' name='submit' value='Submit'>
+      <div class="container-fluid">
+        <p class="pargh"><font size="3">Check to compare data from MBWIN to Core</font></p>
       </div>
-     </form>
-   </div>
-   <br>
+        <div id="div-marg"> 
+          <form action="<?php echo site_url('choose/errors');?>" method="post">
+            <div class="container col-sm-4">
+              <a value="1" class="this-size btn btn-lg btn-primary" href="<?php echo site_url('loan') ?>">Loan</a>
+            </div>
+            <div class="container col-sm-4">
+              <a value="2" class="this-size btn btn-lg btn-success" href="<?php echo site_url('savings') ?>">Savings</a>
+            </div>
+            <div class="container col-sm-4">
+              <a value="3" class="this-size btn btn-lg btn-warning" href="<?php echo site_url('time_deposit') ?>">Time Deposit</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </center>
+    <!--DISPLAY MIGRATED DATA FOR ADMIN-->
 
-   <!-- Posts List -->
-   <div class="container container_size divTB">
-   <table class="table table-striped" width="600" border="0" cellspacing="5" cellpadding="5">
-    <tr style="background-color: grey;">
-      <th><p>No.</p></th>
-      <th><p>Core No.</p></th>
-      <th><p>Account Name</p></th>
-      <th><p></p></th>
-    </tr>
-    <?php 
-    $errortd_id = $row+1;
-    foreach($result as $data){
-
-      $errortd_acc_no = substr($data['errortd_acc_no'],0, 180)."";
-      $coretd_acc_name = substr($data['coretd_acc_name'],0, 180)."";
-      ?>
-      <tr>
-      <td><p><?php print_r($errortd_id); ?></p></td>
-      <td><p><?php print_r($errortd_acc_no); ?></p></td>
-      <td><p><?php print_r($coretd_acc_name); ?></p></td>
-      <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/time_deposit/<?php echo $errortd_acc_no; ?>'>Details</a></td>
-      </tr>
-
-      <?php
-      $errortd_id++;
-
-    }
-    if(count($result) == 0){
-      echo "<tr>";
-      echo "<td colspan='3'>No record found.</td>";
-      echo "</tr>";
-    }
-    ?>
-   </table>
- 
-
-   <!-- Paginate -->
-   <p> <?= $pagination; ?> </p> 
-   <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
-   </div>
-  </center>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
     <script src="<?= base_url('assets/plugins/pace/pace.js'); ?>"></script>
- </body>
+  </body>
 </html>

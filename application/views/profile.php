@@ -40,12 +40,20 @@
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page');?>">Home</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/check');?>">Check</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/validated');?>">Validated</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/errors');?>">Errors</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/tech');?>">Home</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/check');?>">Check</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/validated');?>">Validated</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/errors');?>">Errors</a></li>
                 <!--ACCESS MENUS FOR AUTHOR-->
                 <?php else:?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/coop');?>">Home</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/validated');?>">Validated</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/errors');?>">Errors</a></li>
                 <?php endif;?>
               </ul>
               <ul class="nav navbar-nav navbar-right nav-tabs" >
@@ -74,8 +82,7 @@
       foreach($data as $row)
       {
 
-      echo "<h4><p><b>First Name :   </b>".$row->user_fname."<p></h4>";
-      echo "<h4><p><b>Last Name :  </b>".$row->user_lname."</p></h4>";
+      echo "<h4><p><b>Full Name :   </b>".$row->user_fname.' '.$row->user_lname."<p></h4>";
       echo "<h4><p><b>User Level :   </b>".$row->user_level."</p></h4>";
 
       $i++;

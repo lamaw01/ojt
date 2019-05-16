@@ -29,14 +29,22 @@
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page');?>">Home</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/check');?>">Check</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/validated');?>">Validated</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/errors');?>">Errors</a></li>
                   <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/savings');?>">Error Savings</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/tech');?>">Home</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/check');?>">Check</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/validated');?>">Validated</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/errors');?>">Errors</a></li>
                   <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/savings');?>">Error Savings</a></li>
                 <!--ACCESS MENUS FOR AUTHOR-->
                 <?php else:?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/coop');?>">Home</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/validated');?>">Validated</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/errors');?>">Errors</a></li>
                   <li class="active"><a data-toggle="tab" href="<?php echo base_url('errors/savings');?>">Error Savings</a></li>
                 <?php endif;?>
               </ul>
@@ -59,7 +67,7 @@
     </div>
     <center>
    <!-- Search form (start) -->
-   <div class="container_size">
+   <div class="container" id="srch-bar">
      <form method='post' action="<?= base_url() ?>search_errors/savings">
       <div class="col-md-10">
         <input class="form-control" type='text' name='search' value='<?php $search ?>' placeholder='Search'>
