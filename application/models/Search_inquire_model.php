@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-Class Search_errors_model extends CI_Model {
+Class Search_Inquire_model extends CI_Model {
 
   function __construct() {
     parent::__construct(); 
@@ -10,9 +10,9 @@ Class Search_errors_model extends CI_Model {
   // Fetch records
   function getDataln($rowno,$rowperpage,$search="") {
  
-    $this->db->select('errorln.*,errorln.coreln_id AS errorln_acc_no, errorln.mbwinln_id AS errorln_old_acc_no, coreln.account_name AS coreln_acc_name');
-    $this->db->from('errorln');
-    $this->db->join('coreln','errorln.coreln_id = coreln.account_no','left');
+    $this->db->select('inquireln_id, inquireln.account_no AS inquireln_acc_no, inquireln.old_account_no AS inquireln_old_acc_no, coreln.account_name AS coreln_acc_name');
+    $this->db->from('inquireln');
+    $this->db->join('coreln','inquireln.account_no = coreln.account_no','left');
 
     $newsearch = $search;
     if(preg_match('/\s/', $search)){
@@ -21,10 +21,10 @@ Class Search_errors_model extends CI_Model {
     }
     if($search != ''){
       $this->db->like('coreln.account_name', $newsearch);
-      $this->db->or_like('errorln.mbwinln_id', $search);
-      $this->db->or_like('errorln.coreln_id', $search);
+      $this->db->or_like('inquireln.account_no', $search);
+      $this->db->or_like('inquireln.old_acc_no', $search);
     }
-    $this->db->order_by('errorln_id', 'ASC');
+    $this->db->order_by('inquireln_id', 'ASC');
     $this->db->limit($rowperpage, $rowno); 
     $query = $this->db->get();
  
@@ -35,13 +35,13 @@ Class Search_errors_model extends CI_Model {
   function getrecordCountln($search = '') {
 
     $this->db->select('count(*) as allcount, coreln.account_name AS coreln_acc_name');
-    $this->db->from('errorln');
-    $this->db->join('coreln','errorln.coreln_id = coreln.account_no','left');
+    $this->db->from('inquireln');
+    $this->db->join('coreln','inquireln.account_no = coreln.account_no','left');
  
     if($search != ''){
       $this->db->like('coreln.account_name', $search);
-      $this->db->or_like('errorln.mbwinln_id', $search);
-      $this->db->or_like('errorln.coreln_id', $search);
+      $this->db->or_like('inquireln.account_no', $search);
+      $this->db->or_like('inquireln.old_acc_no', $search);
     }
 
     $query = $this->db->get();
@@ -53,15 +53,10 @@ Class Search_errors_model extends CI_Model {
 
   function getDatasv($rowno,$rowperpage,$search="") {
  
-    $this->db->select('errorsv.*, errorsv.coresv_id AS error_acc_no, errorsv.mbwinsv_id AS errorsv_old_acc_no, coresv.account_no AS coresv_acc_no, coresv.account_name AS coresv_acc_name');
-    $this->db->from('errorsv');
-    $this->db->join('coresv','errorsv.coresv_id = coresv.account_no','left');
-  /*if (preg_match('/\s/', $search) > 0) {
-        $search = array_map('trim', array_filter(explode(' ', $search)));
-        foreach ($search as $key => $value) {
-          $this->db->or_like('coresv.account_name', $value);
-    }
-  }*/
+    $this->db->select('inquiresv_id, inquiresv.account_no AS inquiresv_acc_no, inquiresv.old_account_no AS inquiresv_old_acc_no, coresv.account_name AS coresv_acc_name');
+    $this->db->from('inquiresv');
+    $this->db->join('coresv','inquiresv.account_no = coresv.account_no','left');
+
     $newsearch = $search;
     if(preg_match('/\s/', $search)){
           $arr = explode(" ", $search);
@@ -69,11 +64,11 @@ Class Search_errors_model extends CI_Model {
     }
     if($search != ''){
       $this->db->like('coresv.account_name', $newsearch);
-      $this->db->or_like('errorsv.mbwinsv_id', $search);
-      $this->db->or_like('errorsv.coresv_id', $search);
+      $this->db->or_like('inquiresv.account_no', $search);
+      $this->db->or_like('inquiresv.old_acc_no', $search);
     }
 
-    $this->db->order_by('errorsv_id', 'ASC');
+    $this->db->order_by('inquiresv_id', 'ASC');
     $this->db->limit($rowperpage, $rowno); 
     $query = $this->db->get();
  
@@ -85,13 +80,13 @@ Class Search_errors_model extends CI_Model {
   function getrecordCountsv($search = '') {
 
     $this->db->select('count(*) as allcount, coresv.account_name AS coresv_acc_name');
-    $this->db->from('errorsv');
-    $this->db->join('coresv','errorsv.coresv_id = coresv.account_no','left');
+    $this->db->from('inquiresv');
+    $this->db->join('coresv','inquireln.account_no = coresv.account_no','left');
 
     if($search != ''){
       $this->db->like('coresv.account_name', $search);
-      $this->db->or_like('errorsv.mbwinsv_id', $search);
-      $this->db->or_like('errorsv.coresv_id', $search);
+      $this->db->or_like('inquiresv.account_no', $search);
+      $this->db->or_like('inquiresv.old_acc_no', $search);
     }
 
     $query = $this->db->get();
@@ -102,9 +97,9 @@ Class Search_errors_model extends CI_Model {
 
   function getDatatd($rowno,$rowperpage,$search="") {
  
-    $this->db->select('errortd.*, errortd.coretd_id AS errortd_acc_no, errortd.mbwintd_id AS errort_old_acc_no, coretd.account_name AS coretd_acc_name');
-    $this->db->from('errortd');
-    $this->db->join('coretd','errortd.coretd_id = coretd.account_no','left');
+    $this->db->select('inquiretd_id, inquiretd.account_no AS inquiretd_acc_no, inquiretd.old_account_no AS inquiretd_old_acc_no, coretd.account_name AS coretd_acc_name');
+    $this->db->from('inquiretd');
+    $this->db->join('coretd','inquiretd.account_no = coretd.account_no','left');
 
     $newsearch = $search;
     if(preg_match('/\s/', $search)){
@@ -113,11 +108,11 @@ Class Search_errors_model extends CI_Model {
     }
     if($search != ''){
       $this->db->like('coretd.account_name', $newsearch);
-      $this->db->or_like('errortd.mbwintd_id', $search);
-      $this->db->or_like('errortd.coretd_id', $search);
+      $this->db->or_like('inquiretd.account_no', $search);
+      $this->db->or_like('inquiretd.old_acc_no', $search);
     }
 
-    $this->db->order_by('errortd_id', 'ASC');
+    $this->db->order_by('inquiretd_id', 'ASC');
     $this->db->limit($rowperpage, $rowno); 
     $query = $this->db->get();
  
@@ -128,13 +123,13 @@ Class Search_errors_model extends CI_Model {
   function getrecordCounttd($search = '') {
 
     $this->db->select('count(*) as allcount, coretd.account_name AS coretd_acc_name');
-    $this->db->from('errortd');
-    $this->db->join('coretd','errortd.coretd_id = coretd.account_no','left');
+    $this->db->from('inquiretd');
+    $this->db->join('coretd','inquiretd.account_no = coretd.account_no','left');
   
     if($search != ''){
       $this->db->like('coretd.account_name', $search);
-      $this->db->or_like('errortd.mbwintd_id', $search);
-      $this->db->or_like('errortd.coretd_id', $search);
+      $this->db->or_like('inquiretd.account_no', $search);
+      $this->db->or_like('inquiretd.old_acc_no', $search);
     }
 
     $query = $this->db->get();

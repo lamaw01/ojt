@@ -34,7 +34,6 @@
            </div>
          -->
            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-           <a href="<?= base_url('Reg'); ?>" class="btn btn-lg btn-warning btn-block" >Register</a>
          </form>
        </div>
        </div> <!-- /container -->

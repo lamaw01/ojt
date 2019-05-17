@@ -29,8 +29,7 @@ class Show_model extends CI_Model{
 			AND coreln.overdue_principal = mbwinln.over_due_pri_amt
 			AND coreln.interest_due_amount = mbwinln.int_bal_amt
 			AND coreln.penalty = mbwinln.pen_bal_amt
-			AND migratedln.stat = 0
-      AND coreln.stat = 0";
+			AND migratedln.stat = 0";
   	$this->db->where($where);
     $this->db->limit($limit, $offset);
     $query = $this->db->get();
@@ -64,8 +63,7 @@ class Show_model extends CI_Model{
     $where = "coresv.open_date = mbwinsv.open_date
       AND coresv.current_bal = mbwinsv.bal_amt
       AND coresv.interest = mbwinsv.int_bal_amt
-      AND migratedsv.stat = 0
-      AND coresv.stat = 0";
+      AND migratedsv.stat = 0";
     $this->db->where($where);
     $this->db->limit($limit, $offset);
     $query = $this->db->get();
@@ -98,8 +96,7 @@ class Show_model extends CI_Model{
     $where = "coretd.open_date = mbwintd.open_date
       AND coretd.principal_amount = mbwintd.bal_amt
       AND coretd.interest = mbwintd.int_bal_amt
-      AND migratedtd.stat = 0
-      AND coretd.stat = 0";
+      AND migratedtd.stat = 0";
     $this->db->where($where);
     $this->db->limit($limit, $offset);
     $query = $this->db->get();

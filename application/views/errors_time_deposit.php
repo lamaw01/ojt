@@ -51,6 +51,7 @@
               <ul class="nav navbar-nav navbar-right nav-tabs" >
                 <?php if($this->session->userdata('level')==='1'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('reg');?>">Manage Account</a></li>
                   <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Tech Staff</a></li>
@@ -82,6 +83,7 @@
               <tr style="background-color: grey;">
                 <th><p>No.</p></th>
                 <th><p>Core No.</p></th>
+                <th><p>MBWIN No.</p></th>
                 <th><p>Account Name</p></th>
                 <th><p></p></th>
               </tr>
@@ -89,9 +91,10 @@
 
               <tr>
               <td><p><?php echo $row->errortd_id; ?></p></td>
-              <td><p><?php echo $row->errtd_acc_no; ?></p></td>
+              <td><p><?php echo $row->err_coretd; ?></p></td>
+              <td><p><?php echo $row->err_mbwintd; ?></p></td>
               <td><p><?php echo $row->coretd_acc_name; ?></p></td>
-              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/time_deposit/<?php echo $row->errtd_acc_no; ?>'>Details</a></td>
+              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/time_deposit/<?php echo $row->err_coretd; ?>'>Details</a></td>
               <?php endforeach; ?>
               <?php else: ?>
 

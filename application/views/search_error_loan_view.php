@@ -51,6 +51,7 @@
               <ul class="nav navbar-nav navbar-right nav-tabs" >
                 <?php if($this->session->userdata('level')==='1'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('reg');?>">Manage Account</a></li>
                   <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Tech Staff</a></li>
@@ -85,6 +86,7 @@
     <tr style="background-color: grey;">
       <th><p>No.</p></th>
       <th><p>Core No.</p></th>
+      <th><p>MBWIN No.</p></th>
       <th><p>Account Name</p></th>
       <th><p></p></th>
     </tr>
@@ -93,11 +95,13 @@
     foreach($result as $data){
 
       $errorln_acc_no = substr($data['errorln_acc_no'],0, 180)."";
+      $errorln_old_acc_no = substr($data['errorln_old_acc_no'],0, 180)."";
       $coreln_acc_name = substr($data['coreln_acc_name'],0, 180)."";
       ?>
       <tr>
       <td><p><?php print_r($errorln_id); ?></p></td>
       <td><p><?php print_r($errorln_acc_no); ?></p></td>
+      <td><p><?php print_r($errorln_old_acc_no); ?></p></td>
       <td><p><?php print_r($coreln_acc_name); ?></p></td>
       <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/loan/<?php echo $errorln_acc_no; ?>'>Details</a></td>
       </tr>

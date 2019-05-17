@@ -51,6 +51,7 @@
               <ul class="nav navbar-nav navbar-right nav-tabs" >
                 <?php if($this->session->userdata('level')==='1'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('reg');?>">Manage Account</a></li>
                   <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Tech Staff</a></li>
@@ -82,6 +83,7 @@
               <tr style="background-color: grey;">
                 <th><p>No.</p></th>
                 <th><p>Core No.</p></th>
+                <th><p>MBWIN No.</p></th>
                 <th><p>Account Name</p></th>
                 <th><p></p></th>
               </tr>
@@ -89,9 +91,10 @@
 
               <tr>
               <td><p><?php echo $row->errorsv_id; ?></p></td>
-              <td><p><?php echo $row->errsv_acc_no; ?></p></td>
+              <td><p><?php echo $row->err_coresv; ?></p></td>
+              <td><p><?php echo $row->err_mbwinsv; ?></p></td>
               <td><p><?php echo $row->coresv_acc_name; ?></p></td>
-              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/savings/<?php echo $row->errsv_acc_no; ?>'>Details</a></td>
+              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/savings/<?php echo $row->err_coresv; ?>'>Details</a></td>
               </tr>
               <?php endforeach; ?>
               <?php else: ?>

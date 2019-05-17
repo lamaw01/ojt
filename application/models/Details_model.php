@@ -15,8 +15,7 @@ class Details_model extends CI_Model{
   	$this->db->from('coreln');
   	$this->db->join('migratedln','migratedln.account_no = coreln.account_no','left');
   	$this->db->join('mbwinln','migratedln.old_account_no = mbwinln.account_no','left');
-  	$where = "coreln.stat = 2
-    AND coreln.account_no = '".$id."'";
+  	$where = "coreln.account_no = '".$id."'";
   	$this->db->where($where);
     $query = $this->db->get();
     return $query->result();
@@ -30,8 +29,7 @@ class Details_model extends CI_Model{
     $this->db->from('coresv');
     $this->db->join('migratedsv','migratedsv.account_no = coresv.account_no','left');
     $this->db->join('mbwinsv','migratedsv.old_account_no = mbwinsv.account_no','left');
-    $where = "coresv.stat = 2
-    AND coresv.account_no = '".$id."'";
+    $where = "coresv.account_no = '".$id."'";
     $this->db->where($where);
     $query = $this->db->get();
     return $query->result();
@@ -45,8 +43,7 @@ class Details_model extends CI_Model{
     $this->db->from('coretd');
     $this->db->join('migratedtd','migratedtd.account_no = coretd.account_no','left');
     $this->db->join('mbwintd','migratedtd.old_account_no = mbwintd.account_no','left');
-    $where = "coretd.stat = 2
-    AND coretd.account_no = '".$id."'";
+    $where = "coretd.account_no = '".$id."'";
     $this->db->where($where);
     $query = $this->db->get();
     return $query->result();
