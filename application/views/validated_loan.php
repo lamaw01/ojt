@@ -106,7 +106,10 @@
               <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
             </center>
           </div>
+          
+    <script src="<?php echo base_url('assets/plugins/jquery/jquery-3.4.1.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
-    <script src="<?= base_url('assets/plugins/pace/pace.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/plugins/pace/pace.js'); ?>"></script>
+
   </body>
 </html>
