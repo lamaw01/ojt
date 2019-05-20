@@ -32,12 +32,14 @@
                   <li><a data-toggle="tab" href="<?php echo base_url('page/check');?>">Check</a></li>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/validated');?>">Validated</a></li>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/errors');?>">Errors</a></li>
+                  <li><a data-toggle="tab" href="<?php echo base_url('page/inquire');?>">Inquire</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li class="active"><a data-toggle="tab" href="<?php echo base_url('page/tech');?>">Home</a></li>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/check');?>">Check</a></li>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/validated');?>">Validated</a></li>
                   <li><a data-toggle="tab" href="<?php echo base_url('page/errors');?>">Errors</a></li>
+
                 <!--ACCESS MENUS FOR AUTHOR-->
                 <?php else:?>
                   <li class="active"><a data-toggle="tab" href="<?php echo base_url('page/coop');?>">Home</a></li>

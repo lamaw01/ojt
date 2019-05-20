@@ -54,4 +54,20 @@ class Choose extends CI_Controller{
       $this->load->view('dashboard_view');
     }
   }
+
+  function inquire(){
+    $type = $this->input->post('inquire_type');
+    
+    if($type == 11){
+      redirect('search_inquire/loan');
+    }elseif($type == 12){
+      redirect('search_inquire/savings');
+    }elseif ($type == 13) {
+      redirect('search_inquire/time_deposit');
+    }
+    else{
+      $this->load->view('header');
+      $this->load->view('dashboard_view');
+    }
+  }
 }

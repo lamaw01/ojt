@@ -46,7 +46,7 @@ class Search_errors extends CI_Controller {
  
     // Pagination Configuration
     $config['uri_segment'] = 3;
-    $config['base_url'] = base_url().'search/loan';
+    $config['base_url'] = base_url().'search_errors/loan';
     $config['use_page_numbers'] = TRUE;
     $config['total_rows'] = $allcount;
     $config['per_page'] = $rowperpage;
@@ -109,7 +109,7 @@ class Search_errors extends CI_Controller {
  
     // Pagination Configuration
     $config['uri_segment'] = 3;
-    $config['base_url'] = base_url().'search/savings';
+    $config['base_url'] = base_url().'search_errors/savings';
     $config['use_page_numbers'] = TRUE;
     $config['total_rows'] = $allcount;
     $config['per_page'] = $rowperpage;
@@ -172,7 +172,7 @@ class Search_errors extends CI_Controller {
  
     // Pagination Configuration
     $config['uri_segment'] = 3;
-    $config['base_url'] = base_url().'search/time_deposit';
+    $config['base_url'] = base_url().'search_errors/time_deposit';
     $config['use_page_numbers'] = TRUE;
     $config['total_rows'] = $allcount;
     $config['per_page'] = $rowperpage;

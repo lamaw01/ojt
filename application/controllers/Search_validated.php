@@ -46,7 +46,7 @@ class Search_validated extends CI_Controller {
  
     // Pagination Configuration
     $config['uri_segment'] = 3;
-    $config['base_url'] = base_url().'search/loan';
+    $config['base_url'] = base_url().'search_validated/loan';
     $config['use_page_numbers'] = TRUE;
     $config['total_rows'] = $allcount;
     $config['per_page'] = $rowperpage;
@@ -109,7 +109,7 @@ class Search_validated extends CI_Controller {
  
     // Pagination Configuration
     $config['uri_segment'] = 3;
-    $config['base_url'] = base_url().'search/savings';
+    $config['base_url'] = base_url().'search_validated/savings';
     $config['use_page_numbers'] = TRUE;
     $config['total_rows'] = $allcount;
     $config['per_page'] = $rowperpage;
@@ -172,7 +172,7 @@ class Search_validated extends CI_Controller {
  
     // Pagination Configuration
     $config['uri_segment'] = 3;
-    $config['base_url'] = base_url().'search/time_deposit';
+    $config['base_url'] = base_url().'search_validated/time_deposit';
     $config['use_page_numbers'] = TRUE;
     $config['total_rows'] = $allcount;
     $config['per_page'] = $rowperpage;
