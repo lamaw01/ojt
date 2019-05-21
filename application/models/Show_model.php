@@ -17,21 +17,12 @@ class Show_model extends CI_Model{
     return $this->db->count_all('coreln','mbwinln','migratedln');
  }
 
- function get_joinln($limit,$offset){
-    $this->db->select('migratedln.migratedln_id, coreln.account_no AS coreln_account_no, mbwinln.account_no AS mbwinln_acc_no, coreln.account_name');
-  	$this->db->from('coreln');
-  	$this->db->join('migratedln','migratedln.account_no = coreln.account_no','left');
-  	$this->db->join('mbwinln','migratedln.old_account_no = mbwinln.account_no','left');
-  	$where = "coreln.int_rate = mbwinln.int_rate
-			AND coreln.penalty_rate = mbwinln.pen_rate
-			AND coreln.loan_amount = mbwinln.principal_amt
-			AND coreln.outstanding_bal = mbwinln.bal_amt
-			AND coreln.overdue_principal = mbwinln.over_due_pri_amt
-			AND coreln.interest_due_amount = mbwinln.int_bal_amt
-			AND coreln.penalty = mbwinln.pen_bal_amt
-			AND migratedln.stat = 0";
-  	$this->db->where($where);
-    $this->db->limit($limit, $offset);
+ function get_joinln(){
+    $this->db->select('migratedln.migratedln_id AS migrateln_id, migratedln.account_no AS migratedln_acc_no, migratedln.old_account_no AS migratedln_old_acc_no, coreln.account_name');
+  	$this->db->from('migratedln');
+  	$this->db->join('coreln','migratedln.account_no = coreln.account_no','left');
+    $this->db->where('stat = 0');
+    $this->db->limit(10);
     $query = $this->db->get();
     return $query->result();
  }
@@ -55,17 +46,12 @@ class Show_model extends CI_Model{
     return $this->db->count_all('coresv','mbwinsv','migratedsv');
  }
 
- function get_joinsv($limit,$offset){
-    $this->db->select('migratedsv.migratedsv_id, coresv.account_no AS coresv_account_no, mbwinsv.account_no AS mbwinsv_acc_no, coresv.account_name');
-    $this->db->from('coresv');
-    $this->db->join('migratedsv','migratedsv.account_no = coresv.account_no','left');
-    $this->db->join('mbwinsv','migratedsv.old_account_no = mbwinsv.account_no','left');
-    $where = "coresv.open_date = mbwinsv.open_date
-      AND coresv.current_bal = mbwinsv.bal_amt
-      AND coresv.interest = mbwinsv.int_bal_amt
-      AND migratedsv.stat = 0";
-    $this->db->where($where);
-    $this->db->limit($limit, $offset);
+ function get_joinsv(){
+    $this->db->select('migratedsv.migratedsv_id AS migratesv_id, migratedsv.account_no AS migratedsv_acc_no, migratedsv.old_account_no AS migratedsv_old_acc_no, coresv.account_name');
+    $this->db->from('migratedsv');
+    $this->db->join('coresv','migratedsv.account_no = coresv.account_no','left');
+    $this->db->where('stat = 0');
+    $this->db->limit(10);
     $query = $this->db->get();
     return $query->result();
  }
@@ -88,17 +74,12 @@ class Show_model extends CI_Model{
     return $this->db->count_all('coretd','mbwintd','migratedtd');
  }
 
- function get_jointd($limit,$offset){
-    $this->db->select('migratedtd.migratedtd_id, coretd.account_no AS coretd_account_no, mbwintd.account_no AS mbwintd_acc_no, coretd.account_name');
-    $this->db->from('coretd');
-    $this->db->join('migratedtd','migratedtd.account_no = coretd.account_no','left');
-    $this->db->join('mbwintd','migratedtd.old_account_no = mbwintd.account_no','left');
-    $where = "coretd.open_date = mbwintd.open_date
-      AND coretd.principal_amount = mbwintd.bal_amt
-      AND coretd.interest = mbwintd.int_bal_amt
-      AND migratedtd.stat = 0";
-    $this->db->where($where);
-    $this->db->limit($limit, $offset);
+ function get_jointd(){
+    $this->db->select('migratedtd.migratedtd_id AS migratetd_id, migratedtd.account_no AS migratedtd_acc_no, migratedtd.old_account_no AS migratedtd_old_acc_no, coretd.account_name');
+    $this->db->from('migratedtd');
+    $this->db->join('coretd','migratedtd.account_no = coretd.account_no','left');
+    $this->db->where('stat = 0');
+    $this->db->limit(10);
     $query = $this->db->get();
     return $query->result();
  }

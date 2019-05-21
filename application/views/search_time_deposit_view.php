@@ -26,40 +26,92 @@
               <a class="navbar-brand" target="_blank" href="https://mass-specc.coop/"><img style="position:relative; top:-18px; left: -15px;" src="<?php echo base_url('assets/img/likeAlogo.png'); ?>"></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav nav-tabs">
+              <ul class="nav navbar-nav nav-tabs main-navigation">
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page');?>">Home</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/check');?>">Check</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/validated');?>">Validated</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/errors');?>">Errors</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('validated/time_deposit');?>">Validated Time Deposit</a></li>
+                  <li><a href="<?php echo base_url('page');?>">Home</a></li>
+                  <li><a href="<?php echo base_url('page/check');?>">Check</a></li>
+
+                  <li><a href="#">Reports <span class="caret"></span></a>
+                    <ul>
+                  <li><a href="#">Validated</a>
+                      <ul>
+                        <li><a href="<?php echo base_url('validated/loan');?>">Loan</a></li>
+                        <li><a href="<?php echo base_url('validated/savings');?>">Savings</a></li>
+                        <li><a href="<?php echo base_url('validated/time_deposit');?>">Time Deposit</a></li>
+                      </ul>
+                    </li>
+                  <li><a href="#">Errors</a>
+                    <ul>
+                      <li><a href="<?php echo base_url('errors/loan');?>">Loan</a></li>
+                      <li><a href="<?php echo base_url('errors/savings');?>">Savings</a></li>
+                      <li><a href="<?php echo base_url('errors/time_deposit');?>">Time Deposit</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                  </li>
+                </li>
+                  <li><a href="<?php echo base_url('page/inquire');?>">Inquire</a></li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/tech');?>">Home</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/check');?>">Check</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/validated');?>">Validated</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/errors');?>">Errors</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('validated/time_deposit');?>">Validated Time Deposit</a></li>
+                  <li><a href="<?php echo base_url('page/tech');?>">Home</a></li>
+                  <li><a href="<?php echo base_url('page/check');?>">Check</a></li>
+                  <li><a href="#">Reports <span class="caret"></span></a>
+                    <ul>
+                  <li><a href="#">Validated</a>
+                      <ul>
+                        <li><a href="<?php echo base_url('validated/loan');?>">Loan</a></li>
+                        <li><a href="<?php echo base_url('validated/savings');?>">Savings</a></li>
+                        <li><a href="<?php echo base_url('validated/time_deposit');?>">Time Deposit</a></li>
+                      </ul>
+                    </li>
+                  <li><a href="#">Errors</a>
+                    <ul>
+                      <li><a href="<?php echo base_url('errors/loan');?>">Loan</a></li>
+                      <li><a href="<?php echo base_url('errors/savings');?>">Savings</a></li>
+                      <li><a href="<?php echo base_url('errors/time_deposit');?>">Time Deposit</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                  </li>
+                </li>
+                  <li><a href="<?php echo base_url('page/inquire');?>">Inquire</a></li>
                 <!--ACCESS MENUS FOR AUTHOR-->
                 <?php else:?>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/coop');?>">Home</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/validated');?>">Validated</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/errors');?>">Errors</a></li>
-                  <li class="active"><a data-toggle="tab" href="<?php echo base_url('validated/time_deposit');?>">Validated Time Deposit</a></li>
+                  <li><a href="<?php echo base_url('page/coop');?>">Home</a></li>
+                  <li><a href="#">Reports <span class="caret"></span></a>
+                    <ul>
+                  <li><a href="#">Validated</a>
+                      <ul>
+                        <li><a href="<?php echo base_url('validated/loan');?>">Loan</a></li>
+                        <li><a href="<?php echo base_url('validated/savings');?>">Savings</a></li>
+                        <li><a href="<?php echo base_url('validated/time_deposit');?>">Time Deposit</a></li>
+                      </ul>
+                    </li>
+                  <li><a href="#">Errors</a>
+                    <ul>
+                      <li><a href="<?php echo base_url('errors/loan');?>">Loan</a></li>
+                      <li><a href="<?php echo base_url('errors/savings');?>">Savings</a></li>
+                      <li><a href="<?php echo base_url('errors/time_deposit');?>">Time Deposit</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                  </li>
+                </li>
+                  <li><a href="<?php echo base_url('page/inquire');?>">Inquire</a></li>
                 <?php endif;?>
               </ul>
               <ul class="nav navbar-nav navbar-right nav-tabs" >
                 <?php if($this->session->userdata('level')==='1'):?>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
-                  <li><a data-toggle="tab" href="<?php echo base_url('reg');?>">Manage Account</a></li>
-                  <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
+                  <li><a href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
+                  <li><a href="<?php echo base_url('reg');?>">Manage Account</a></li>
+                  <li><a href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
                 <?php elseif($this->session->userdata('level')==='2'):?>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Tech Staff</a></li>
-                  <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
+                  <li><a href="<?php echo base_url('page/displayprofile');?>">Tech Staff</a></li>
+                  <li><a href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
                 <?php else:?>
-                  <li><a data-toggle="tab" href="<?php echo base_url('page/displayprofile');?>">Coop Staff</a></li>
-                  <li><a data-toggle="tab" href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
+                  <li><a href="<?php echo base_url('page/displayprofile');?>">Coop Staff</a></li>
+                  <li><a href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
                 <?php endif;?>
               </ul>
             </div><!--/.nav-collapse -->
@@ -89,6 +141,7 @@
       <th><p>Core No.</p></th>
       <th><p>MBWIN No.</p></th>
       <th><p>Account Name</p></th>
+      <th><p></p></th>
     </tr>
     <?php 
     $validatetd_id = $row+1;
@@ -97,12 +150,15 @@
       $mbwintd_id = substr($data['mbwintd_id'],0, 180)."";
       $coretd_id = substr($data['coretd_id'],0, 180)."";
       $coretd_acc_name = substr($data['coretd_acc_name'],0, 180)."";
-      echo "<tr>";
-      echo "<td><p>".$validatetd_id."</p></td>";
-      echo "<td><p>".$coretd_id."</p></td>";
-      echo "<td><p>".$mbwintd_id."</p></td>";
-      echo "<td><p>".$coretd_acc_name."</p></td>";
-      echo "</tr>";
+      ?>
+      <tr>
+      <td><p><?php print_r($validatetd_id); ?></p></td>
+      <td><p><?php print_r($coretd_id); ?></p></td>
+      <td><p><?php print_r($mbwintd_id); ?></p></td>
+      <td><p><?php print_r($coretd_acc_name); ?></p></td>
+      <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/time_deposit/<?php echo $coretd_id; ?>'>Details</a></td>
+      </tr>
+      <?php
 
       $validatetd_id++;
 
