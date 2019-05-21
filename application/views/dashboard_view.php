@@ -49,9 +49,14 @@
                     </ul>
                   </li>
                 </ul>
-                  </li>
                 </li>
-                  <li><a href="<?php echo base_url('page/inquire');?>">Inquire</a></li>
+                  <li><a href="#">Inquire <span class="caret"></span></a>
+                    <ul>
+                      <li><a href="<?php echo base_url('inquire/loan');?>">Loan</a></li>
+                      <li><a href="<?php echo base_url('inquire/savings');?>">Savings</a></li>
+                      <li><a href="<?php echo base_url('inquire/time_deposit');?>">Time Deposit</a></li>
+                    </ul>
+                  </li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a href="<?php echo base_url('page/tech');?>">Home</a></li>
@@ -74,8 +79,13 @@
                   </li>
                 </ul>
                   </li>
-                </li>
-                  <li><a href="<?php echo base_url('page/inquire');?>">Inquire</a></li>
+                  <li><a href="#">Inquire <span class="caret"></span></a>
+                    <ul>
+                      <li><a href="<?php echo base_url('inquire/loan');?>">Loan</a></li>
+                      <li><a href="<?php echo base_url('inquire/savings');?>">Savings</a></li>
+                      <li><a href="<?php echo base_url('inquire/time_deposit');?>">Time Deposit</a></li>
+                    </ul>
+                  </li>
                 <!--ACCESS MENUS FOR AUTHOR-->
                 <?php else:?>
                   <li><a href="<?php echo base_url('page/coop');?>">Home</a></li>
@@ -97,8 +107,13 @@
                   </li>
                 </ul>
                   </li>
-                </li>
-                  <li><a href="<?php echo base_url('page/inquire');?>">Inquire</a></li>
+                  <li><a href="#">Inquire <span class="caret"></span></a>
+                    <ul>
+                      <li><a href="<?php echo base_url('inquire/loan');?>">Loan</a></li>
+                      <li><a href="<?php echo base_url('inquire/savings');?>">Savings</a></li>
+                      <li><a href="<?php echo base_url('inquire/time_deposit');?>">Time Deposit</a></li>
+                    </ul>
+                  </li>
                 <?php endif;?>
               </ul>
               <ul class="nav navbar-nav navbar-right nav-tabs" >

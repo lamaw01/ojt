@@ -50,8 +50,13 @@
                   </li>
                 </ul>
                   </li>
-                </li>
-                  <li><a href="<?php echo base_url('page/inquire');?>">Inquire</a></li>
+                  <li><a href="#">Inquire <span class="caret"></span></a>
+                    <ul>
+                      <li><a href="<?php echo base_url('inquire/loan');?>">Loan</a></li>
+                      <li><a href="<?php echo base_url('inquire/savings');?>">Savings</a></li>
+                      <li><a href="<?php echo base_url('inquire/time_deposit');?>">Time Deposit</a></li>
+                    </ul>
+                  </li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a href="<?php echo base_url('page/tech');?>">Home</a></li>
@@ -74,8 +79,13 @@
                   </li>
                 </ul>
                   </li>
-                </li>
-                  <li><a href="<?php echo base_url('page/inquire');?>">Inquire</a></li>
+                  <li><a href="#">Inquire <span class="caret"></span></a>
+                    <ul>
+                      <li><a href="<?php echo base_url('inquire/loan');?>">Loan</a></li>
+                      <li><a href="<?php echo base_url('inquire/savings');?>">Savings</a></li>
+                      <li><a href="<?php echo base_url('inquire/time_deposit');?>">Time Deposit</a></li>
+                    </ul>
+                  </li>
                 <!--ACCESS MENUS FOR AUTHOR-->
                 <?php else:?>
                   <li><a href="<?php echo base_url('page/coop');?>">Home</a></li>
@@ -97,8 +107,13 @@
                   </li>
                 </ul>
                   </li>
-                </li>
-                  <li><a href="<?php echo base_url('page/inquire');?>">Inquire</a></li>
+                  <li><a href="#">Inquire <span class="caret"></span></a>
+                    <ul>
+                      <li><a href="<?php echo base_url('inquire/loan');?>">Loan</a></li>
+                      <li><a href="<?php echo base_url('inquire/savings');?>">Savings</a></li>
+                      <li><a href="<?php echo base_url('inquire/time_deposit');?>">Time Deposit</a></li>
+                    </ul>
+                  </li>
                 <?php endif;?>
               </ul>
               <ul class="nav navbar-nav navbar-right nav-tabs" >
@@ -138,7 +153,7 @@
               <td><p><?php echo $row->migratedln_acc_no; ?></p></td>
               <td><p><?php echo $row->migratedln_old_acc_no; ?></p></td>
               <td><p><?php echo $row->account_name; ?></p></td>
-              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>loan/callcheckln/<?php echo $row->migrateln_id; ?>'>Check</a></td>
+              <td><a id="botox" class='btn btn-primary btn-md' href='<?php echo base_url()?>loan/callcheckln/<?php echo $row->migrateln_id; ?>'>Check</a></td>
               </tr>
 
               <?php endforeach; ?>
@@ -160,14 +175,30 @@
                
             </table>
           </form>
-  
+              <div class="container-fluid">
+                <button class='btn btn-info btn-md' onclick="start()">Start</button>
+                <button class='btn btn-danger btn-md' onclick="stop()">Stop</button>
+              </div>
+              <br>
               <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
             </center>
           </div>
- 
+
     <script src="<?php echo base_url('assets/plugins/jquery/jquery-3.4.1.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
     <script src="<?php echo base_url('assets/plugins/pace/pace.js'); ?>"></script>
+
+    <script>
+      function start(){
+        $('#botox')[0].click(); 
+      }
+      
+      var startTime = setInterval(start, 3000);
+
+      function stop(){
+        clearInterval(startTime);
+      }
+    </script>
 
   </body>
 </html>
