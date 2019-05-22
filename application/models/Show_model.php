@@ -22,7 +22,7 @@ class Show_model extends CI_Model{
   	$this->db->from('migratedln');
   	$this->db->join('coreln','migratedln.account_no = coreln.account_no','left');
     $this->db->where('stat = 0');
-    $this->db->limit(10);
+    $this->db->limit(5);
     $query = $this->db->get();
     return $query->result();
  }
@@ -51,7 +51,7 @@ class Show_model extends CI_Model{
     $this->db->from('migratedsv');
     $this->db->join('coresv','migratedsv.account_no = coresv.account_no','left');
     $this->db->where('stat = 0');
-    $this->db->limit(10);
+    $this->db->limit(5);
     $query = $this->db->get();
     return $query->result();
  }
@@ -79,7 +79,7 @@ class Show_model extends CI_Model{
     $this->db->from('migratedtd');
     $this->db->join('coretd','migratedtd.account_no = coretd.account_no','left');
     $this->db->where('stat = 0');
-    $this->db->limit(10);
+    $this->db->limit(5);
     $query = $this->db->get();
     return $query->result();
  }

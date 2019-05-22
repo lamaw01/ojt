@@ -13,7 +13,7 @@ class Page extends CI_Controller{
  
   function index(){
     //Allowing access to admin only
-    if($this->session->userdata('level')==='1'){
+    if($this->session->userdata('level')==='1'){ 
       $this->load->view('dashboard_view');
     }else{
       $this->session->sess_destroy();

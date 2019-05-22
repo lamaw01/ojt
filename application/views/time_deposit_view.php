@@ -12,7 +12,7 @@
     
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top: .1em;">
       <div class="row">
       <nav class="navbar navbar-default">
           <div class="container-fluid">
@@ -153,7 +153,7 @@
               <td><p><?php echo $row->migratedtd_acc_no; ?></p></td>
               <td><p><?php echo $row->migratedtd_old_acc_no; ?></p></td>
               <td><p><?php echo $row->account_name; ?></p></td>
-              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>time_deposit/callchecktd/<?php echo $row->migratetd_id; ?>'>Check</a></td>
+              <td><a id="botox" class='btn btn-primary btn-md' href='<?php echo base_url()?>time_deposit/callchecktd/<?php echo $row->migratetd_id; ?>'>Check</a></td>
               </tr>
 
               <?php endforeach; ?>
@@ -175,7 +175,11 @@
                
             </table>
           </form>
-  
+            <div class="container-fluid">
+              <button class='btn btn-success btn-lg' style="width: 100px;" onclick="resume()">Resume</button>
+              <button class='btn btn-danger btn-lg' style="width: 100px;" onclick="stop()">Stop</button>
+            </div>
+            <br>
               <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
             </center>
           </div>
@@ -184,5 +188,24 @@
     <script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
     <script src="<?php echo base_url('assets/plugins/pace/pace.js'); ?>"></script>
     
+    <script>
+      var startTime = setInterval(resume, 1500);
+    
+      function resume(){
+        $('#botox')[0].click();
+      }
+      /*
+      function start(){
+
+        setInterval(function(){
+          $('#botox')[0].click();
+        }, 3000);
+      }
+      */
+      function stop(){
+        clearInterval(startTime);
+      }
+    </script>
+
   </body>
 </html>

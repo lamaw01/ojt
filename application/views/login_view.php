@@ -14,17 +14,19 @@
   <body>
   <center>
       <div class="container" id="login_design">
-       <div class="container" style="width: 370px;">
+       <div class="container-fluid">
          <form class="form-signin" action="<?php echo site_url('login/auth');?>" method="post">
           <br>
            <h2 class="form-signin-heading">Please sign in</h2>
            <?php echo $this->session->flashdata('msg');?>
           <br>
-           <div class="form-group">
+           <div class="form-group has-feedback has-feedback-left">
+            <i class="form-control-feedback glyphicon glyphicon-user"></i>
            <label for="username" class="sr-only">Username</label>
            <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
            </div>
-           <div class="form-group">
+           <div class="form-group has-feedback has-feedback-left">
+            <i class="form-control-feedback glyphicon glyphicon-lock"></i>
            <label for="password" class="sr-only">Password</label>
            <input type="password" name="password" class="form-control" placeholder="Password" required>
            </div>

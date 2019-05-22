@@ -25,7 +25,7 @@ class Inquire extends CI_Controller {
     $this->load->library('pagination');
     $config['uri_segment'] = 3;
     $config['use_page_numbers'] = TRUE;
-    $config['base_url'] = base_url().'inqure/loan';
+    $config['base_url'] = base_url().'inquire/loan';
     $config['total_rows'] = $this->Inquire_model->total_recordln();
     $config['per_page'] = $limit;
     $config['num_links'] = 5;
@@ -63,7 +63,7 @@ class Inquire extends CI_Controller {
     $this->load->library('pagination');
     $config['uri_segment'] = 3;
     $config['use_page_numbers'] = TRUE;
-    $config['base_url'] = base_url().'inqure/savings';
+    $config['base_url'] = base_url().'inquire/savings';
     $config['total_rows'] = $this->Inquire_model->total_recordsv();
     $config['per_page'] = $limit;
     $config['num_links'] = 5;
@@ -101,7 +101,7 @@ class Inquire extends CI_Controller {
     $this->load->library('pagination');
     $config['uri_segment'] = 3;
     $config['use_page_numbers'] = TRUE;
-    $config['base_url'] = base_url().'inqure/time_deposit';
+    $config['base_url'] = base_url().'inquire/time_deposit';
     $config['total_rows'] = $this->Inquire_model->total_recordtd();
     $config['per_page'] = $limit;
     $config['num_links'] = 5;

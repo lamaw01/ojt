@@ -12,7 +12,7 @@
     
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top: .1em;">
       <div class="row">
       <nav class="navbar navbar-default">
           <div class="container-fluid">
@@ -176,8 +176,8 @@
             </table>
           </form>
               <div class="container-fluid">
-                <button class='btn btn-info btn-md' onclick="start()">Start</button>
-                <button class='btn btn-danger btn-md' onclick="stop()">Stop</button>
+                <button class='btn btn-success btn-lg' style="width: 100px;" onclick="resume()">Resume</button>
+                <button class='btn btn-danger btn-lg' style="width: 100px;" onclick="stop()">Stop</button>
               </div>
               <br>
               <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
@@ -189,12 +189,19 @@
     <script src="<?php echo base_url('assets/plugins/pace/pace.js'); ?>"></script>
 
     <script>
-      function start(){
-        $('#botox')[0].click(); 
+      var startTime = setInterval(resume, 1500);
+    
+      function resume(){
+        $('#botox')[0].click();
       }
-      
-      var startTime = setInterval(start, 3000);
+      /*
+      function start(){
 
+        setInterval(function(){
+          $('#botox')[0].click();
+        }, 3000);
+      }
+      */
       function stop(){
         clearInterval(startTime);
       }
