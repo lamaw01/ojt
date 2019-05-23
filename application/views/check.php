@@ -30,7 +30,7 @@
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
                   <li><a href="<?php echo base_url('page');?>">Home</a></li>
-                  <li><a href="<?php echo base_url('page/check');?>">Check</a></li>
+                  <li class="active"><a href="<?php echo base_url('page/check');?>">Check</a></li>
 
                   <li><a href="#">Reports <span class="caret"></span></a>
                     <ul>
@@ -60,7 +60,7 @@
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a href="<?php echo base_url('page/tech');?>">Home</a></li>
-                  <li><a href="<?php echo base_url('page/check');?>">Check</a></li>
+                  <li class="active"><a href="<?php echo base_url('page/check');?>">Check</a></li>
                   <li><a href="#">Reports <span class="caret"></span></a>
                     <ul>
                   <li><a href="#">Validated</a>

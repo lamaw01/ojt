@@ -8,7 +8,7 @@ class Reg_model extends CI_Model {
 		parent::__construct();
 	}
 
-	function insert_data($data){
+	function insert_data($data = array(){
 		
 		$this->db->insert("tbl_users", $data);
 	}

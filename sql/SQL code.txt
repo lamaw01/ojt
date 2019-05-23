@@ -669,3 +669,182 @@ END
 
 44.
 ALTER TABLE `coretd` CHANGE `account_name` `account_name` VARCHAR(60) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
+
+45.
+
+DELIMITER ?
+CREATE TRIGGER detln
+AFTER INSERT on coreln
+FOR EACH ROW
+BEGIN
+	UPDATE coreln 
+	SET account_no = replace(account_no, '-','');
+END
+?
+
+46.
+
+DELIMITER ?
+CREATE TRIGGER detlsv
+AFTER INSERT on coresv
+FOR EACH ROW
+BEGIN
+	UPDATE coresv
+	SET account_no = replace(account_no, '-','');
+END
+?
+
+47.
+
+DELIMITER ?
+CREATE TRIGGER updateln
+AFTER INSERT on migratedln
+FOR EACH ROW
+BEGIN
+	UPDATE migratedln
+    SET account_no = replace(account_no, "'",0);
+END
+?
+
+48.
+
+DELIMITER ?
+CREATE TRIGGER updatesv
+AFTER INSERT on migratedsv
+FOR EACH ROW
+BEGIN
+	UPDATE migratedsv
+    SET account_no = replace(account_no, "'",0);
+END
+?
+
+49.
+DELIMITER ?
+CREATE TRIGGER insertErrorsv
+BEFORE UPDATE ON migratedsv
+FOR EACH ROW
+BEGIN
+ 
+    INSERT INTO errorsv(coresv_id, mbwinsv_id)
+    VALUES(OLD.account_no, OLD.old_account_no);
+
+END
+?
+
+50.
+DELIMITER ?
+CREATE TRIGGER insertErrortd
+BEFORE UPDATE ON migratedtd
+FOR EACH ROW
+BEGIN
+ 
+    INSERT INTO errortd(coretd_id, mbwintd_id)
+    VALUES(OLD.account_no, OLD.old_account_no);
+
+END
+?
+
+51.
+
+DELIMITER ?
+CREATE TRIGGER insertInquireln
+AFTER INSERT ON validateln
+FOR EACH ROW
+BEGIN
+	INSERT INTO inquireln(account_no, old_account_no)
+    VALUES(coreln_id, mbwinln_id);
+END
+?
+
+52.
+
+DELIMITER ?
+CREATE TRIGGER errorinquireln
+AFTER INSERT ON errorln
+FOR EACH ROW
+BEGIN
+	INSERT INTO inquireln(account_no, old_account_no)
+    VALUES(coreln_id, mbwinln_id);
+END
+?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+53. CALL PROCEDURE TO INSERT IMPORT CORELN
+
+LOAD DATA LOCAL INFILE 'c:/tmp/CORE/CORELN.csv'
+INTO TABLE coreln
+FIELDS TERMINATED BY ',' 
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS
+(account_no, product_code, @open_date, int_rate, penalty_rate, loan_amount, outstanding_bal, overdue_principal, interest_due_amount, pri_paid, penalty, customer_no, customer_name, account_name, account_status)
+SET open_date = STR_TO_DATE(@open_date, '%m/%d/%Y');
+
+
+54.
+
+DELIMITER ?
+CREATE PROCEDURE removedashln()
+BEGIN
+	UPDATE coreln
+    	SET account_no = replace(account_no, '-','');
+END
+?
+
+55. 
+DELIMITER ?
+CREATE PROCEDURE importCoreLn()
+BEGIN
+	LOAD DATA LOCAL INFILE 'c:/tmp/CORE/CORELN.csv'
+    INTO TABLE coreln
+    FIELDS TERMINATED BY ',' 
+    OPTIONALLY ENCLOSED BY '"'
+    LINES TERMINATED BY '\r\n'
+    IGNORE 1 ROWS
+    (account_no, product_code, @open_date, int_rate, penalty_rate, loan_amount, outstanding_bal, overdue_principal, interest_due_amount, pri_paid, penalty, customer_no, customer_name, account_name, account_status)
+    SET open_date = STR_TO_DATE(@open_date, '%m/%d/%Y');
+
+END
+?
+
+56.
+DELIMITER ?
+CREATE PROCEDURE eraseDashLoan()
+BEGIN
+	UPDATE coreln
+    	SET account_no = replace(account_no, '-','');
+END
+
+57.
+DELIMITER ?
+CREATE PROCEDURE eraseDashSavings
+BEGIN
+	UPDATE coresv
+    	SET account_no = replace(account_no, '-','');
+END
+?
+
+58.
+DELIMITER ?
+CREATE PROCEDURE eraseDashTimeDeposit()
+BEGIN
+	UPDATE coretd
+    	SET account_no = replace(account_no, '-','');
+END
+?

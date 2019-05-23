@@ -29,7 +29,7 @@
               <ul class="nav navbar-nav nav-tabs main-navigation">
                 <!--ACCESS MENUS FOR ADMIN-->
                 <?php if($this->session->userdata('level')==='1'):?>
-                  <li><a href="<?php echo base_url('page');?>">Home</a></li>
+                  <li class="active"><a href="<?php echo base_url('page');?>">Home</a></li>
                   <li><a href="<?php echo base_url('page/check');?>">Check</a></li>
 
                   <li><a href="#">Reports <span class="caret"></span></a>
@@ -59,7 +59,7 @@
                   </li>
                 <!--ACCESS MENUS FOR STAFF-->
                 <?php elseif($this->session->userdata('level')==='2'):?>
-                  <li><a href="<?php echo base_url('page/tech');?>">Home</a></li>
+                  <li class="active"><a href="<?php echo base_url('page/tech');?>">Home</a></li>
                   <li><a href="<?php echo base_url('page/check');?>">Check</a></li>
                   <li><a href="#">Reports <span class="caret"></span></a>
                     <ul>
@@ -88,7 +88,7 @@
                   </li>
                 <!--ACCESS MENUS FOR AUTHOR-->
                 <?php else:?>
-                  <li><a href="<?php echo base_url('page/coop');?>">Home</a></li>
+                  <li class="active"><a href="<?php echo base_url('page/coop');?>">Home</a></li>
                   <li><a href="#">Reports <span class="caret"></span></a>
                     <ul>
                   <li><a href="#">Validated</a>
@@ -141,6 +141,54 @@
             <h3 class="firstfont"><strong>Welcome</strong> <strong><?php echo $this->session->userdata('user_fname','user_lname');?></strong></h3>
         </div>
       </div>
+      <form action="<?php echo site_url();?>import/importcoreln" method="post" enctype="multipart/form-data" name="form1" id="form1"> 
+        <table>
+          <tr>
+            <td> Import CORE Loan : </td>
+            <td>
+              <input type="file" class="form-control" name="userfile" id="userfile"  align="center"/>
+            </td>
+            <td>
+              <div class="col-lg-offset-3 col-lg-9">
+                <button type="submit" name="submit" class="btn btn-info">Import</button>
+              </div>
+            </td>
+          </tr>
+        </table> 
+      </form>
+      <br>
+      <form action="<?php echo site_url();?>import/importcoresv" method="post" enctype="multipart/form-data" name="form1" id="form1"> 
+        <table>
+          <tr>
+            <td> Import CORE Savings : </td>
+            <td>
+              <input type="file" class="form-control" name="userfile" id="userfile"  align="center"/>
+            </td>
+            <td>
+              <div class="col-lg-offset-3 col-lg-9">
+                <button type="submit" name="submit" class="btn btn-info">Import</button>
+              </div>
+            </td>
+          </tr>
+        </table> 
+      </form>
+      <br>
+      <form action="<?php echo site_url();?>import/importcoretd" method="post" enctype="multipart/form-data" name="form1" id="form1"> 
+        <table>
+          <tr>
+            <td> Import CORE Time Deposit : </td>
+            <td>
+              <input type="file" class="form-control" name="userfile" id="userfile"  align="center"/>
+            </td>
+            <td>
+              <div class="col-lg-offset-3 col-lg-9">
+                <button type="submit" name="submit" class="btn btn-info">Import</button>
+              </div>
+            </td>
+          </tr>
+        </table> 
+      </form>
+
     </div>
     <?php elseif($this->session->userdata('level')==='2'):?>
     <div class="container">    
@@ -163,6 +211,17 @@
     <script src="<?php echo base_url('assets/plugins/jquery/jquery-3.4.1.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
     <script src="<?php echo base_url('assets/plugins/pace/pace.js'); ?>"></script>
+
+    <script>
+      function formToggle(ID){
+          var element = document.getElementById(ID);
+          if(element.style.display === "none"){
+              element.style.display = "block";
+          }else{
+              element.style.display = "none";
+          }
+      }
+    </script>
 
   </body>
 </html>
