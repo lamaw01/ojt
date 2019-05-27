@@ -146,10 +146,15 @@
           <tr>
             <td> Import CORE Loan : </td>
             <td>
-              <input type="file" name="userfile" id="userfile"  align="center"/>
+              <input type="file" name="userfile" id="userfile">
+            </td>
+          </tr>
+          <tr>  
+            <td>
+                <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
             </td>
             <td>
-                <button type="submit" name="submit">Import</button>
+                <button style="margin-top: 20px;"><a href='<?php echo base_url()?>import/calleraseDashCoreLoan'>Data Correction</a></button>
             </td>
           </tr>
         </table> 
@@ -160,10 +165,15 @@
           <tr>
             <td> Import CORE Savings : </td>
             <td>
-              <input type="file" name="userfile" id="userfile"  align="center"/>
+              <input type="file" name="userfile" id="userfile">
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
             </td>
             <td>
-                <button type="submit" name="submit">Import</button>
+                <button style="margin-top: 20px;"><a href='<?php echo base_url()?>import/calleraseDashCoreSavings'>Data Correction</a></button>
             </td>
           </tr>
         </table> 
@@ -174,10 +184,15 @@
           <tr>
             <td> Import CORE Time Deposit : </td>
             <td>
-              <input type="file" name="userfile" id="userfile"  align="center"/>
+              <input type="file" name="userfile" id="userfile">
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
             </td>
             <td>
-                <button type="submit" name="submit">Import</button>
+                <button style="margin-top: 20px;"><a href='<?php echo base_url()?>import/calleraseDashCoreTimeDeposit'>Data Correction</a></button>
             </td>
           </tr>
         </table> 
@@ -188,10 +203,15 @@
           <tr>
             <td> Import MBWIN Loan : </td>
             <td>
-              <input type="file" name="userfile" id="userfile"  align="center"/>
+              <input type="file" name="userfile" id="userfile">
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
             </td>
             <td>
-                <button type="submit" name="submit">Import</button>
+                <button style="margin-top: 20px;"><a href='<?php echo base_url()?>import/callminus100MbwinLoan'>Data Correction</a></button>
             </td>
           </tr>
         </table> 
@@ -202,10 +222,15 @@
           <tr>
             <td> Import MBWIN Savings : </td>
             <td>
-              <input type="file" name="userfile" id="userfile"  align="center"/>
+              <input type="file" name="userfile" id="userfile">
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
             </td>
             <td>
-                <button type="submit" name="submit">Import</button>
+                <button style="margin-top: 20px;"><a href='<?php echo base_url()?>import/callminus100MbwinSavings'>Data Correction</a></button>
             </td>
           </tr>
         </table> 
@@ -216,10 +241,15 @@
           <tr>
             <td> Import MBWIN Time Deposit : </td>
             <td>
-              <input type="file" name="userfile" id="userfile"  align="center"/>
+              <input type="file" name="userfile" id="userfile">
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
             </td>
             <td>
-                <button type="submit" name="submit">Import</button>
+                <button style="margin-top: 20px;"><a href='<?php echo base_url()?>import/callminus100MbwinTimeDeposit'>Data Correction</a></button>
             </td>
           </tr>
         </table> 
@@ -230,10 +260,15 @@
           <tr>
             <td> Import Migrated Loan : </td>
             <td>
-              <input type="file" name="userfile" id="userfile"  align="center"/>
+              <input type="file" name="userfile" id="userfile">
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
             </td>
             <td>
-                <button type="submit" name="submit">Import</button>
+                <button style="margin-top: 20px;"><a href='<?php echo base_url()?>import/callupdateMigratedLoan'>Data Correction</a></button>
             </td>
           </tr>
         </table> 
@@ -244,10 +279,15 @@
           <tr>
             <td> Import Migrated Savings : </td>
             <td>
-              <input type="file" name="userfile" id="userfile"  align="center"/>
+              <input type="file" name="userfile" id="userfile">
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
             </td>
             <td>
-                <button type="submit" name="submit">Import</button>
+                <button style="margin-top: 20px;"><a href='<?php echo base_url()?>import/callupdateMigratedSavings'>Data Correction</a></button>
             </td>
           </tr>
         </table> 
@@ -258,10 +298,15 @@
           <tr>
             <td> Import Migrated Time Deposit : </td>
             <td>
-              <input type="file" name="userfile" id="userfile"  align="center"/>
+              <input type="file" name="userfile" id="userfile">
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
             </td>
             <td>
-                <button type="submit" name="submit">Import</button>
+                <button style="margin-top: 20px;"><a href='<?php echo base_url()?>import/callupdateMigratedTimeDeposit'>Data Correction</a></button>
             </td>
           </tr>
         </table> 
@@ -292,13 +337,13 @@
     <script src="<?php echo base_url('assets/plugins/pace/pace.js'); ?>"></script>
 
     <script>
-      function formToggle(ID){
-          var element = document.getElementById(ID);
-          if(element.style.display === "none"){
-              element.style.display = "block";
-          }else{
-              element.style.display = "none";
-          }
+      function myFunction() {
+        var x = document.getElementById("myDIV");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
       }
     </script>
 

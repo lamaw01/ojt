@@ -559,4 +559,41 @@ class Import_model extends CI_Model
         $data['success']="success";
         return $data;
     }
+
+    function eraseDashCoreLoan()
+    {
+        $query = $this->db->query("call eraseDashCoreLoan()");
+    }
+    function eraseDashCoreSavings()
+    {
+        $query = $this->db->query("call eraseDashCoreSavings()");
+    }
+    function eraseDashCoreTimeDeposit()
+    {
+        $query = $this->db->query("call eraseDashCoreTimeDeposit()");
+    }
+    function minus100MbwinLoan()
+    {
+        $query = $this->db->query("call minus100MbwinLoan()");
+    }
+    function minus100MbwinSavings()
+    {
+        $query = $this->db->query("call minus100MbwinSavings()");
+    }
+    function minus100MbwinTimeDeposit()
+    {
+        $query = $this->db->query("call minus100MbwinTimeDeposit()");
+    }
+    function updateMigratedLoan()
+    {
+        $query = $this->db->query("call updateMigratedLoan()");
+    }
+    function updateMigratedSavings()
+    {
+        $query = $this->db->query("call updateMigratedSavings()");
+    }
+    function updateMigratedTimeDeposit()
+    {
+        $query = $this->db->query("call updateMigratedTimeDeposit()");
+    }
 }

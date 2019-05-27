@@ -848,3 +848,97 @@ BEGIN
     	SET account_no = replace(account_no, '-','');
 END
 ?
+
+59.
+
+DELIMITER ?
+CREATE PROCEDURE minus100MbwinLoan()
+BEGIN
+	UPDATE mbwinln
+    	SET grantedamtorig = grantedamtorig / 100,
+       	    grantedamt = grantedamt / 100,
+            principal_amt = principal_amt / 100,
+            bal_amt = bal_amt / 100,
+            fixamt = fixamt / 100,
+            acrintamt = acrintamt / 100,
+            cumintpdamt = cumintpdamt / 100,
+            cumnorintamt = cumnorintamt / 100,
+            cumtaxpdamt = cumtaxpdamt / 100,
+            acrpenamt = acrpenamt / 100,
+            cumpenpdamt = cumpenpdamt / 100,
+            cumpripdamt = cumpripdamt / 100,
+            over_due_pri_amt = over_due_pri_amt / 100,
+            acrintoduepriamt = acrintoduepriamt / 100,
+            odueintamt = odueintamt / 100,
+            int_bal_amt = int_bal_amt / 100,
+            pen_bal_amt = pen_bal_amt / 100;
+END
+?
+
+60.
+
+DELIMITER ?
+CREATE PROCEDURE minus100MbwinSavings()
+BEGIN
+	UPDATE mbwinsv
+    	SET bal_amt = bal_amt / 100,
+        acrbintamt = acrbintamt / 100,
+        cumintpdamt = cumintpdamt / 100,
+        cumtaxwamt = cumtaxwamt / 100,
+        int_bal_amt = int_bal_amt / 100,
+        minperbalamt = minperbalamt / 100;   
+END
+?
+
+61.
+
+DELIMITER ?
+CREATE PROCEDURE minus100MbwinTimeDeposit()
+BEGIN
+	UPDATE mbwintd
+    	SET bal_amt = bal_amt / 100,
+        intrate = intrate / 100,
+        minperbalamt = minperbalamt / 100,
+        int_bal_amt = int_bal_amt / 100;
+END
+?
+
+62.
+DELIMITER ?
+CREATE PROCEDURE updateMigratedLoan()
+BEGIN
+	UPDATE migratedln
+    	SET account_no = replace(account_no, "'",0),
+        loan_amount = loan_amount / 100,
+        interest_balance_amount = interest_balance_amount / 100,
+        overdue_principal_amount = overdue_principal_amount / 100,
+        overdue_interest_amount = overdue_interest_amount / 100,
+        penalty_balance_amount = penalty_balance_amount / 100;
+END
+?
+
+63.
+
+DELIMITER ?
+CREATE PROCEDURE updateMigratedSavings()
+BEGIN
+	UPDATE migratedln
+    	SET account_no = replace(account_no, "'",0),
+		current_balance = current_balance / 100,
+        available_balance = available_balance / 100,
+        interest_bal = interest_bal / 100;
+END
+?
+
+64.
+
+DELIMITER ?
+CREATE PROCEDURE updateMigratedTimeDeposit()
+BEGIN
+	UPDATE migratedtd
+    	SET account_no = replace(account_no, "'",0),
+		current_balance = current_balance / 100,
+        available_balance = available_balance / 100,
+        interest_bal = interest_bal / 100;
+END
+?
