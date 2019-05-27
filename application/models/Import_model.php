@@ -10,7 +10,7 @@ class Import_model extends CI_Model
     function coreln()
     {
         $count=0;
-        $fp = fopen($_FILES['userfile']['tmp_name'],'r') or die("can't open file");
+        $fp = fopen($_FILES['userfile']['tmp_name'],'r') or redirect('import');
         while($csv_line = fgetcsv($fp,1024))
         {
             $count++;
@@ -66,7 +66,7 @@ class Import_model extends CI_Model
     function coresv()
     {
         $count=0;
-        $fp = fopen($_FILES['userfile']['tmp_name'],'r') or die("can't open file");
+        $fp = fopen($_FILES['userfile']['tmp_name'],'r') or redirect('import');
         while($csv_line = fgetcsv($fp,1024))
         {
             $count++;
@@ -113,7 +113,7 @@ class Import_model extends CI_Model
     function coretd()
     {
         $count=0;
-        $fp = fopen($_FILES['userfile']['tmp_name'],'r') or die("can't open file");
+        $fp = fopen($_FILES['userfile']['tmp_name'],'r') or redirect('import');
         while($csv_line = fgetcsv($fp,1024))
         {
             $count++;
@@ -160,7 +160,7 @@ class Import_model extends CI_Model
     function mbwinln()
     {
         $count=0;
-        $fp = fopen($_FILES['userfile']['tmp_name'],'r') or die("can't open file");
+        $fp = fopen($_FILES['userfile']['tmp_name'],'r') or redirect('import');
         while($csv_line = fgetcsv($fp,1024))
         {
             $count++;
@@ -240,7 +240,7 @@ class Import_model extends CI_Model
     function mbwinsv()
     {
         $count=0;
-        $fp = fopen($_FILES['userfile']['tmp_name'],'r') or die("can't open file");
+        $fp = fopen($_FILES['userfile']['tmp_name'],'r') or redirect('import');
         while($csv_line = fgetcsv($fp,1024))
         {
             $count++;
@@ -299,7 +299,7 @@ class Import_model extends CI_Model
     function mbwintd()
     {
         $count=0;
-        $fp = fopen($_FILES['userfile']['tmp_name'],'r') or die("can't open file");
+        $fp = fopen($_FILES['userfile']['tmp_name'],'r') or redirect('import');
         while($csv_line = fgetcsv($fp,1024))
         {
             $count++;
@@ -350,7 +350,7 @@ class Import_model extends CI_Model
     function migratedln()
     {
         $count=0;
-        $fp = fopen($_FILES['userfile']['tmp_name'],'r') or die("can't open file");
+        $fp = fopen($_FILES['userfile']['tmp_name'],'r') or redirect('import');
         while($csv_line = fgetcsv($fp,1024))
         {
             $count++;
@@ -417,7 +417,7 @@ class Import_model extends CI_Model
     function migratedsv()
     {
         $count=0;
-        $fp = fopen($_FILES['userfile']['tmp_name'],'r') or die("can't open file");
+        $fp = fopen($_FILES['userfile']['tmp_name'],'r') or redirect('import');
         while($csv_line = fgetcsv($fp,1024))
         {
             $count++;
@@ -490,7 +490,7 @@ class Import_model extends CI_Model
     function migratedtd()
     {
         $count=0;
-        $fp = fopen($_FILES['userfile']['tmp_name'],'r') or die("can't open file");
+        $fp = fopen($_FILES['userfile']['tmp_name'],'r') or redirect('import');
         while($csv_line = fgetcsv($fp,1024))
         {
             $count++;

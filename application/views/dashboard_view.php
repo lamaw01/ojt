@@ -9,7 +9,6 @@
     <link href="<?php echo base_url('assets/css/mystyle.css');?>" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Spectral" rel="stylesheet">
-    
   </head>
   <body>
     <div class="container-fluid" style="margin-top: .1em;">
@@ -141,178 +140,204 @@
             <h3 class="firstfont"><strong>Welcome</strong> <strong><?php echo $this->session->userdata('user_fname','user_lname');?></strong></h3>
         </div>
       </div>
-      <form action="<?php echo site_url();?>import/importcoreln" method="post" enctype="multipart/form-data"> 
-        <table>
-          <tr>
-            <td> Import CORE Loan : </td>
-            <td>
-              <input type="file" name="userfile" id="userfile">
-            </td>
-          </tr>
-          <tr>  
-            <td>
-                <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
-            </td>
-            <td>
-                <button style="margin-top: 20px;"><a href='<?php echo base_url()?>import/calleraseDashCoreLoan'>Data Correction</a></button>
-            </td>
-          </tr>
-        </table> 
-      </form>
+      <div id="flip1"><h4>Import CORE Loan</h4></div>
+      <div id="panel1">
+        <br>
+        <form action="<?php echo site_url();?>import/importcoreln" method="post" enctype="multipart/form-data"> 
+          <center>
+          <table>
+            <tr>
+              <td>
+                <input type="file" name="userfile" id="userfile">
+              </td>
+            </tr>
+            <tr>  
+              <td>
+                  <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
+                  <button style="margin-top: 20px; margin-left: 30px;"><a href='<?php echo base_url()?>import/calleraseDashCoreLoan'>Correction</a></button>
+              </td>
+            </tr>
+          </table>
+          </center>
+        </form>
+      </div>
       <br>
-      <form action="<?php echo site_url();?>import/importcoresv" method="post" enctype="multipart/form-data"> 
-        <table>
-          <tr>
-            <td> Import CORE Savings : </td>
-            <td>
-              <input type="file" name="userfile" id="userfile">
-            </td>
-          </tr>
-          <tr>
-            <td>
-                <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
-            </td>
-            <td>
-                <button style="margin-top: 20px;"><a href='<?php echo base_url()?>import/calleraseDashCoreSavings'>Data Correction</a></button>
-            </td>
-          </tr>
-        </table> 
-      </form>
+      <div id="flip2"><h4>Import CORE Savings</h4></div>
+      <div id="panel2">
+        <br>
+        <form action="<?php echo site_url();?>import/importcoresv" method="post" enctype="multipart/form-data"> 
+          <center>
+          <table>
+            <tr>
+              <td>
+                <input type="file" name="userfile" id="userfile">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                  <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
+                  <button style="margin-top: 20px; margin-left: 30px;"><a href='<?php echo base_url()?>import/calleraseDashCoreSavings'>Correction</a></button>
+              </td>
+            </tr>
+          </table>
+          </center> 
+        </form>
+      </div>
       <br>
-      <form action="<?php echo site_url();?>import/importcoretd" method="post" enctype="multipart/form-data"> 
-        <table>
-          <tr>
-            <td> Import CORE Time Deposit : </td>
-            <td>
-              <input type="file" name="userfile" id="userfile">
-            </td>
-          </tr>
-          <tr>
-            <td>
-                <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
-            </td>
-            <td>
-                <button style="margin-top: 20px;"><a href='<?php echo base_url()?>import/calleraseDashCoreTimeDeposit'>Data Correction</a></button>
-            </td>
-          </tr>
-        </table> 
-      </form>
+      <div id="flip3"><h4>Import CORE Time Deposit</h4></div>
+      <div id="panel3">
+        <br>
+        <form action="<?php echo site_url();?>import/importcoretd" method="post" enctype="multipart/form-data"> 
+          <center>
+          <table>
+            <tr>
+              <td>
+                <input type="file" name="userfile" id="userfile">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                  <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
+                  <button style="margin-top: 20px; margin-left: 30px"><a href='<?php echo base_url()?>import/calleraseDashCoreTimeDeposit'>Data Correction</a></button>
+              </td>
+            </tr>
+          </table>
+          </center>
+        </form>
+      </div>
       <br>
-      <form action="<?php echo site_url();?>import/importmbwinln" method="post" enctype="multipart/form-data"> 
-        <table>
-          <tr>
-            <td> Import MBWIN Loan : </td>
-            <td>
-              <input type="file" name="userfile" id="userfile">
-            </td>
-          </tr>
-          <tr>
-            <td>
-                <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
-            </td>
-            <td>
-                <button style="margin-top: 20px;"><a href='<?php echo base_url()?>import/callminus100MbwinLoan'>Data Correction</a></button>
-            </td>
-          </tr>
-        </table> 
-      </form>
+      <div id="flip4"><h4>Import MBWIN Loan</h4></div>
+      <div id="panel4">
+        <br>
+        <form action="<?php echo site_url();?>import/importmbwinln" method="post" enctype="multipart/form-data">
+          <center>
+          <table>
+            <tr>
+              <td>
+                <input type="file" name="userfile" id="userfile">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                  <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
+                  <button style="margin-top: 20px; margin-left: 30px;"><a href='<?php echo base_url()?>import/callminus100MbwinLoan'>Data Correction</a></button>
+              </td>
+            </tr>
+          </table>
+          </center>
+        </form>
+      </div>
       <br>
-      <form action="<?php echo site_url();?>import/importmbwinsv" method="post" enctype="multipart/form-data"> 
-        <table>
-          <tr>
-            <td> Import MBWIN Savings : </td>
-            <td>
-              <input type="file" name="userfile" id="userfile">
-            </td>
-          </tr>
-          <tr>
-            <td>
-                <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
-            </td>
-            <td>
-                <button style="margin-top: 20px;"><a href='<?php echo base_url()?>import/callminus100MbwinSavings'>Data Correction</a></button>
-            </td>
-          </tr>
-        </table> 
-      </form>
+      <div id="flip5"><h4>Import MBWIN Savings</h4></div>
+      <div id="panel5">
+        <br>
+        <form action="<?php echo site_url();?>import/importmbwinsv" method="post" enctype="multipart/form-data">
+          <center>
+          <table>
+            <tr>
+              <td>
+                <input type="file" name="userfile" id="userfile">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                  <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
+                  <button style="margin-top: 20px; margin-left: 30px;"><a href='<?php echo base_url()?>import/callminus100MbwinSavings'>Data Correction</a></button>
+              </td>
+            </tr>
+          </table>
+          </center>
+        </form>
+      </div>
       <br>
-      <form action="<?php echo site_url();?>import/importmbwintd" method="post" enctype="multipart/form-data"> 
-        <table>
-          <tr>
-            <td> Import MBWIN Time Deposit : </td>
-            <td>
-              <input type="file" name="userfile" id="userfile">
-            </td>
-          </tr>
-          <tr>
-            <td>
-                <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
-            </td>
-            <td>
-                <button style="margin-top: 20px;"><a href='<?php echo base_url()?>import/callminus100MbwinTimeDeposit'>Data Correction</a></button>
-            </td>
-          </tr>
-        </table> 
-      </form>
+      <div id="flip6"><h4>Import MBWIN Time Deposit</h4></div>
+      <div id="panel6">
+        <br>
+        <form action="<?php echo site_url();?>import/importmbwintd" method="post" enctype="multipart/form-data">
+          <center>
+          <table>
+            <tr>
+              <td>
+                <input type="file" name="userfile" id="userfile">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                  <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
+                  <button style="margin-top: 20px; margin-left: 30px;"><a href='<?php echo base_url()?>import/callminus100MbwinTimeDeposit'>Data Correction</a></button>
+              </td>
+            </tr>
+          </table> 
+          </center>
+        </form>
+      </div>
       <br>
-      <form action="<?php echo site_url();?>import/importmigratedln" method="post" enctype="multipart/form-data"> 
-        <table>
-          <tr>
-            <td> Import Migrated Loan : </td>
-            <td>
-              <input type="file" name="userfile" id="userfile">
-            </td>
-          </tr>
-          <tr>
-            <td>
-                <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
-            </td>
-            <td>
-                <button style="margin-top: 20px;"><a href='<?php echo base_url()?>import/callupdateMigratedLoan'>Data Correction</a></button>
-            </td>
-          </tr>
-        </table> 
-      </form>
+      <div id="flip7"><h4>Import Migrated Loan</h4></div>
+      <div id="panel7">
+        <br>
+        <form action="<?php echo site_url();?>import/importmigratedln" method="post" enctype="multipart/form-data">
+          <center>
+          <table>
+            <tr>
+              <td>
+                <input type="file" name="userfile" id="userfile">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                  <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
+                  <button style="margin-top: 20px; margin-left: 30px;"><a href='<?php echo base_url()?>import/callupdateMigratedLoan'>Data Correction</a></button>
+              </td>
+            </tr>
+          </table>
+          </center>
+        </form>
+      </div>
       <br>
-      <form action="<?php echo site_url();?>import/importmigratedsv" method="post" enctype="multipart/form-data"> 
-        <table>
-          <tr>
-            <td> Import Migrated Savings : </td>
-            <td>
-              <input type="file" name="userfile" id="userfile">
-            </td>
-          </tr>
-          <tr>
-            <td>
-                <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
-            </td>
-            <td>
-                <button style="margin-top: 20px;"><a href='<?php echo base_url()?>import/callupdateMigratedSavings'>Data Correction</a></button>
-            </td>
-          </tr>
-        </table> 
-      </form>
+      <div id="flip8"><h4>Import Migrated Savings</h4></div>
+      <div id="panel8">
+        <br>
+        <form action="<?php echo site_url();?>import/importmigratedsv" method="post" enctype="multipart/form-data">
+          <center>
+          <table>
+            <tr>
+              <td>
+                <input type="file" name="userfile" id="userfile">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                  <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
+                  <button style="margin-top: 20px; margin-left: 30px;"><a href='<?php echo base_url()?>import/callupdateMigratedSavings'>Data Correction</a></button>
+              </td>
+            </tr>
+          </table> 
+          </center>
+        </form>
+      </div>
       <br>
-      <form action="<?php echo site_url();?>import/importmigratedtd" method="post" enctype="multipart/form-data"> 
-        <table>
-          <tr>
-            <td> Import Migrated Time Deposit : </td>
-            <td>
-              <input type="file" name="userfile" id="userfile">
-            </td>
-          </tr>
-          <tr>
-            <td>
-                <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
-            </td>
-            <td>
-                <button style="margin-top: 20px;"><a href='<?php echo base_url()?>import/callupdateMigratedTimeDeposit'>Data Correction</a></button>
-            </td>
-          </tr>
-        </table> 
-      </form>
+      <div id="flip9"><h4>Import Migrated Time Deposit</h4></div>
+      <div id="panel9">
+        <br>
+        <form action="<?php echo site_url();?>import/importmigratedtd" method="post" enctype="multipart/form-data"> 
+          <center>
+          <table>
+            <tr>
+              <td>
+                <input type="file" name="userfile" id="userfile">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                  <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
+                  <button style="margin-top: 20px; margin-left: 30px;"><a href='<?php echo base_url()?>import/callupdateMigratedTimeDeposit'>Data Correction</a></button>
+              </td>
+            </tr>
+          </table>
+          </center>
+        </form>
+      </div>
       <br>
-
     </div>
     <?php elseif($this->session->userdata('level')==='2'):?>
     <div class="container">    
@@ -337,14 +362,63 @@
     <script src="<?php echo base_url('assets/plugins/pace/pace.js'); ?>"></script>
 
     <script>
-      function myFunction() {
-        var x = document.getElementById("myDIV");
-        if (x.style.display === "none") {
-          x.style.display = "block";
-        } else {
-          x.style.display = "none";
-        }
-      }
+
+      $(document).ready(function(){
+        $("#flip1").click(function(){
+          $("#panel1").slideToggle("slow");
+        });
+      });
+
+      $(document).ready(function(){
+        $("#flip2").click(function(){
+          $("#panel2").slideToggle("slow");
+        });
+      });
+
+      $(document).ready(function(){
+        $("#flip3").click(function(){
+          $("#panel3").slideToggle("slow");
+        });
+      });
+
+      $(document).ready(function(){
+        $("#flip4").click(function(){
+          $("#panel4").slideToggle("slow");
+        });
+      });
+
+      $(document).ready(function(){
+        $("#flip5").click(function(){
+          $("#panel5").slideToggle("slow");
+        });
+      });
+
+      $(document).ready(function(){
+        $("#flip6").click(function(){
+          $("#panel6").slideToggle("slow");
+        });
+      });
+
+      $(document).ready(function(){
+        $("#flip7").click(function(){
+          $("#panel7").slideToggle("slow");
+        });
+      });
+
+      $(document).ready(function(){
+        $("#flip8").click(function(){
+          $("#panel8").slideToggle("slow");
+        });
+      });
+
+      $(document).ready(function(){
+        $("#flip9").click(function(){
+          $("#panel9").slideToggle("slow");
+        });
+      });
+
+
+
     </script>
 
   </body>

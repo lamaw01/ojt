@@ -196,3 +196,112 @@ ul:after {
 ul:after {
   clear: both; 
 }
+
+#panel1, #flip1 
+{
+  padding: 5px;
+  text-align: center;
+  background-color: white;
+  width: 400px;
+}
+#panel1
+{
+  padding: 30px;
+  display: none;
+}
+#panel2, #flip2 
+{
+  padding: 5px;
+  text-align: center;
+  background-color: white;
+  width: 400px;
+}
+#panel2
+{
+  padding: 30px;
+  display: none;
+}
+#panel3, #flip3 
+{
+  padding: 5px;
+  text-align: center;
+  background-color: white;
+  width: 400px;
+}
+#panel3
+{
+  padding: 30px;
+  display: none;
+}
+#panel4, #flip4 
+{
+  padding: 5px;
+  text-align: center;
+  background-color: white;
+  width: 400px;
+}
+#panel4
+{
+  padding: 30px;
+  display: none;
+}
+#panel5, #flip5 
+{
+  padding: 5px;
+  text-align: center;
+  background-color: white;
+  width: 400px;
+}
+#panel5
+{
+  padding: 30px;
+  display: none;
+}
+#panel6, #flip6 
+{
+  padding: 5px;
+  text-align: center;
+  background-color: white;
+  width: 400px;
+}
+#panel6
+{
+  padding: 30px;
+  display: none;
+}
+#panel7, #flip7 
+{
+  padding: 5px;
+  text-align: center;
+  background-color: white;
+  width: 400px;
+}
+#panel7
+{
+  padding: 30px;
+  display: none;
+}
+#panel8, #flip8 
+{
+  padding: 5px;
+  text-align: center;
+  background-color: white;
+  width: 400px;
+}
+#panel8
+{
+  padding: 30px;
+  display: none;
+}
+#panel9, #flip9 
+{
+  padding: 5px;
+  text-align: center;
+  background-color: white;
+  width: 400px;
+}
+#panel9
+{
+  padding: 30px;
+  display: none;
+}

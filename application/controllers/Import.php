@@ -61,48 +61,48 @@ class Import extends CI_Controller
 
     function calleraseDashCoreLoan()
     {
-        $this->Show_model->eraseDashCoreLoan();
+        $this->import_model->eraseDashCoreLoan();
         $this->index();
     }
 
     function calleraseDashCoreSavings()
     {
-        $this->Show_model->eraseDashCoreSavings();
+        $this->import_model->eraseDashCoreSavings();
         $this->index();
     }
     function calleraseDashCoreTimeDeposit()
     {
-        $this->Show_model->eraseDashCoreTimeDeposit();
+        $this->import_model->eraseDashCoreTimeDeposit();
         $this->index();
     }
     function callminus100MbwinLoan()
     {
-        $this->Show_model->minus100MbwinLoan();
+        $this->import_model->minus100MbwinLoan();
         $this->index();
     }
     function callminus100MbwinSavings()
     {
-        $this->Show_model->minus100MbwinSavings();
+        $this->import_model->minus100MbwinSavings();
         $this->index();
     }
     function callminus100MbwinTimeDeposit()
     {
-        $this->Show_model->minus100MbwinTimeDeposit();
+        $this->import_model->minus100MbwinTimeDeposit();
         $this->index();
     }
     function callupdateMigratedLoan()
     {
-        $this->Show_model->updateMigratedLoan();
+        $this->import_model->updateMigratedLoan();
         $this->index();
     }
     function callupdateMigratedSavings()
     {
-        $this->Show_model->updateMigratedSavings();
+        $this->import_model->updateMigratedSavings();
         $this->index();
     }
     function callupdateMigratedTimeDeposit()
     {
-        $this->Show_model->updateMigratedTimeDeposit();
+        $this->import_model->updateMigratedTimeDeposit();
         $this->index();
     }
 
