@@ -141,53 +141,132 @@
             <h3 class="firstfont"><strong>Welcome</strong> <strong><?php echo $this->session->userdata('user_fname','user_lname');?></strong></h3>
         </div>
       </div>
-      <form action="<?php echo site_url();?>import/importcoreln" method="post" enctype="multipart/form-data" name="form1" id="form1"> 
+      <form action="<?php echo site_url();?>import/importcoreln" method="post" enctype="multipart/form-data"> 
         <table>
           <tr>
             <td> Import CORE Loan : </td>
             <td>
-              <input type="file" class="form-control" name="userfile" id="userfile"  align="center"/>
+              <input type="file" name="userfile" id="userfile"  align="center"/>
             </td>
             <td>
-              <div class="col-lg-offset-3 col-lg-9">
-                <button type="submit" name="submit" class="btn btn-info">Import</button>
-              </div>
+                <button type="submit" name="submit">Import</button>
             </td>
           </tr>
         </table> 
       </form>
       <br>
-      <form action="<?php echo site_url();?>import/importcoresv" method="post" enctype="multipart/form-data" name="form1" id="form1"> 
+      <form action="<?php echo site_url();?>import/importcoresv" method="post" enctype="multipart/form-data"> 
         <table>
           <tr>
             <td> Import CORE Savings : </td>
             <td>
-              <input type="file" class="form-control" name="userfile" id="userfile"  align="center"/>
+              <input type="file" name="userfile" id="userfile"  align="center"/>
             </td>
             <td>
-              <div class="col-lg-offset-3 col-lg-9">
-                <button type="submit" name="submit" class="btn btn-info">Import</button>
-              </div>
+                <button type="submit" name="submit">Import</button>
             </td>
           </tr>
         </table> 
       </form>
       <br>
-      <form action="<?php echo site_url();?>import/importcoretd" method="post" enctype="multipart/form-data" name="form1" id="form1"> 
+      <form action="<?php echo site_url();?>import/importcoretd" method="post" enctype="multipart/form-data"> 
         <table>
           <tr>
             <td> Import CORE Time Deposit : </td>
             <td>
-              <input type="file" class="form-control" name="userfile" id="userfile"  align="center"/>
+              <input type="file" name="userfile" id="userfile"  align="center"/>
             </td>
             <td>
-              <div class="col-lg-offset-3 col-lg-9">
-                <button type="submit" name="submit" class="btn btn-info">Import</button>
-              </div>
+                <button type="submit" name="submit">Import</button>
             </td>
           </tr>
         </table> 
       </form>
+      <br>
+      <form action="<?php echo site_url();?>import/importmbwinln" method="post" enctype="multipart/form-data"> 
+        <table>
+          <tr>
+            <td> Import MBWIN Loan : </td>
+            <td>
+              <input type="file" name="userfile" id="userfile"  align="center"/>
+            </td>
+            <td>
+                <button type="submit" name="submit">Import</button>
+            </td>
+          </tr>
+        </table> 
+      </form>
+      <br>
+      <form action="<?php echo site_url();?>import/importmbwinsv" method="post" enctype="multipart/form-data"> 
+        <table>
+          <tr>
+            <td> Import MBWIN Savings : </td>
+            <td>
+              <input type="file" name="userfile" id="userfile"  align="center"/>
+            </td>
+            <td>
+                <button type="submit" name="submit">Import</button>
+            </td>
+          </tr>
+        </table> 
+      </form>
+      <br>
+      <form action="<?php echo site_url();?>import/importmbwintd" method="post" enctype="multipart/form-data"> 
+        <table>
+          <tr>
+            <td> Import MBWIN Time Deposit : </td>
+            <td>
+              <input type="file" name="userfile" id="userfile"  align="center"/>
+            </td>
+            <td>
+                <button type="submit" name="submit">Import</button>
+            </td>
+          </tr>
+        </table> 
+      </form>
+      <br>
+      <form action="<?php echo site_url();?>import/importmigratedln" method="post" enctype="multipart/form-data"> 
+        <table>
+          <tr>
+            <td> Import Migrated Loan : </td>
+            <td>
+              <input type="file" name="userfile" id="userfile"  align="center"/>
+            </td>
+            <td>
+                <button type="submit" name="submit">Import</button>
+            </td>
+          </tr>
+        </table> 
+      </form>
+      <br>
+      <form action="<?php echo site_url();?>import/importmigratedsv" method="post" enctype="multipart/form-data"> 
+        <table>
+          <tr>
+            <td> Import Migrated Savings : </td>
+            <td>
+              <input type="file" name="userfile" id="userfile"  align="center"/>
+            </td>
+            <td>
+                <button type="submit" name="submit">Import</button>
+            </td>
+          </tr>
+        </table> 
+      </form>
+      <br>
+      <form action="<?php echo site_url();?>import/importmigratedtd" method="post" enctype="multipart/form-data"> 
+        <table>
+          <tr>
+            <td> Import Migrated Time Deposit : </td>
+            <td>
+              <input type="file" name="userfile" id="userfile"  align="center"/>
+            </td>
+            <td>
+                <button type="submit" name="submit">Import</button>
+            </td>
+          </tr>
+        </table> 
+      </form>
+      <br>
 
     </div>
     <?php elseif($this->session->userdata('level')==='2'):?>

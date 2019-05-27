@@ -28,5 +28,35 @@ class Import extends CI_Controller
         $this->import_model->coretd();
         redirect('import');
     }
+    function importmbwinln()
+    {
+        $this->import_model->mbwinln();
+        redirect('import');
+    }
+    function importmbwinsv()
+    {
+        $this->import_model->mbwinsv();
+        redirect('import');
+    }
+    function importmbwintd()
+    {
+        $this->import_model->mbwintd();
+        redirect('import');
+    }
+    function importmigratedln()
+    {
+        $this->import_model->migratedln();
+        redirect('import');
+    }
+    function importmigratedsv()
+    {
+        $this->import_model->migratedsv();
+        redirect('import');
+    }
+    function importmigratedtd()
+    {
+        $this->import_model->migratedtd();
+        redirect('import');
+    }
 }
 ?>
