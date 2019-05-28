@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2019 at 09:33 AM
+-- Generation Time: May 28, 2019 at 11:17 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -65,6 +65,61 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `checkvaltd` (IN `id` INT(11))  BEGI
     AND coretd.account_name = mbwintd.account_name
     AND migratedtd.migratedtd_id = id;
 
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `correctAllData` ()  BEGIN
+	UPDATE coreln
+    	SET account_no = replace(account_no, '-','');
+	UPDATE coresv
+    	SET account_no = replace(account_no, '-','');
+	UPDATE coretd
+    	SET account_no = replace(account_no, '-','');
+	UPDATE mbwinln
+    	SET grantedamtorig = grantedamtorig / 100,
+       		grantedamt = grantedamt / 100,
+        	principal_amt = principal_amt / 100,
+            bal_amt = bal_amt / 100,
+            fixamt = fixamt / 100,
+            acrintamt = acrintamt / 100,
+            cumintpdamt = cumintpdamt / 100,
+            cumnorintamt = cumnorintamt / 100,
+            cumtaxpdamt = cumtaxpdamt / 100,
+            acrpenamt = acrpenamt / 100,
+            cumpenpdamt = cumpenpdamt / 100,
+            cumpripdamt = cumpripdamt / 100,
+            over_due_pri_amt = over_due_pri_amt / 100,
+            acrintoduepriamt = acrintoduepriamt / 100,
+            odueintamt = odueintamt / 100,
+            int_bal_amt = int_bal_amt / 100,
+            pen_bal_amt = pen_bal_amt / 100;
+	UPDATE mbwinsv
+    	SET bal_amt = bal_amt / 100,
+            acrbintamt = acrbintamt / 100,
+            cumintpdamt = cumintpdamt / 100,
+            cumtaxwamt = cumtaxwamt / 100,
+            int_bal_amt = int_bal_amt / 100,
+            minperbalamt = minperbalamt / 100;
+	UPDATE mbwintd
+    	SET bal_amt = bal_amt / 100,
+        minperbalamt = minperbalamt / 100,
+        int_bal_amt = int_bal_amt / 100;
+	UPDATE migratedln
+    	SET account_no = replace(account_no, "'",0),
+        loan_amount = loan_amount / 100,
+        interest_balance_amount = interest_balance_amount / 100,
+        overdue_principal_amount = overdue_principal_amount / 100,
+        overdue_interest_amount = overdue_interest_amount / 100,
+        penalty_balance_amount = penalty_balance_amount / 100;
+	UPDATE migratedsv
+    	SET account_no = replace(account_no, "'",''),
+		current_balance = current_balance / 100,
+        available_balance = available_balance / 100,
+        interest_bal = interest_bal / 100;
+	UPDATE migratedtd
+    	SET account_no = replace(account_no, "'",0),
+		current_balance = current_balance / 100,
+        available_balance = available_balance / 100,
+        interest_bal = interest_bal / 100;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `eraseAllData` ()  BEGIN
@@ -462,7 +517,7 @@ CREATE TABLE `inquireln` (
   `inquireln_id` int(11) NOT NULL,
   `account_no` varchar(60) NOT NULL,
   `old_account_no` varchar(30) NOT NULL,
-  `stat` int(30) NOT NULL
+  `stat` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -475,7 +530,7 @@ CREATE TABLE `inquiresv` (
   `inquiresv_id` int(11) NOT NULL,
   `account_no` varchar(60) NOT NULL,
   `old_account_no` varchar(30) NOT NULL,
-  `stat` int(30) NOT NULL
+  `stat` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -488,7 +543,7 @@ CREATE TABLE `inquiretd` (
   `inquiretd_id` int(11) NOT NULL,
   `account_no` varchar(60) NOT NULL,
   `old_account_no` varchar(30) NOT NULL,
-  `stat` int(30) NOT NULL
+  `stat` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

@@ -16,55 +16,63 @@ class Import extends CI_Controller
     function importcoreln()
     {
         $this->import_model->coreln();
-        redirect('import');
+        $this->load->view('dashboard_view');
     }
     function importcoresv()
     {
         $this->import_model->coresv();
-        redirect('import');
+        $this->load->view('dashboard_view');
     }
     function importcoretd()
     {
         $this->import_model->coretd();
-        redirect('import');
+        $this->load->view('dashboard_view');
     }
     function importmbwinln()
     {
         $this->import_model->mbwinln();
-        redirect('import');
+        $this->load->view('dashboard_view');
     }
     function importmbwinsv()
     {
         $this->import_model->mbwinsv();
-        redirect('import');
+        $this->load->view('dashboard_view');
     }
     function importmbwintd()
     {
         $this->import_model->mbwintd();
-        redirect('import');
+        $this->load->view('dashboard_view');
     }
     function importmigratedln()
     {
         $this->import_model->migratedln();
-        redirect('import');
+        $this->load->view('dashboard_view');
     }
     function importmigratedsv()
     {
         $this->import_model->migratedsv();
-        redirect('import');
+        $this->load->view('dashboard_view');
     }
     function importmigratedtd()
     {
         $this->import_model->migratedtd();
-        redirect('import');
+        $this->load->view('dashboard_view');
     }
 
+
+
+
+
+    function callcorrectAllData()
+    {
+        $this->import_model->correctAllData();
+        $this->load->view('manage_data');
+    }
     function calleraseDashCoreLoan()
     {
         $this->import_model->eraseDashCoreLoan();
         $this->load->view('manage_data');
     }
-
     function calleraseDashCoreSavings()
     {
         $this->import_model->eraseDashCoreSavings();
@@ -105,6 +113,10 @@ class Import extends CI_Controller
         $this->import_model->updateMigratedTimeDeposit();
         $this->load->view('manage_data');
     }
+
+
+
+
 
     function calleraseAllData()
     {

@@ -560,6 +560,10 @@ class Import_model extends CI_Model
         return $data;
     }
 
+    function correctAllData()
+    {
+        $query = $this->db->query("call correctAllData()");
+    }
     function eraseDashCoreLoan()
     {
         $query = $this->db->query("call eraseDashCoreLoan()");

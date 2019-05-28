@@ -151,109 +151,21 @@
       </div>
     </div>
     <div class="container">
-      <div class="container-fluid left" style="width: 350px; float: left;">
+      <div class="container-fluid" style="width: 350px; float: left;">
         <table class="table table-striped"  cellpadding="2">
           <tr>
             <td>
-              <h5>Correct Core Loan</h5>
+              <h5>Correct All Data</h5>
             </td>
             <td>
-              <button><a href='<?php echo base_url()?>import/calleraseDashCoreLoan'>Correct</a></button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h5>Correct Core Savings</h5>
-            </td>
-            <td>
-              <button><a href='<?php echo base_url()?>import/calleraseDashCoreSavings'>Correct</a></button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h5>Correct Core Time Deposit</h5>
-            </td>
-            <td>
-              <button><a href='<?php echo base_url()?>import/calleraseDashCoreTimeDeposit'>Correct</a></button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h5>Correct Mbwin Loan</h5>
-            </td>
-            <td>
-              <button><a href='<?php echo base_url()?>import/callminus100MbwinLoan'>Correct</a></button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h5>Correct Mbwin Savings</h5>
-            </td>
-            <td>
-              <button><a href='<?php echo base_url()?>import/callminus100MbwinSavings'>Correct</a></button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h5>Correct Mbwin Time Deposit</h5>
-            </td>
-            <td>
-              <button><a href='<?php echo base_url()?>import/callminus100MbwinTimeDeposit'>Correct</a></button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h5>Correct Migrated Loan</h5>
-            </td>
-            <td>
-              <button><a href='<?php echo base_url()?>import/callupdateMigratedLoan'>Correct</a></button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h5>Correct Migrated Savings</h5>
-            </td>
-            <td>
-              <button><a href='<?php echo base_url()?>import/callupdateMigratedSavings'>Correct</a></button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h5>Correct Migrated Time Deposit</h5>
-            </td>
-            <td>
-              <button><a href='<?php echo base_url()?>import/callupdateMigratedTimeDeposit'>Correct</a></button>
+              <button><a href='<?php echo base_url()?>import/callcorrectAllData'>Correct</a></button>
             </td>
           </tr>
         </table>
       </div>
       <div class="container" style="width: 150px; height: 1px;">
         <?php
-        if($this->uri->segment(2) == "calleraseDashCoreLoan"){
-          echo '<p class="text-success">Data Corrected</p>';
-        }
-        elseif($this->uri->segment(2) == "calleraseDashCoreSavings") {
-          echo '<p class="text-success">Data Corrected</p>';
-        }
-        elseif($this->uri->segment(2) == "calleraseDashCoreTimeDeposit") {
-          echo '<p class="text-success">Data Corrected</p>';
-        }
-        elseif($this->uri->segment(2) == "callminus100MbwinLoan") {
-          echo '<p class="text-success">Data Corrected</p>';
-        }
-        elseif($this->uri->segment(2) == "callminus100MbwinSavings") {
-          echo '<p class="text-success">Data Corrected</p>';
-        }
-        elseif($this->uri->segment(2) == "callminus100MbwinTimeDeposit") {
-          echo '<p class="text-success">Data Corrected</p>';
-        }
-        elseif($this->uri->segment(2) == "callupdateMigratedLoan") {
-          echo '<p class="text-success">Data Corrected</p>';
-        }
-        elseif($this->uri->segment(2) == "callupdateMigratedSavings") {
-          echo '<p class="text-success">Data Corrected</p>';
-        }
-        elseif($this->uri->segment(2) == "callupdateMigratedTimeDeposit") {
+        if($this->uri->segment(2) == "callcorrectAllData"){
           echo '<p class="text-success">Data Corrected</p>';
         }
         elseif($this->uri->segment(2) == "calleraseAllData") {
