@@ -596,4 +596,33 @@ class Import_model extends CI_Model
     {
         $query = $this->db->query("call updateMigratedTimeDeposit()");
     }
+
+    function eraseAllData()
+    {
+        $query = $this->db->query("call eraseAllData()");
+    }
+    function eraseCoreData()
+    {
+        $query = $this->db->query("call eraseCoreData()");
+    }
+    function eraseMbwinData()
+    {
+        $query = $this->db->query("call eraseMbwinData()");
+    }
+    function eraseMigratedData()
+    {
+        $query = $this->db->query("call eraseMigratedData()");
+    }
+    function eraseValidatedData()
+    {
+        $query = $this->db->query("call eraseValidatedData()");
+    }
+    function eraseErrorData()
+    {
+        $query = $this->db->query("call eraseErrorData()");
+    }
+    function eraseInquireData()
+    {
+        $query = $this->db->query("call eraseInquireData()");
+    }
 }

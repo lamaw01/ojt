@@ -942,3 +942,29 @@ BEGIN
         interest_bal = interest_bal / 100;
 END
 ?
+
+65.
+
+DELIMITER ?
+CREATE PROCEDURE eraseAllData()
+BEGIN
+	TRUNCATE TABLE coreln;
+    TRUNCATE TABLE coresv;
+    TRUNCATE TABLE coretd;
+    TRUNCATE TABLE errorln;
+    TRUNCATE TABLE errorsv;
+    TRUNCATE TABLE errortd;
+    TRUNCATE TABLE inquireln;
+    TRUNCATE TABLE inquiresv;
+    TRUNCATE TABLE inquiretd;
+    TRUNCATE TABLE mbwinln;
+    TRUNCATE TABLE mbwinsv;
+    TRUNCATE TABLE mbwintd;
+    TRUNCATE TABLE migratedln;
+    TRUNCATE TABLE migratedsv;
+    TRUNCATE TABLE migratedtd;
+    TRUNCATE TABLE validateln;
+    TRUNCATE TABLE validatesv;
+    TRUNCATE TABLE validatetd;
+END
+?

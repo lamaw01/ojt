@@ -96,4 +96,15 @@ class Page extends CI_Controller{
     }
   }
 
+  function managedata(){
+    //Allowing access to tech only
+    $loginstatus = $this->session->userdata('level');
+    if($loginstatus == 1){
+      $this->load->view('manage_data');
+    }else{
+      $this->session->sess_destroy();
+      redirect(base_url());
+    }
+  }
+
 }

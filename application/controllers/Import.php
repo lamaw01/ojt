@@ -62,49 +62,84 @@ class Import extends CI_Controller
     function calleraseDashCoreLoan()
     {
         $this->import_model->eraseDashCoreLoan();
-        $this->index();
+        $this->load->view('manage_data');
     }
 
     function calleraseDashCoreSavings()
     {
         $this->import_model->eraseDashCoreSavings();
-        $this->index();
+        $this->load->view('manage_data');
     }
     function calleraseDashCoreTimeDeposit()
     {
         $this->import_model->eraseDashCoreTimeDeposit();
-        $this->index();
+        $this->load->view('manage_data');
     }
     function callminus100MbwinLoan()
     {
         $this->import_model->minus100MbwinLoan();
-        $this->index();
+        $this->load->view('manage_data');
     }
     function callminus100MbwinSavings()
     {
         $this->import_model->minus100MbwinSavings();
-        $this->index();
+        $this->load->view('manage_data');
     }
     function callminus100MbwinTimeDeposit()
     {
         $this->import_model->minus100MbwinTimeDeposit();
-        $this->index();
+        $this->load->view('manage_data');
     }
     function callupdateMigratedLoan()
     {
         $this->import_model->updateMigratedLoan();
-        $this->index();
+        $this->load->view('manage_data');
     }
     function callupdateMigratedSavings()
     {
         $this->import_model->updateMigratedSavings();
-        $this->index();
+        $this->load->view('manage_data');
     }
     function callupdateMigratedTimeDeposit()
     {
         $this->import_model->updateMigratedTimeDeposit();
-        $this->index();
+        $this->load->view('manage_data');
     }
 
+    function calleraseAllData()
+    {
+        $this->import_model->eraseAllData();
+        $this->load->view('manage_data');
+    }
+    function calleraseCoreData()
+    {
+        $this->import_model->eraseCoreData();
+        $this->load->view('manage_data');
+    }
+    function calleraseMbwinData()
+    {
+        $this->import_model->eraseMbwinData();
+        $this->load->view('manage_data');
+    }
+    function calleraseMigratedData()
+    {
+        $this->import_model->eraseMigratedData();
+        $this->load->view('manage_data');
+    }
+    function calleraseValidatedData()
+    {
+        $this->import_model->eraseValidatedData();
+        $this->load->view('manage_data');
+    }
+    function calleraseErrorData()
+    {
+        $this->import_model->eraseErrorData();
+        $this->load->view('manage_data');
+    }
+    function calleraseInquireData()
+    {
+        $this->import_model->eraseInquireData();
+        $this->load->view('manage_data');
+    }
 }
 ?>

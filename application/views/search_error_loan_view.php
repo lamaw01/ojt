@@ -12,7 +12,7 @@
 
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top: .1em;">
       <div class="row">
       <nav class="navbar navbar-default">
           <div class="container-fluid">
@@ -103,8 +103,9 @@
               </ul>
               <ul class="nav navbar-nav navbar-right nav-tabs" >
                 <?php if($this->session->userdata('level')==='1'):?>
-                  <li><a href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
+                  <li><a href="<?php echo base_url('page/managedata');?>">Manage Data</a></li>
                   <li><a href="<?php echo base_url('reg');?>">Manage Account</a></li>
+                  <li><a href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
                   <li><a href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
                 <?php elseif($this->session->userdata('level')==='2'):?>
                   <li><a href="<?php echo base_url('page/displayprofile');?>">Tech Staff</a></li>
