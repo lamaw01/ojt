@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Sign In</title>
 
-    <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/plugins/bootstrap/css/bootstrap.min.css');?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/plugins/pace/pace.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/mystyle.css');?>" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -44,7 +44,7 @@
   </center>
 
     <script src="<?php echo base_url('assets/plugins/jquery/jquery-3.4.1.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/plugins/bootstrap/js/bootstrap.min.js');?>"></script>
     <script src="<?php echo base_url('assets/plugins/pace/pace.js'); ?>"></script>
     
   </body>

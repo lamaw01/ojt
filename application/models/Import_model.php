@@ -564,42 +564,21 @@ class Import_model extends CI_Model
     {
         $query = $this->db->query("call correctAllData()");
     }
-    function eraseDashCoreLoan()
+    function correctCoreData()
     {
-        $query = $this->db->query("call eraseDashCoreLoan()");
+        $query = $this->db->query("call correctCoreData()");
     }
-    function eraseDashCoreSavings()
+    function correctMbwinData()
     {
-        $query = $this->db->query("call eraseDashCoreSavings()");
+        $query = $this->db->query("call correctMbwinData()");
     }
-    function eraseDashCoreTimeDeposit()
+    function correctMigratedData()
     {
-        $query = $this->db->query("call eraseDashCoreTimeDeposit()");
+        $query = $this->db->query("call correctMigratedData()");
     }
-    function minus100MbwinLoan()
-    {
-        $query = $this->db->query("call minus100MbwinLoan()");
-    }
-    function minus100MbwinSavings()
-    {
-        $query = $this->db->query("call minus100MbwinSavings()");
-    }
-    function minus100MbwinTimeDeposit()
-    {
-        $query = $this->db->query("call minus100MbwinTimeDeposit()");
-    }
-    function updateMigratedLoan()
-    {
-        $query = $this->db->query("call updateMigratedLoan()");
-    }
-    function updateMigratedSavings()
-    {
-        $query = $this->db->query("call updateMigratedSavings()");
-    }
-    function updateMigratedTimeDeposit()
-    {
-        $query = $this->db->query("call updateMigratedTimeDeposit()");
-    }
+
+
+
 
     function eraseAllData()
     {

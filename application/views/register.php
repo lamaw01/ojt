@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Manage Account</title>
+    <title>Create Account</title>
 
-    <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/plugins/bootstrap/css/bootstrap.min.css');?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/plugins/pace/pace.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/mystyle.css');?>" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -131,7 +131,7 @@
               <ul class="nav navbar-nav navbar-right nav-tabs" >
                 <?php if($this->session->userdata('level')==='1'):?>
                   <li><a href="<?php echo base_url('page/managedata');?>">Manage Data</a></li>
-                  <li class="active"><a href="<?php echo base_url('reg');?>">Manage Account</a></li>
+                  <li class="active"><a href="<?php echo base_url('reg');?>">Create Account</a></li>
                   <li><a href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>
                   <li><a href="<?php echo site_url('login/logout');?>">Sign Out</a></li>
                 <?php elseif($this->session->userdata('level')==='2'):?>
@@ -193,7 +193,7 @@
 </center>
     
     <script src="<?php echo base_url('assets/plugins/jquery/jquery-3.4.1.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/plugins/bootstrap/js/bootstrap.min.js');?>"></script>
     <script src="<?php echo base_url('assets/plugins/pace/pace.js'); ?>"></script>
 
   </body>

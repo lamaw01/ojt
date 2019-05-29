@@ -68,49 +68,19 @@ class Import extends CI_Controller
         $this->import_model->correctAllData();
         $this->load->view('manage_data');
     }
-    function calleraseDashCoreLoan()
+    function callcorrectCoreData()
     {
-        $this->import_model->eraseDashCoreLoan();
+        $this->import_model->correctCoreData();
         $this->load->view('manage_data');
     }
-    function calleraseDashCoreSavings()
+    function callcorrectMbwinData()
     {
-        $this->import_model->eraseDashCoreSavings();
+        $this->import_model->correctMbwinData();
         $this->load->view('manage_data');
     }
-    function calleraseDashCoreTimeDeposit()
+    function callcorrectMigratedData()
     {
-        $this->import_model->eraseDashCoreTimeDeposit();
-        $this->load->view('manage_data');
-    }
-    function callminus100MbwinLoan()
-    {
-        $this->import_model->minus100MbwinLoan();
-        $this->load->view('manage_data');
-    }
-    function callminus100MbwinSavings()
-    {
-        $this->import_model->minus100MbwinSavings();
-        $this->load->view('manage_data');
-    }
-    function callminus100MbwinTimeDeposit()
-    {
-        $this->import_model->minus100MbwinTimeDeposit();
-        $this->load->view('manage_data');
-    }
-    function callupdateMigratedLoan()
-    {
-        $this->import_model->updateMigratedLoan();
-        $this->load->view('manage_data');
-    }
-    function callupdateMigratedSavings()
-    {
-        $this->import_model->updateMigratedSavings();
-        $this->load->view('manage_data');
-    }
-    function callupdateMigratedTimeDeposit()
-    {
-        $this->import_model->updateMigratedTimeDeposit();
+        $this->import_model->correctMigratedData();
         $this->load->view('manage_data');
     }
 
