@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2019 at 09:29 AM
+-- Generation Time: May 29, 2019 at 10:44 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ojt`
+-- Database: `ojt_empty`
 --
 
 DELIMITER $$
@@ -114,23 +114,27 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `correctAllData` ()  BEGIN
         
         
         
-	UPDATE migratedln SET loan_amount = loan_amount / 100 WHERE CHAR_LENGTH(account_no) = 20 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedln SET interest_balance_amount = interest_balance_amount / 100 WHERE CHAR_LENGTH(account_no) = 20 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedln SET overdue_principal_amount = overdue_principal_amount / 100 WHERE CHAR_LENGTH(account_no) = 20 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedln SET overdue_interest_amount = overdue_interest_amount / 100 WHERE CHAR_LENGTH(account_no) = 20 OR (SELECT LEFT(account_no, 1)) = "'";
+	UPDATE migratedln SET loan_amount = loan_amount / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
+    UPDATE migratedln SET interest_balance_amount = interest_balance_amount / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
+    UPDATE migratedln SET overdue_principal_amount = overdue_principal_amount / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
+    UPDATE migratedln SET overdue_interest_amount = overdue_interest_amount / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
     UPDATE migratedln SET penalty_balance_amount = penalty_balance_amount / 100 WHERE CHAR_LENGTH(account_no) = 20 OR (SELECT LEFT(account_no, 1)) = "'";     
     UPDATE migratedln SET account_no = replace(account_no, "'",'') WHERE CHAR_LENGTH(account_no) = 20;
     UPDATE migratedln SET account_no = replace(account_no, "'",0) WHERE CHAR_LENGTH(account_no) = 19 AND (SELECT LEFT(account_no, 1)) = "'";
+        
 
-    UPDATE migratedsv SET current_balance = current_balance / 100 WHERE CHAR_LENGTH(account_no) = 20 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedsv SET available_balance = available_balance / 100 WHERE CHAR_LENGTH(account_no) = 20 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedsv SET interest_bal = interest_bal / 100 WHERE CHAR_LENGTH(account_no) = 20 OR (SELECT LEFT(account_no, 1)) = "'";
+
+    UPDATE migratedsv SET current_balance = current_balance / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR  (SELECT LEFT(account_no, 1)) = "'";
+    UPDATE migratedsv SET available_balance = available_balance / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
+    UPDATE migratedsv SET interest_bal = interest_bal / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
     UPDATE migratedsv SET account_no = replace(account_no, "'",'') WHERE CHAR_LENGTH(account_no) = 20;
-    UPDATE migratedsv SET account_no = replace(account_no, "'",0) WHERE CHAR_LENGTH(account_no) = 19 AND (SELECT LEFT(account_no, 1)) = "'"; 
+    UPDATE migratedsv SET account_no = replace(account_no, "'",0) WHERE CHAR_LENGTH(account_no) = 19 AND (SELECT LEFT(account_no, 1)) = "'";
+    
+    
     	
-	UPDATE migratedtd SET current_balance = current_balance / 100 WHERE CHAR_LENGTH(account_no) = 20 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedtd SET available_balance = available_balance / 100 WHERE CHAR_LENGTH(account_no) = 20 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedtd SET interest_bal = interest_bal / 100 WHERE CHAR_LENGTH(account_no) = 20 OR (SELECT LEFT(account_no, 1)) = "'";
+	UPDATE migratedtd SET current_balance = current_balance / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
+    UPDATE migratedtd SET available_balance = available_balance / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
+    UPDATE migratedtd SET interest_bal = interest_bal / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
     UPDATE migratedtd SET account_no = replace(account_no, "'",'') WHERE CHAR_LENGTH(account_no) = 20;
     UPDATE migratedtd SET account_no = replace(account_no, "'",0) WHERE CHAR_LENGTH(account_no) = 19 AND (SELECT LEFT(account_no, 1)) = "'";
     
