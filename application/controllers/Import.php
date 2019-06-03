@@ -71,24 +71,21 @@ class Import extends CI_Controller
         $this->Import_model->correctAllData();
         redirect('page/managedata');
     }
-
-    /*
     function callcorrectCoreData()
     {
         $this->Import_model->correctCoreData();
-        $this->load->view('manage_data');
+        redirect('page/managedata');
     }
     function callcorrectMbwinData()
     {
         $this->Import_model->correctMbwinData();
-        $this->load->view('manage_data');
+        redirect('page/managedata');
     }
     function callcorrectMigratedData()
     {
         $this->Import_model->correctMigratedData();
-        $this->load->view('manage_data');
+        redirect('page/managedata');
     }
-    */
 
 
 

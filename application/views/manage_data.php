@@ -155,52 +155,51 @@
         <table class="table table-striped"  cellpadding="2">
           <tr>
             <?php
-            if($data1 > 1 && $data2 > 1 && $data3 > 1 && $data4 > 1 && $data5 > 1 && $data6 > 1 && $data7 > 1 && $data8 > 1 && $data9 > 1)?> 
+            if($data1 > 1 && $data2 > 1 && $data3 > 1 && $data4 > 1 && $data5 > 1 && $data6 > 1 && $data7 > 1 && $data8 > 1 && $data9 > 1) { ?>
               <td>
               <h5>Correct All Data</h5>
               </td>
-
               <td>
               <button><a href='<?php echo base_url()?>import/callcorrectAllData'>Correct</a></button>
-              </td>   
+              </td>
+            <?php } ?>
           </tr>
-        <!--
           <tr>
+            <?php
+            if($data1 > 1 && $data2 > 1 && $data3 > 1) { ?>
             <td>
               <h5>Correct Core Data</h5>
             </td>
             <td>
               <button><a href='<?php echo base_url()?>import/callcorrectCoreData'>Correct</a></button>
             </td>
+            <?php } ?>
           </tr>
           <tr>
+            <?php
+            if($data4 > 1 && $data5 > 1 && $data6 > 1) { ?>
             <td>
               <h5>Correct Mbwin Data</h5>
             </td>
             <td>
               <button><a href='<?php echo base_url()?>import/callcorrectMbwinData'>Correct</a></button>
             </td>
+            <?php } ?>
           </tr>
           <tr>
+            <?php
+            if($data7 > 1 && $data8 > 1 && $data9 > 1) { ?>
             <td>
               <h5>Correct Migrated Data</h5>
             </td>
             <td>
               <button><a href='<?php echo base_url()?>import/callcorrectMigratedData'>Correct</a></button>
             </td>
+            <?php } ?>
           </tr>
-        -->
         </table>
       </div>
-           <?php
-            if($data1 > 1 && $data2 > 1 && $data3 > 1 && $data4 > 1 && $data5 > 1 && $data6 > 1 && $data7 > 1 && $data8 > 1 && $data9 > 1)
-            { 
-              echo "<div style='margin-left: 250px; margin-top: 15px;'>";
-              echo "<p>Click only once</p>";
-              echo "</div>";
-            }
-            ?>  
-      <div class="container" style="width: 150px; height: 1px; margin-top: 0px; float: center;">
+      <div class="container" style="width: 150px; height: 1px; margin-top: 15px; float: center;">
         <?php
         if($this->uri->segment(2) == "callcorrectAllData"){
           echo '<p class="text-success">Data Corrected</p>';
