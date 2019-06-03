@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2019 at 10:44 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Generation Time: Jun 03, 2019 at 10:47 AM
+-- Server version: 10.1.40-MariaDB
+-- PHP Version: 7.1.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ojt_empty`
+-- Database: `ojt_populated`
 --
 
 DELIMITER $$
@@ -68,6 +70,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `checkvaltd` (IN `id` INT(11))  BEGI
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `correctAllData` ()  BEGIN
+
 	UPDATE coreln
     	SET account_no = replace(account_no, '-','');
         
@@ -79,62 +82,66 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `correctAllData` ()  BEGIN
         
         
         
-	UPDATE mbwinln
-    
-    	SET grantedamtorig = grantedamtorig / 100,
-       		grantedamt = grantedamt / 100,
-        	principal_amt = principal_amt / 100,
-            bal_amt = bal_amt / 100,
-            fixamt = fixamt / 100,
-            acrintamt = acrintamt / 100,
-            cumintpdamt = cumintpdamt / 100,
-            cumnorintamt = cumnorintamt / 100,
-            cumtaxpdamt = cumtaxpdamt / 100,
-            acrpenamt = acrpenamt / 100,
-            cumpenpdamt = cumpenpdamt / 100,
-            cumpripdamt = cumpripdamt / 100,
-            over_due_pri_amt = over_due_pri_amt / 100,
-            acrintoduepriamt = acrintoduepriamt / 100,
-            odueintamt = odueintamt / 100,
-            int_bal_amt = int_bal_amt / 100,
-            pen_bal_amt = pen_bal_amt / 100;
-            
-	UPDATE mbwinsv
-    	SET bal_amt = bal_amt / 100,
-            acrbintamt = acrbintamt / 100,
-            cumintpdamt = cumintpdamt / 100,
-            cumtaxwamt = cumtaxwamt / 100,
-            int_bal_amt = int_bal_amt / 100,
-            minperbalamt = minperbalamt / 100;
-            
-	UPDATE mbwintd
-    	SET bal_amt = bal_amt / 100,
-        minperbalamt = minperbalamt / 100,
-        int_bal_amt = int_bal_amt / 100;
+	UPDATE mbwinln SET grantedamtorig = grantedamtorig / 100 WHERE correct = 0;
+    UPDATE mbwinln SET grantedamt = grantedamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET principal_amt = principal_amt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET bal_amt = bal_amt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET fixamt = fixamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET acrintamt = acrintamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET cumintpdamt = cumintpdamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET cumnorintamt = cumnorintamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET cumtaxpdamt = cumtaxpdamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET acrpenamt = acrpenamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET cumpenpdamt = cumpenpdamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET cumpripdamt = cumpripdamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET over_due_pri_amt = over_due_pri_amt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET acrintoduepriamt = acrintoduepriamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET odueintamt = odueintamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET int_bal_amt = int_bal_amt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET pen_bal_amt = pen_bal_amt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET correct = 1 WHERE correct = 0;
+
+
+	UPDATE mbwinsv SET bal_amt = bal_amt / 100 WHERE correct = 0;
+    UPDATE mbwinsv SET acrbintamt = acrbintamt / 100 WHERE correct = 0;
+    UPDATE mbwinsv SET cumintpdamt = cumintpdamt / 100 WHERE correct = 0;
+    UPDATE mbwinsv SET cumtaxwamt = cumtaxwamt / 100 WHERE correct = 0;
+    UPDATE mbwinsv SET int_bal_amt = int_bal_amt / 100 WHERE correct = 0;
+    UPDATE mbwinsv SET minperbalamt = minperbalamt / 100 WHERE correct = 0;
+	UPDATE mbwinsv SET correct = 1 WHERE correct = 0;
+
+
+	UPDATE mbwintd SET bal_amt = bal_amt / 100 WHERE correct = 0;
+    UPDATE mbwintd SET minperbalamt = minperbalamt / 100 WHERE correct = 0;
+    UPDATE mbwintd SET int_bal_amt = int_bal_amt / 100 WHERE correct = 0;
+	UPDATE mbwintd SET correct = 1 WHERE correct = 0;
         
         
         
-	UPDATE migratedln SET loan_amount = loan_amount / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedln SET interest_balance_amount = interest_balance_amount / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedln SET overdue_principal_amount = overdue_principal_amount / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedln SET overdue_interest_amount = overdue_interest_amount / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedln SET penalty_balance_amount = penalty_balance_amount / 100 WHERE CHAR_LENGTH(account_no) = 20 OR (SELECT LEFT(account_no, 1)) = "'";     
+	UPDATE migratedln SET loan_amount = loan_amount / 100 WHERE correct = 0;
+    UPDATE migratedln SET interest_balance_amount = interest_balance_amount / 100 WHERE correct = 0;
+    UPDATE migratedln SET overdue_principal_amount = overdue_principal_amount / 100 WHERE correct = 0;
+    UPDATE migratedln SET overdue_interest_amount = overdue_interest_amount / 100 WHERE correct = 0;
+    UPDATE migratedln SET penalty_balance_amount = penalty_balance_amount / 100 WHERE correct = 0;
+    UPDATE migratedln SET correct = 1 WHERE correct = 0;
     UPDATE migratedln SET account_no = replace(account_no, "'",'') WHERE CHAR_LENGTH(account_no) = 20;
     UPDATE migratedln SET account_no = replace(account_no, "'",0) WHERE CHAR_LENGTH(account_no) = 19 AND (SELECT LEFT(account_no, 1)) = "'";
         
 
 
-    UPDATE migratedsv SET current_balance = current_balance / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR  (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedsv SET available_balance = available_balance / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedsv SET interest_bal = interest_bal / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
+    UPDATE migratedsv SET current_balance = current_balance / 100 WHERE correct = 0;
+    UPDATE migratedsv SET available_balance = available_balance / 100 WHERE correct = 0;
+    UPDATE migratedsv SET interest_bal = interest_bal / 100 WHERE correct = 0;
+    UPDATE migratedsv SET correct = 1 WHERE correct = 0;
     UPDATE migratedsv SET account_no = replace(account_no, "'",'') WHERE CHAR_LENGTH(account_no) = 20;
     UPDATE migratedsv SET account_no = replace(account_no, "'",0) WHERE CHAR_LENGTH(account_no) = 19 AND (SELECT LEFT(account_no, 1)) = "'";
     
     
     	
-	UPDATE migratedtd SET current_balance = current_balance / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedtd SET available_balance = available_balance / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedtd SET interest_bal = interest_bal / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
+	UPDATE migratedtd SET current_balance = current_balance / 100 WHERE correct = 0;
+    UPDATE migratedtd SET available_balance = available_balance / 100 WHERE correct = 0;
+    UPDATE migratedtd SET interest_bal = interest_bal / 100 WHERE correct = 0;
+    UPDATE migratedtd SET correct = 1 WHERE correct = 0;
     UPDATE migratedtd SET account_no = replace(account_no, "'",'') WHERE CHAR_LENGTH(account_no) = 20;
     UPDATE migratedtd SET account_no = replace(account_no, "'",0) WHERE CHAR_LENGTH(account_no) = 19 AND (SELECT LEFT(account_no, 1)) = "'";
     
@@ -150,60 +157,71 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `correctCoreData` ()  BEGIN
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `correctMbwinData` ()  BEGIN
-	UPDATE mbwinln
-    	SET grantedamtorig = grantedamtorig / 100,
-       		grantedamt = grantedamt / 100,
-        	principal_amt = principal_amt / 100,
-            bal_amt = bal_amt / 100,
-            fixamt = fixamt / 100,
-            acrintamt = acrintamt / 100,
-            cumintpdamt = cumintpdamt / 100,
-            cumnorintamt = cumnorintamt / 100,
-            cumtaxpdamt = cumtaxpdamt / 100,
-            acrpenamt = acrpenamt / 100,
-            cumpenpdamt = cumpenpdamt / 100,
-            cumpripdamt = cumpripdamt / 100,
-            over_due_pri_amt = over_due_pri_amt / 100,
-            acrintoduepriamt = acrintoduepriamt / 100,
-            odueintamt = odueintamt / 100,
-            int_bal_amt = int_bal_amt / 100,
-            pen_bal_amt = pen_bal_amt / 100;
-	UPDATE mbwinsv
-    	SET bal_amt = bal_amt / 100,
-            acrbintamt = acrbintamt / 100,
-            cumintpdamt = cumintpdamt / 100,
-            cumtaxwamt = cumtaxwamt / 100,
-            int_bal_amt = int_bal_amt / 100,
-            minperbalamt = minperbalamt / 100;
-	UPDATE mbwintd
-    	SET bal_amt = bal_amt / 100,
-        minperbalamt = minperbalamt / 100,
-        int_bal_amt = int_bal_amt / 100;
+
+	UPDATE mbwinln SET grantedamtorig = grantedamtorig / 100 WHERE correct = 0;
+    UPDATE mbwinln SET grantedamt = grantedamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET principal_amt = principal_amt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET bal_amt = bal_amt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET fixamt = fixamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET acrintamt = acrintamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET cumintpdamt = cumintpdamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET cumnorintamt = cumnorintamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET cumtaxpdamt = cumtaxpdamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET acrpenamt = acrpenamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET cumpenpdamt = cumpenpdamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET cumpripdamt = cumpripdamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET over_due_pri_amt = over_due_pri_amt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET acrintoduepriamt = acrintoduepriamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET odueintamt = odueintamt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET int_bal_amt = int_bal_amt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET pen_bal_amt = pen_bal_amt / 100 WHERE correct = 0;
+    UPDATE mbwinln SET correct = 1 WHERE correct = 0;
+
+
+
+	UPDATE mbwinsv SET bal_amt = bal_amt / 100 WHERE correct = 0;
+    UPDATE mbwinsv SET acrbintamt = acrbintamt / 100 WHERE correct = 0;
+    UPDATE mbwinsv SET cumintpdamt = cumintpdamt / 100 WHERE correct = 0;
+    UPDATE mbwinsv SET cumtaxwamt = cumtaxwamt / 100 WHERE correct = 0;
+    UPDATE mbwinsv SET int_bal_amt = int_bal_amt / 100 WHERE correct = 0;
+    UPDATE mbwinsv SET minperbalamt = minperbalamt / 100 WHERE correct = 0;
+	UPDATE mbwinsv SET correct = 1 WHERE correct = 0;
+
+
+
+	UPDATE mbwintd SET bal_amt = bal_amt / 100 WHERE correct = 0;
+    UPDATE mbwintd SET minperbalamt = minperbalamt / 100 WHERE correct = 0;
+    UPDATE mbwintd SET int_bal_amt = int_bal_amt / 100 WHERE correct = 0;
+	UPDATE mbwintd SET correct = 1 WHERE correct = 0;
+    
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `correctMigratedData` ()  BEGIN
 
-    UPDATE migratedln SET loan_amount = loan_amount / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedln SET interest_balance_amount = interest_balance_amount / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedln SET overdue_principal_amount = overdue_principal_amount / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedln SET overdue_interest_amount = overdue_interest_amount / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedln SET penalty_balance_amount = penalty_balance_amount / 100 WHERE CHAR_LENGTH(account_no) = 20 OR (SELECT LEFT(account_no, 1)) = "'";     
+    UPDATE migratedln SET loan_amount = loan_amount / 100 WHERE correct = 0;
+    UPDATE migratedln SET interest_balance_amount = interest_balance_amount / 100 WHERE correct = 0;
+    UPDATE migratedln SET overdue_principal_amount = overdue_principal_amount / 100 WHERE correct = 0;
+    UPDATE migratedln SET overdue_interest_amount = overdue_interest_amount / 100 WHERE correct = 0;
+    UPDATE migratedln SET penalty_balance_amount = penalty_balance_amount / 100 WHERE correct = 0;
+    UPDATE migratedln SET correct = 1 WHERE correct = 0;
     UPDATE migratedln SET account_no = replace(account_no, "'",'') WHERE CHAR_LENGTH(account_no) = 20;
     UPDATE migratedln SET account_no = replace(account_no, "'",0) WHERE CHAR_LENGTH(account_no) = 19 AND (SELECT LEFT(account_no, 1)) = "'";
         
 
 
-    UPDATE migratedsv SET current_balance = current_balance / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR  (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedsv SET available_balance = available_balance / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedsv SET interest_bal = interest_bal / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
+    UPDATE migratedsv SET current_balance = current_balance / 100 WHERE correct = 0;
+    UPDATE migratedsv SET available_balance = available_balance / 100 WHERE correct = 0;
+    UPDATE migratedsv SET interest_bal = interest_bal / 100 WHERE correct = 0;
+    UPDATE migratedsv SET correct = 1 WHERE correct = 0;
     UPDATE migratedsv SET account_no = replace(account_no, "'",'') WHERE CHAR_LENGTH(account_no) = 20;
     UPDATE migratedsv SET account_no = replace(account_no, "'",0) WHERE CHAR_LENGTH(account_no) = 19 AND (SELECT LEFT(account_no, 1)) = "'";
     
     
     	
-	UPDATE migratedtd SET current_balance = current_balance / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedtd SET available_balance = available_balance / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
-    UPDATE migratedtd SET interest_bal = interest_bal / 100 WHERE CHAR_LENGTH(account_no) = 20 OR CHAR_LENGTH(account_no) = 19 OR (SELECT LEFT(account_no, 1)) = "'";
+	UPDATE migratedtd SET current_balance = current_balance / 100 WHERE correct = 0;
+    UPDATE migratedtd SET available_balance = available_balance / 100 WHERE correct = 0;
+    UPDATE migratedtd SET interest_bal = interest_bal / 100 WHERE correct = 0;
+    UPDATE migratedtd SET correct = 1 WHERE correct = 0;
     UPDATE migratedtd SET account_no = replace(account_no, "'",'') WHERE CHAR_LENGTH(account_no) = 20;
     UPDATE migratedtd SET account_no = replace(account_no, "'",0) WHERE CHAR_LENGTH(account_no) = 19 AND (SELECT LEFT(account_no, 1)) = "'";
     
@@ -560,7 +578,8 @@ CREATE TABLE `mbwinln` (
   `acrintoduepriamt` decimal(20,2) NOT NULL,
   `odueintamt` decimal(20,2) NOT NULL,
   `int_bal_amt` decimal(20,2) NOT NULL,
-  `pen_bal_amt` decimal(20,2) NOT NULL
+  `pen_bal_amt` decimal(20,2) NOT NULL,
+  `correct` int(5) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -586,7 +605,8 @@ CREATE TABLE `mbwinsv` (
   `cumintpdamt` decimal(20,2) NOT NULL,
   `cumtaxwamt` decimal(20,2) NOT NULL,
   `int_bal_amt` decimal(20,2) NOT NULL,
-  `minperbalamt` decimal(20,2) NOT NULL
+  `minperbalamt` decimal(20,2) NOT NULL,
+  `correct` int(5) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -608,7 +628,8 @@ CREATE TABLE `mbwintd` (
   `bal_amt` decimal(20,2) NOT NULL,
   `intrate` decimal(20,2) NOT NULL,
   `minperbalamt` decimal(20,2) NOT NULL,
-  `int_bal_amt` decimal(20,2) NOT NULL
+  `int_bal_amt` decimal(20,2) NOT NULL,
+  `correct` int(5) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -639,7 +660,8 @@ CREATE TABLE `migratedln` (
   `overdue_interest_amount` decimal(20,2) NOT NULL,
   `penalty_balance_amount` decimal(20,2) NOT NULL,
   `principal_frequency` int(30) NOT NULL,
-  `stat` int(30) NOT NULL DEFAULT '0'
+  `stat` int(30) NOT NULL DEFAULT '0',
+  `correct` int(5) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -694,7 +716,8 @@ CREATE TABLE `migratedsv` (
   `maturity_date` varchar(30) NOT NULL,
   `effective_interest_rate` decimal(20,2) NOT NULL,
   `term_in_days` int(30) NOT NULL,
-  `stat` int(30) NOT NULL DEFAULT '0'
+  `stat` int(30) NOT NULL DEFAULT '0',
+  `correct` int(5) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -749,7 +772,8 @@ CREATE TABLE `migratedtd` (
   `maturity_date` varchar(30) NOT NULL,
   `effective_interest_rate` decimal(20,2) NOT NULL,
   `term_in_days` int(30) NOT NULL,
-  `stat` int(30) NOT NULL DEFAULT '0'
+  `stat` int(30) NOT NULL DEFAULT '0',
+  `correct` int(5) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -996,96 +1020,116 @@ ALTER TABLE `validatetd`
 --
 ALTER TABLE `coreln`
   MODIFY `coreln_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `coresv`
 --
 ALTER TABLE `coresv`
   MODIFY `coresv_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `coretd`
 --
 ALTER TABLE `coretd`
   MODIFY `coretd_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `errorln`
 --
 ALTER TABLE `errorln`
   MODIFY `errorln_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `errorsv`
 --
 ALTER TABLE `errorsv`
   MODIFY `errorsv_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `errortd`
 --
 ALTER TABLE `errortd`
   MODIFY `errortd_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `inquireln`
 --
 ALTER TABLE `inquireln`
   MODIFY `inquireln_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `inquiresv`
 --
 ALTER TABLE `inquiresv`
   MODIFY `inquiresv_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `inquiretd`
 --
 ALTER TABLE `inquiretd`
   MODIFY `inquiretd_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `mbwinln`
 --
 ALTER TABLE `mbwinln`
   MODIFY `mbwinln_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `mbwinsv`
 --
 ALTER TABLE `mbwinsv`
   MODIFY `mbwinsv_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `mbwintd`
 --
 ALTER TABLE `mbwintd`
   MODIFY `mbwintd_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `migratedln`
 --
 ALTER TABLE `migratedln`
   MODIFY `migratedln_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `migratedsv`
 --
 ALTER TABLE `migratedsv`
   MODIFY `migratedsv_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `migratedtd`
 --
 ALTER TABLE `migratedtd`
   MODIFY `migratedtd_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
 --
 -- AUTO_INCREMENT for table `validateln`
 --
 ALTER TABLE `validateln`
   MODIFY `validateln_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `validatesv`
 --
 ALTER TABLE `validatesv`
   MODIFY `validatesv_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `validatetd`
 --
 ALTER TABLE `validatetd`
   MODIFY `validatetd_id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
