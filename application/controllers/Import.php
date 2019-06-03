@@ -7,56 +7,59 @@ class Import extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('import_model');
+        $this->load->model('Import_model');
+        if($this->session->userdata('logged_in') !== TRUE){
+          redirect('login');
+        }
     }
     function index()
     {
-        $this->load->view('dashboard_view');
+      redirect('page');
     }
     function importcoreln()
     {
-        $this->import_model->coreln();
-        $this->load->view('dashboard_view');
+      $this->Import_model->coreln();
+      redirect('page');
     }
     function importcoresv()
     {
-        $this->import_model->coresv();
-        $this->load->view('dashboard_view');
+      $this->Import_model->coresv();
+      redirect('page');
     }
     function importcoretd()
     {
-        $this->import_model->coretd();
-        $this->load->view('dashboard_view');
+      $this->Import_model->coretd();
+      redirect('page');
     }
     function importmbwinln()
     {
-        $this->import_model->mbwinln();
-        $this->load->view('dashboard_view');
+      $this->Import_model->mbwinln();
+      redirect('page');
     }
     function importmbwinsv()
     {
-        $this->import_model->mbwinsv();
-        $this->load->view('dashboard_view');
+      $this->Import_model->mbwinsv();
+      redirect('page');
     }
     function importmbwintd()
     {
-        $this->import_model->mbwintd();
-        $this->load->view('dashboard_view');
+      $this->Import_model->mbwintd();
+      redirect('page');
     }
     function importmigratedln()
     {
-        $this->import_model->migratedln();
-        $this->load->view('dashboard_view');
+      $this->Import_model->migratedln();
+      redirect('page');
     }
     function importmigratedsv()
     {
-        $this->import_model->migratedsv();
-        $this->load->view('dashboard_view');
+      $this->Import_model->migratedsv();
+      redirect('page');
     }
     function importmigratedtd()
     {
-        $this->import_model->migratedtd();
-        $this->load->view('dashboard_view');
+      $this->Import_model->migratedtd();
+      redirect('page');
     }
 
 
@@ -65,24 +68,27 @@ class Import extends CI_Controller
 
     function callcorrectAllData()
     {
-        $this->import_model->correctAllData();
-        $this->load->view('manage_data');
+        $this->Import_model->correctAllData();
+        redirect('page/managedata');
     }
+
+    /*
     function callcorrectCoreData()
     {
-        $this->import_model->correctCoreData();
+        $this->Import_model->correctCoreData();
         $this->load->view('manage_data');
     }
     function callcorrectMbwinData()
     {
-        $this->import_model->correctMbwinData();
+        $this->Import_model->correctMbwinData();
         $this->load->view('manage_data');
     }
     function callcorrectMigratedData()
     {
-        $this->import_model->correctMigratedData();
+        $this->Import_model->correctMigratedData();
         $this->load->view('manage_data');
     }
+    */
 
 
 
@@ -90,38 +96,101 @@ class Import extends CI_Controller
 
     function calleraseAllData()
     {
-        $this->import_model->eraseAllData();
-        $this->load->view('manage_data');
+      $this->Import_model->eraseAllData();
+      $result['data1']=$this->Import_model->checkcoreln();
+      $result['data2']=$this->Import_model->checkcoresv();
+      $result['data3']=$this->Import_model->checkcoretd();
+      $result['data4']=$this->Import_model->checkmbwinln();
+      $result['data5']=$this->Import_model->checkmbwinsv();
+      $result['data6']=$this->Import_model->checkmbwintd();
+      $result['data7']=$this->Import_model->checkmigratedln();
+      $result['data8']=$this->Import_model->checkmigratedsv();
+      $result['data9']=$this->Import_model->checkmigratedtd();
+      $this->load->view('manage_data',$result);
     }
     function calleraseCoreData()
     {
-        $this->import_model->eraseCoreData();
-        $this->load->view('manage_data');
+      $this->Import_model->eraseCoreData();
+      $result['data1']=$this->Import_model->checkcoreln();
+      $result['data2']=$this->Import_model->checkcoresv();
+      $result['data3']=$this->Import_model->checkcoretd();
+      $result['data4']=$this->Import_model->checkmbwinln();
+      $result['data5']=$this->Import_model->checkmbwinsv();
+      $result['data6']=$this->Import_model->checkmbwintd();
+      $result['data7']=$this->Import_model->checkmigratedln();
+      $result['data8']=$this->Import_model->checkmigratedsv();
+      $result['data9']=$this->Import_model->checkmigratedtd();
+      $this->load->view('manage_data',$result);
     }
     function calleraseMbwinData()
     {
-        $this->import_model->eraseMbwinData();
-        $this->load->view('manage_data');
+      $this->Import_model->eraseMbwinData();
+      $result['data1']=$this->Import_model->checkcoreln();
+      $result['data2']=$this->Import_model->checkcoresv();
+      $result['data3']=$this->Import_model->checkcoretd();
+      $result['data4']=$this->Import_model->checkmbwinln();
+      $result['data5']=$this->Import_model->checkmbwinsv();
+      $result['data6']=$this->Import_model->checkmbwintd();
+      $result['data7']=$this->Import_model->checkmigratedln();
+      $result['data8']=$this->Import_model->checkmigratedsv();
+      $result['data9']=$this->Import_model->checkmigratedtd();
+      $this->load->view('manage_data',$result);
     }
     function calleraseMigratedData()
     {
-        $this->import_model->eraseMigratedData();
-        $this->load->view('manage_data');
+      $this->Import_model->eraseMigratedData();
+      $result['data1']=$this->Import_model->checkcoreln();
+      $result['data2']=$this->Import_model->checkcoresv();
+      $result['data3']=$this->Import_model->checkcoretd();
+      $result['data4']=$this->Import_model->checkmbwinln();
+      $result['data5']=$this->Import_model->checkmbwinsv();
+      $result['data6']=$this->Import_model->checkmbwintd();
+      $result['data7']=$this->Import_model->checkmigratedln();
+      $result['data8']=$this->Import_model->checkmigratedsv();
+      $result['data9']=$this->Import_model->checkmigratedtd();
+      $this->load->view('manage_data',$result);
     }
     function calleraseValidatedData()
     {
-        $this->import_model->eraseValidatedData();
-        $this->load->view('manage_data');
+      $this->Import_model->eraseValidatedData();
+      $result['data1']=$this->Import_model->checkcoreln();
+      $result['data2']=$this->Import_model->checkcoresv();
+      $result['data3']=$this->Import_model->checkcoretd();
+      $result['data4']=$this->Import_model->checkmbwinln();
+      $result['data5']=$this->Import_model->checkmbwinsv();
+      $result['data6']=$this->Import_model->checkmbwintd();
+      $result['data7']=$this->Import_model->checkmigratedln();
+      $result['data8']=$this->Import_model->checkmigratedsv();
+      $result['data9']=$this->Import_model->checkmigratedtd();
+      $this->load->view('manage_data',$result);
     }
     function calleraseErrorData()
     {
-        $this->import_model->eraseErrorData();
-        $this->load->view('manage_data');
+      $this->Import_model->eraseErrorData();
+      $result['data1']=$this->Import_model->checkcoreln();
+      $result['data2']=$this->Import_model->checkcoresv();
+      $result['data3']=$this->Import_model->checkcoretd();
+      $result['data4']=$this->Import_model->checkmbwinln();
+      $result['data5']=$this->Import_model->checkmbwinsv();
+      $result['data6']=$this->Import_model->checkmbwintd();
+      $result['data7']=$this->Import_model->checkmigratedln();
+      $result['data8']=$this->Import_model->checkmigratedsv();
+      $result['data9']=$this->Import_model->checkmigratedtd();
+      $this->load->view('manage_data',$result);
     }
     function calleraseInquireData()
     {
-        $this->import_model->eraseInquireData();
-        $this->load->view('manage_data');
+      $this->Import_model->eraseInquireData();
+      $result['data1']=$this->Import_model->checkcoreln();
+      $result['data2']=$this->Import_model->checkcoresv();
+      $result['data3']=$this->Import_model->checkcoretd();
+      $result['data4']=$this->Import_model->checkmbwinln();
+      $result['data5']=$this->Import_model->checkmbwinsv();
+      $result['data6']=$this->Import_model->checkmbwintd();
+      $result['data7']=$this->Import_model->checkmigratedln();
+      $result['data8']=$this->Import_model->checkmigratedsv();
+      $result['data9']=$this->Import_model->checkmigratedtd();
+      $this->load->view('manage_data',$result);
     }
 }
 ?>

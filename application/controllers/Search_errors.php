@@ -16,6 +16,10 @@ class Search_errors extends CI_Controller {
 
     // Load model
     $this->load->model('Search_errors_model');
+    
+    if($this->session->userdata('logged_in') !== TRUE){
+      redirect('login');
+    }
   }
 
   function loan($rowno=NULL){

@@ -608,4 +608,33 @@ class Import_model extends CI_Model
     {
         $query = $this->db->query("call eraseInquireData()");
     }
+
+    function checkcoreln(){
+        return $this->db->count_all('coreln');
+    }
+    function checkcoresv(){
+        return $this->db->count_all('coresv');
+    }
+    function checkcoretd(){
+        return $this->db->count_all('coretd');
+    }
+    function checkmbwinln(){
+        return $this->db->count_all('mbwinln');
+    }
+    function checkmbwinsv(){
+        return $this->db->count_all('mbwinsv');
+    }
+    function checkmbwintd(){
+        return $this->db->count_all('mbwintd');
+    }
+    function checkmigratedln(){
+        return $this->db->count_all('migratedln');
+    }
+    function checkmigratedsv(){
+        return $this->db->count_all('migratedsv');
+    }
+    function checkmigratedtd(){
+        return $this->db->count_all('migratedtd');
+    }
+
 }

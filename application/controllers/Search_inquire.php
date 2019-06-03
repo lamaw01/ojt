@@ -16,6 +16,7 @@ class Search_inquire extends CI_Controller {
 
     // Load model
     $this->load->model('Search_inquire_model');
+    
   }
 
   function loan($rowno=NULL){

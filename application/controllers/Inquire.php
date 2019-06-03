@@ -4,12 +4,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Inquire extends CI_Controller {
   function __construct(){
     parent::__construct();
-
+    /*
     $loginstatus = $this->session->userdata('level');
         if($loginstatus != 1 && $loginstatus != 2 && $loginstatus != 3){
             $this->session->sess_destroy();
             redirect(base_url());
         }
+    if($this->session->userdata('logged_in') !== TRUE){
+      redirect('login');
+    }*/
 
     $this->load->model('Inquire_model');
 }
@@ -24,7 +27,7 @@ class Inquire extends CI_Controller {
     }
     $this->load->library('pagination');
     $config['uri_segment'] = 3;
-    $config['use_page_numbers'] = TRUE;
+    $config['use_page_numbers'] = false;
     $config['base_url'] = base_url().'inquire/loan';
     $config['total_rows'] = $this->Inquire_model->total_recordln();
     $config['per_page'] = $limit;
@@ -62,7 +65,7 @@ class Inquire extends CI_Controller {
     }
     $this->load->library('pagination');
     $config['uri_segment'] = 3;
-    $config['use_page_numbers'] = TRUE;
+    $config['use_page_numbers'] = false;
     $config['base_url'] = base_url().'inquire/savings';
     $config['total_rows'] = $this->Inquire_model->total_recordsv();
     $config['per_page'] = $limit;
@@ -100,7 +103,7 @@ class Inquire extends CI_Controller {
     }
     $this->load->library('pagination');
     $config['uri_segment'] = 3;
-    $config['use_page_numbers'] = TRUE;
+    $config['use_page_numbers'] = false;
     $config['base_url'] = base_url().'inquire/time_deposit';
     $config['total_rows'] = $this->Inquire_model->total_recordtd();
     $config['per_page'] = $limit;

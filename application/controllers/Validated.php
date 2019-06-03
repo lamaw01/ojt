@@ -10,6 +10,9 @@ class Validated extends CI_Controller {
             $this->session->sess_destroy();
             redirect(base_url());
         }
+    if($this->session->userdata('logged_in') !== TRUE){
+      redirect('login');
+    }
 
     $this->load->model('Validated_model');
 }
@@ -24,7 +27,7 @@ class Validated extends CI_Controller {
     }
     $this->load->library('pagination');
     $config['uri_segment'] = 3;
-    $config['use_page_numbers'] = TRUE;
+    $config['use_page_numbers'] = false;
     $config['base_url'] = base_url().'validated/loan';
     $config['total_rows'] = $this->Validated_model->total_recordln();
     $config['per_page'] = $limit;
@@ -62,7 +65,7 @@ class Validated extends CI_Controller {
     }
     $this->load->library('pagination');
     $config['uri_segment'] = 3;
-    $config['use_page_numbers'] = TRUE;
+    $config['use_page_numbers'] = false;
     $config['base_url'] = base_url().'validated/savings';
     $config['total_rows'] = $this->Validated_model->total_recordsv();
     $config['per_page'] = $limit;
@@ -100,7 +103,7 @@ class Validated extends CI_Controller {
     }
     $this->load->library('pagination');
     $config['uri_segment'] = 3;
-    $config['use_page_numbers'] = TRUE;
+    $config['use_page_numbers'] = false;
     $config['base_url'] = base_url().'validated/time_deposit';
     $config['total_rows'] = $this->Validated_model->total_recordtd();
     $config['per_page'] = $limit;

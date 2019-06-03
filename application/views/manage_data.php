@@ -154,12 +154,15 @@
       <div class="container-fluid" style="width: 350px; float: left;">
         <table class="table table-striped"  cellpadding="2">
           <tr>
-            <td>
+            <?php
+            if($data1 > 1 && $data2 > 1 && $data3 > 1 && $data4 > 1 && $data5 > 1 && $data6 > 1 && $data7 > 1 && $data8 > 1 && $data9 > 1)?> 
+              <td>
               <h5>Correct All Data</h5>
-            </td>
-            <td>
+              </td>
+
+              <td>
               <button><a href='<?php echo base_url()?>import/callcorrectAllData'>Correct</a></button>
-            </td>
+              </td>   
           </tr>
         <!--
           <tr>
@@ -189,10 +192,15 @@
         -->
         </table>
       </div>
-        <div style="margin-left: 250px; margin-top: 15px;">
-            <p>Click only once</p>
-        </div>
-      <div class="container" style="width: 150px; height: 1px; margin-top: -30px;">
+           <?php
+            if($data1 > 1 && $data2 > 1 && $data3 > 1 && $data4 > 1 && $data5 > 1 && $data6 > 1 && $data7 > 1 && $data8 > 1 && $data9 > 1)
+            { 
+              echo "<div style='margin-left: 250px; margin-top: 15px;'>";
+              echo "<p>Click only once</p>";
+              echo "</div>";
+            }
+            ?>  
+      <div class="container" style="width: 150px; height: 1px; margin-top: 0px; float: center;">
         <?php
         if($this->uri->segment(2) == "callcorrectAllData"){
           echo '<p class="text-success">Data Corrected</p>';
@@ -229,7 +237,7 @@
         }
         ?>
       </div>
-      <div class="container-fluid" style="width: 350px; float: right; margin-top: -15px;">
+      <div class="container-fluid" style="width: 350px; margin-top: -15px; float: right;">
         <table class="table table-striped"  cellpadding="2">
           <tr>
             <td>

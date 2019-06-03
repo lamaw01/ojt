@@ -5,6 +5,7 @@ class Page extends CI_Controller{
   function __construct(){
     parent::__construct();
     $this->load->model('Show_model');
+    $this->load->model('Import_model');
     $this->load->library('pagination');
     if($this->session->userdata('logged_in') !== TRUE){
       redirect('login');
@@ -13,8 +14,17 @@ class Page extends CI_Controller{
  
   function index(){
     //Allowing access to admin only
-    if($this->session->userdata('level')==='1'){ 
-      $this->load->view('dashboard_view');
+    if($this->session->userdata('level')==='1'){
+      $result['data1']=$this->Import_model->checkcoreln();
+      $result['data2']=$this->Import_model->checkcoresv();
+      $result['data3']=$this->Import_model->checkcoretd();
+      $result['data4']=$this->Import_model->checkmbwinln();
+      $result['data5']=$this->Import_model->checkmbwinsv();
+      $result['data6']=$this->Import_model->checkmbwintd();
+      $result['data7']=$this->Import_model->checkmigratedln();
+      $result['data8']=$this->Import_model->checkmigratedsv();
+      $result['data9']=$this->Import_model->checkmigratedtd();
+      $this->load->view('dashboard_view',$result);
     }else{
       $this->session->sess_destroy();
       redirect(base_url());
@@ -100,7 +110,16 @@ class Page extends CI_Controller{
     //Allowing access to tech only
     $loginstatus = $this->session->userdata('level');
     if($loginstatus == 1){
-      $this->load->view('manage_data');
+      $result['data1']=$this->Import_model->checkcoreln();
+      $result['data2']=$this->Import_model->checkcoresv();
+      $result['data3']=$this->Import_model->checkcoretd();
+      $result['data4']=$this->Import_model->checkmbwinln();
+      $result['data5']=$this->Import_model->checkmbwinsv();
+      $result['data6']=$this->Import_model->checkmbwintd();
+      $result['data7']=$this->Import_model->checkmigratedln();
+      $result['data8']=$this->Import_model->checkmigratedsv();
+      $result['data9']=$this->Import_model->checkmigratedtd();
+      $this->load->view('manage_data',$result);
     }else{
       $this->session->sess_destroy();
       redirect(base_url());

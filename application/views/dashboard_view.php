@@ -189,7 +189,12 @@
               </tr>
               <tr>  
                 <td>
-                    <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
+                  <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="text-success" style="padding-top: 10px; text-align: center;"><?php echo $data1; ?> Data Inserted</p>
                 </td>
               </tr>
             </table>
@@ -213,6 +218,11 @@
                     <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
                 </td>
               </tr>
+              <tr>
+                <td>
+                  <p class="text-success" style="padding-top: 10px; text-align: center;"><?php echo $data2; ?> Data Inserted</p>
+                </td>
+              </tr>
             </table>
             </center> 
           </form>
@@ -232,6 +242,11 @@
               <tr>
                 <td>
                     <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="text-success" style="padding-top: 10px; text-align: center;"><?php echo $data3; ?> Data Inserted</p>
                 </td>
               </tr>
             </table>
@@ -256,6 +271,11 @@
                     <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
                 </td>
               </tr>
+              <tr>
+                <td>
+                  <p class="text-success" style="padding-top: 10px; text-align: center;"><?php echo $data7; ?> Data Inserted</p>
+                </td>
+              </tr>
             </table>
             </center>
           </form>
@@ -277,6 +297,11 @@
                     <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
                 </td>
               </tr>
+              <tr>
+                <td>
+                  <p class="text-success" style="padding-top: 10px; text-align: center;"><?php echo $data8; ?> Data Inserted</p>
+                </td>
+              </tr>
             </table> 
             </center>
           </form>
@@ -296,6 +321,11 @@
               <tr>
                 <td>
                     <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="text-success" style="padding-top: 10px; text-align: center;"><?php echo $data9; ?> Data Inserted</p>
                 </td>
               </tr>
             </table>
@@ -320,6 +350,11 @@
                     <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
                 </td>
               </tr>
+              <tr>
+                <td>
+                  <p class="text-success" style="padding-top: 10px; text-align: center;"><?php echo $data4; ?> Data Inserted</p>
+                </td>
+              </tr>
             </table>
             </center>
           </form>
@@ -341,6 +376,11 @@
                     <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
                 </td>
               </tr>
+              <tr>
+                <td>
+                  <p class="text-success" style="padding-top: 10px; text-align: center;"><?php echo $data5; ?> Data Inserted</p>
+                </td>
+              </tr>
             </table>
             </center>
           </form>
@@ -360,6 +400,11 @@
               <tr>
                 <td>
                     <button style="margin-top: 20px;" type="submit" name="submit">Import</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="text-success" style="padding-top: 10px; text-align: center;"><?php echo $data6; ?> Data Inserted</p>
                 </td>
               </tr>
             </table> 

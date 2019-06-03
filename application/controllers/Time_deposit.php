@@ -5,6 +5,9 @@ class Time_deposit extends CI_Controller {
   function __construct(){
     parent::__construct();
     $this->load->model('Show_model');
+    if($this->session->userdata('logged_in') !== TRUE){
+      redirect('login');
+    }
 }
 
   function index(){
