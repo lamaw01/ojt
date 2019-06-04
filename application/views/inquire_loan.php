@@ -117,7 +117,7 @@
                 <?php endif;?>
               </ul>
               <ul class="nav navbar-nav navbar-right nav-tabs" >
-                <?php if($this->session->userdata('level')==='1'):?>\
+                <?php if($this->session->userdata('level')==='1'):?>
                   <li><a href="<?php echo base_url('page/managedata');?>">Manage Data</a></li>
                   <li><a href="<?php echo base_url('reg');?>">Create Account</a></li>
                   <li><a href="<?php echo base_url('page/displayprofile');?>">Admin</a></li>

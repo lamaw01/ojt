@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2019 at 10:47 AM
+-- Generation Time: Jun 04, 2019 at 09:49 AM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.1.29
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ojt_populated`
+-- Database: `ojt_empty`
 --
 
 DELIMITER $$
@@ -810,18 +810,19 @@ CREATE TABLE `tbl_users` (
   `user_name` varchar(255) NOT NULL,
   `user_password` varchar(255) NOT NULL,
   `confirm_password` varchar(255) NOT NULL,
-  `user_level` int(3) NOT NULL
+  `user_level` int(3) NOT NULL,
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`user_id`, `user_fname`, `user_lname`, `user_name`, `user_password`, `confirm_password`, `user_level`) VALUES
-(21, 'tech', 'staff', 'tech', 'd9f9133fb120cd6096870bc2b496805b', 'tech', 2),
-(22, 'coop', 'staff', 'coop', '0b5cb0ec5f538ad96aec1269bec93c9c', 'coop', 3),
-(24, 'admin', 'staff', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 1),
-(25, 'Janrey', 'Dumaog', 'janrey', 'eb99b909fb8c2ee0f46e71521d707674', 'lamaw01', 1);
+INSERT INTO `tbl_users` (`user_id`, `user_fname`, `user_lname`, `user_name`, `user_password`, `confirm_password`, `user_level`, `date_created`) VALUES
+(21, 'tech', 'staff', 'tech', 'd9f9133fb120cd6096870bc2b496805b', 'tech', 2, '2019-06-04 07:49:12'),
+(22, 'coop', 'staff', 'coop', '0b5cb0ec5f538ad96aec1269bec93c9c', 'coop', 3, '2019-06-04 07:49:12'),
+(24, 'admin', 'staff', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 1, '2019-06-04 07:49:12'),
+(25, 'Janrey', 'Dumaog', 'janrey', 'eb99b909fb8c2ee0f46e71521d707674', 'lamaw01', 1, '2019-06-04 07:49:12');
 
 -- --------------------------------------------------------
 

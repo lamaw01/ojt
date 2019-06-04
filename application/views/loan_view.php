@@ -190,7 +190,7 @@
     <script src="<?php echo base_url('assets/plugins/pace/pace.js'); ?>"></script>
 
     <script>
-      var startTime = setInterval(resume, 1750);
+      var startTime = setInterval(resume, 1750); //CHANGE THIS VALUE TO ADJUST VALIDATION SPEED
     
       function resume(){
         $('#botox')[0].click();

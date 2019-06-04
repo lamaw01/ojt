@@ -7,6 +7,7 @@
     <link href="<?php echo base_url('assets/plugins/bootstrap/css/bootstrap.min.css');?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/plugins/pace/pace.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/mystyle.css');?>" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Spectral" rel="stylesheet">
     
