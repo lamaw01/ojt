@@ -146,44 +146,92 @@
               <?php if(count($data)): foreach($data as $row): ?>
 
             <tr>
+            <?php if ($row->mbwinln_open_date != $row->coreln_open_date) { ?>
+              <td style="background-color: red;"><p>Open Date</p></td>
+              <td style="background-color: red;"><p><?php echo $row->mbwinln_open_date; ?></p></td>
+              <td style="background-color: red;"><p><?php echo $row->coreln_open_date; ?></p></td>
+            <?php } else { ?>
               <td><p>Open Date</p></td>
               <td><p><?php echo $row->mbwinln_open_date; ?></p></td>
               <td><p><?php echo $row->coreln_open_date; ?></p></td>
+            <?php } ?>
             </tr>
             <tr>
+            <?php if ($row->mbwinln_int_rate != $row->coreln_int_rate) { ?>
+              <td style="background-color: red;"><p>Interest Rate</p></td>
+              <td style="background-color: red;"><p><?php echo $row->mbwinln_int_rate; ?></p></td>
+              <td style="background-color: red;"><p><?php echo $row->coreln_int_rate; ?></p></td>
+            <?php } else { ?>
               <td><p>Interest Rate</p></td>
               <td><p><?php echo $row->mbwinln_int_rate; ?></p></td>
               <td><p><?php echo $row->coreln_int_rate; ?></p></td>
+            <?php } ?> 
             </tr>
             <tr>
+            <?php if ($row->mbwinln_pen_rate != $row->coreln_pen_rate) { ?>
+              <td style="background-color: red;"><p>Penalty Rate</p></td>
+              <td style="background-color: red;"><p><?php echo $row->mbwinln_pen_rate; ?></p></td>
+              <td style="background-color: red;"><p><?php echo $row->coreln_pen_rate; ?></p></td>
+            <?php } else { ?>
               <td><p>Penalty Rate</p></td>
               <td><p><?php echo $row->mbwinln_pen_rate; ?></p></td>
               <td><p><?php echo $row->coreln_pen_rate; ?></p></td>
+            <?php } ?>
             </tr>
             <tr>
+            <?php if ($row->mbwinln_principal_amt != $row->coreln_loan_amount) { ?>
+              <td style="background-color: red;"><p>Loan amount</p></td>
+              <td style="background-color: red;"><p><?php echo $row->mbwinln_principal_amt; ?></p></td>
+              <td style="background-color: red;"><p><?php echo $row->coreln_loan_amount; ?></p></td>
+            <?php } else { ?>
               <td><p>Loan amount</p></td>
               <td><p><?php echo $row->mbwinln_principal_amt; ?></p></td>
               <td><p><?php echo $row->coreln_loan_amount; ?></p></td>
+            <?php } ?>
             </tr>
             <tr>
+            <?php if ($row->mbwinln_bal_amt != $row->coreln_out_bal) { ?>
+              <td style="background-color: red;"><p>Outstanding Balance</p></td>
+              <td style="background-color: red;"><p><?php echo $row->mbwinln_bal_amt; ?></p></td>
+              <td style="background-color: red;"><p><?php echo $row->coreln_out_bal; ?></p></td>
+            <?php } else { ?>
               <td><p>Outstanding Balance</p></td>
               <td><p><?php echo $row->mbwinln_bal_amt; ?></p></td>
               <td><p><?php echo $row->coreln_out_bal; ?></p></td>
+            <?php } ?>
             </tr>
             <tr>
+            <?php if ($row->mbwinln_over_due != $row->coreln_over_due) { ?>
+              <td style="background-color: red;"><p>Overdue</p></td>
+              <td style="background-color: red;"><p><?php echo $row->mbwinln_over_due; ?></p></td>
+              <td style="background-color: red;"><p><?php echo $row->coreln_over_due; ?></p></td>
+            <?php } else { ?>
               <td><p>Overdue</p></td>
               <td><p><?php echo $row->mbwinln_over_due; ?></p></td>
               <td><p><?php echo $row->coreln_over_due; ?></p></td>
+            <?php } ?>
             </tr>
             <tr>
+            <?php if ($row->mbwinln_int_bal_amt != $row->coreln_int_due_amt) { ?>
+              <td style="background-color: red;"><p>Interest Due Amount</p></td>
+              <td style="background-color: red;"><p><?php echo $row->mbwinln_int_bal_amt; ?></p></td>
+              <td style="background-color: red;"><p><?php echo $row->coreln_int_due_amt; ?></p></td>
+            <?php } else { ?>
               <td><p>Interest Due Amount</p></td>
               <td><p><?php echo $row->mbwinln_int_bal_amt; ?></p></td>
               <td><p><?php echo $row->coreln_int_due_amt; ?></p></td>
+            <?php } ?>
             </tr>
             <tr>
+            <?php if ($row->mbwinln_pen_bal != $row->coreln_penalty) { ?>
+              <td style="background-color: red;"><p>Penalty</p></td>
+              <td style="background-color: red;"><p><?php echo $row->mbwinln_pen_bal; ?></p></td>
+              <td style="background-color: red;"><p><?php echo $row->coreln_penalty; ?></p></td>
+            <?php } else { ?>
               <td><p>Penalty</p></td>
               <td><p><?php echo $row->mbwinln_pen_bal; ?></p></td>
               <td><p><?php echo $row->coreln_penalty; ?></p></td>
+            <?php } ?>
             </tr>
 
               <?php endforeach; ?>

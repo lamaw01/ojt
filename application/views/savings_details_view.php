@@ -146,24 +146,48 @@
               <?php if(count($data)): foreach($data as $row): ?>
 
               <tr>
+              <?php if ($row->mbwinsv_open_date != $row->coresv_open_date) { ?>
+                <td style="background-color: red;"><p>Open Date</p></td>
+                <td style="background-color: red;"><p><?php echo $row->mbwinsv_open_date; ?></p></td>
+                <td style="background-color: red;"><p><?php echo $row->coresv_open_date; ?></p></td>
+              <?php } else { ?>
                 <td><p>Open Date</p></td>
                 <td><p><?php echo $row->mbwinsv_open_date; ?></p></td>
                 <td><p><?php echo $row->coresv_open_date; ?></p></td>
+              <?php } ?>
               </tr>
               <tr>
+              <?php if ($row->mbwinsv_bal_amt != $row->coresv_current_bal) { ?>
+                <td style="background-color: red;"><p>Current Balance</p></td>
+                <td style="background-color: red;"><p><?php echo $row->mbwinsv_bal_amt; ?></p></td>
+                <td style="background-color: red;"><p><?php echo $row->coresv_current_bal; ?></p></td>
+              <?php } else { ?>
                 <td><p>Current Balance</p></td>
                 <td><p><?php echo $row->mbwinsv_bal_amt; ?></p></td>
                 <td><p><?php echo $row->coresv_current_bal; ?></p></td>
+              <?php } ?>
               </tr>
               <tr>
+              <?php if ($row->mbwinsv_int_bal_amt != $row->coresv_interest) { ?>
+                <td style="background-color: red;"><p>Interest</p></td>
+                <td style="background-color: red;"><p><?php echo $row->mbwinsv_int_bal_amt; ?></p></td>
+                <td style="background-color: red;"><p><?php echo $row->coresv_interest; ?></p></td>
+              <?php } else { ?>
                 <td><p>Interest</p></td>
                 <td><p><?php echo $row->mbwinsv_int_bal_amt; ?></p></td>
                 <td><p><?php echo $row->coresv_interest; ?></p></td>
+              <?php } ?>
               </tr>
               <tr>
+              <?php if ($row->mbwinsv_acc_name != $row->coresv_acc_name) { ?>
+                <td style="background-color: red;"><p>Account Name</p></td>
+                <td style="background-color: red;"><p><?php echo $row->mbwinsv_acc_name; ?></p></td>
+                <td style="background-color: red;"><p><?php echo $row->coresv_acc_name; ?></p></td>
+              <?php } else { ?>
                 <td><p>Account Name</p></td>
                 <td><p><?php echo $row->mbwinsv_acc_name; ?></p></td>
                 <td><p><?php echo $row->coresv_acc_name; ?></p></td>
+              <?php } ?>
               </tr>
               <?php endforeach; ?>
               <?php else: ?>
