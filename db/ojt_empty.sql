@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2019 at 09:49 AM
+-- Generation Time: Jun 07, 2019 at 10:20 AM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.1.29
 
@@ -227,6 +227,58 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `correctMigratedData` ()  BEGIN
     
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteAllInquire` ()  BEGIN
+	TRUNCATE TABLE inquireln;
+    TRUNCATE TABLE inquiresv;
+    TRUNCATE TABLE inquiretd;    
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteAllReports` ()  BEGIN
+	TRUNCATE TABLE errorln;
+    TRUNCATE TABLE errorsv;
+    TRUNCATE TABLE errortd;
+    TRUNCATE TABLE validateln;
+    TRUNCATE TABLE validatesv;
+    TRUNCATE TABLE validatetd;
+    
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteCoreLoan` ()  BEGIN
+	TRUNCATE TABLE coreln;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteCoreSavings` ()  BEGIN
+	TRUNCATE TABLE coresv;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteCoreTimeDeposit` ()  BEGIN
+	TRUNCATE TABLE coretd;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteMbwinLoan` ()  BEGIN
+	TRUNCATE TABLE mbwinln;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteMbwinSavings` ()  BEGIN
+	TRUNCATE TABLE mbwinsv;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteMbwinTimeDeposit` ()  BEGIN
+	TRUNCATE TABLE mbwintd;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteMigratedLoan` ()  BEGIN
+	TRUNCATE TABLE migratedln;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteMigratedSavings` ()  BEGIN
+	TRUNCATE TABLE migratedsv;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteMigratedTimeDeposit` ()  BEGIN
+	TRUNCATE TABLE migratedtd;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `eraseAllData` ()  BEGIN
 	TRUNCATE TABLE coreln;
     TRUNCATE TABLE coresv;
@@ -243,42 +295,6 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `eraseAllData` ()  BEGIN
     TRUNCATE TABLE migratedln;
     TRUNCATE TABLE migratedsv;
     TRUNCATE TABLE migratedtd;
-    TRUNCATE TABLE validateln;
-    TRUNCATE TABLE validatesv;
-    TRUNCATE TABLE validatetd;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eraseCoreData` ()  BEGIN
-	TRUNCATE TABLE coreln;
-    TRUNCATE TABLE coresv;
-    TRUNCATE TABLE coretd;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eraseErrorData` ()  BEGIN
-    TRUNCATE TABLE errorln;
-    TRUNCATE TABLE errorsv;
-    TRUNCATE TABLE errortd;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eraseInquireData` ()  BEGIN
-    TRUNCATE TABLE inquireln;
-    TRUNCATE TABLE inquiresv;
-    TRUNCATE TABLE inquiretd;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eraseMbwinData` ()  BEGIN
-    TRUNCATE TABLE mbwinln;
-    TRUNCATE TABLE mbwinsv;
-    TRUNCATE TABLE mbwintd;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eraseMigratedData` ()  BEGIN
-    TRUNCATE TABLE migratedln;
-    TRUNCATE TABLE migratedsv;
-    TRUNCATE TABLE migratedtd;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eraseValidatedData` ()  BEGIN
     TRUNCATE TABLE validateln;
     TRUNCATE TABLE validatesv;
     TRUNCATE TABLE validatetd;
@@ -819,10 +835,10 @@ CREATE TABLE `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`user_id`, `user_fname`, `user_lname`, `user_name`, `user_password`, `confirm_password`, `user_level`, `date_created`) VALUES
-(21, 'tech', 'staff', 'tech', 'd9f9133fb120cd6096870bc2b496805b', 'tech', 2, '2019-06-04 07:49:12'),
-(22, 'coop', 'staff', 'coop', '0b5cb0ec5f538ad96aec1269bec93c9c', 'coop', 3, '2019-06-04 07:49:12'),
-(24, 'admin', 'staff', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 1, '2019-06-04 07:49:12'),
-(25, 'Janrey', 'Dumaog', 'janrey', 'eb99b909fb8c2ee0f46e71521d707674', 'lamaw01', 1, '2019-06-04 07:49:12');
+(21, 'tech', 'staff', 'tech', 'd9f9133fb120cd6096870bc2b496805b', 'tech', 2, '2019-06-04 07:38:37'),
+(22, 'coop', 'staff', 'coop', '0b5cb0ec5f538ad96aec1269bec93c9c', 'coop', 3, '2019-06-04 07:38:37'),
+(24, 'admin', 'staff', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 1, '2019-06-04 07:38:37'),
+(25, 'Janrey', 'Dumaog', 'janrey', 'eb99b909fb8c2ee0f46e71521d707674', 'lamaw01', 1, '2019-06-04 07:38:37');
 
 -- --------------------------------------------------------
 

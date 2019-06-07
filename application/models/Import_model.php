@@ -584,30 +584,52 @@ class Import_model extends CI_Model
     {
         $query = $this->db->query("call eraseAllData()");
     }
-    function eraseCoreData()
+    function deleteCoreLoan()
     {
-        $query = $this->db->query("call eraseCoreData()");
+        $query = $this->db->query("call deleteCoreLoan()");
     }
-    function eraseMbwinData()
+    function deleteCoreSavings()
     {
-        $query = $this->db->query("call eraseMbwinData()");
+        $query = $this->db->query("call deleteCoreSavings()");
     }
-    function eraseMigratedData()
+    function deleteCoreTimeDeposit()
     {
-        $query = $this->db->query("call eraseMigratedData()");
+        $query = $this->db->query("call deleteCoreTimeDeposit()");
     }
-    function eraseValidatedData()
+    function deleteMbwinLoan()
     {
-        $query = $this->db->query("call eraseValidatedData()");
+        $query = $this->db->query("call deleteMbwinLoan()");
     }
-    function eraseErrorData()
+    function deleteMbwinSavings()
     {
-        $query = $this->db->query("call eraseErrorData()");
+        $query = $this->db->query("call deleteMbwinSavings()");
     }
-    function eraseInquireData()
+    function deleteMbwinTimeDeposit()
     {
-        $query = $this->db->query("call eraseInquireData()");
+        $query = $this->db->query("call deleteMbwinTimeDeposit()");
     }
+    function deleteMigratedLoan()
+    {
+        $query = $this->db->query("call deleteMigratedLoan()");
+    }
+    function deleteMigratedSavings()
+    {
+        $query = $this->db->query("call deleteMigratedSavings()");
+    }
+    function deleteMigratedTimeDeposit()
+    {
+        $query = $this->db->query("call deleteMigratedTimeDeposit()");
+    }
+    function deleteAllReports()
+    {
+        $query = $this->db->query("call deleteAllReports()");
+    }
+    function deleteAllInquire()
+    {
+        $query = $this->db->query("call deleteAllInquire()");
+    }  
+
+
 
     function checkcoreln(){
         return $this->db->count_all('coreln');

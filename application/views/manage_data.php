@@ -216,22 +216,37 @@
         elseif($this->uri->segment(2) == "calleraseAllData") {
           echo '<p class="text-danger">Data Deleted</p>';
         }
-        elseif($this->uri->segment(2) == "calleraseCoreData") {
+        elseif($this->uri->segment(2) == "calldeleteCoreLoan") {
           echo '<p class="text-danger">Data Deleted</p>';
         }
-        elseif($this->uri->segment(2) == "calleraseMbwinData") {
+        elseif($this->uri->segment(2) == "calldeleteCoreSavings") {
           echo '<p class="text-danger">Data Deleted</p>';
         }
-        elseif($this->uri->segment(2) == "calleraseMigratedData") {
+        elseif($this->uri->segment(2) == "calldeleteCoreTimeDeposit") {
           echo '<p class="text-danger">Data Deleted</p>';
         }
-        elseif($this->uri->segment(2) == "calleraseValidatedData") {
+        elseif($this->uri->segment(2) == "calldeleteMbwinLoan") {
           echo '<p class="text-danger">Data Deleted</p>';
         }
-        elseif($this->uri->segment(2) == "calleraseErrorData") {
+        elseif($this->uri->segment(2) == "calldeleteMbwinSavings") {
           echo '<p class="text-danger">Data Deleted</p>';
         }
-        elseif($this->uri->segment(2) == "calleraseInquireData") {
+        elseif($this->uri->segment(2) == "calldeleteMbwinTimeDeposit") {
+          echo '<p class="text-danger">Data Deleted</p>';
+        }
+        elseif($this->uri->segment(2) == "calldeleteMigratedLoan") {
+          echo '<p class="text-danger">Data Deleted</p>';
+        }
+        elseif($this->uri->segment(2) == "calldeleteMigratedSavings") {
+          echo '<p class="text-danger">Data Deleted</p>';
+        }
+        elseif($this->uri->segment(2) == "calldeleteMigratedTimeDeposit") {
+          echo '<p class="text-danger">Data Deleted</p>';
+        }
+        elseif($this->uri->segment(2) == "calldeleteAllReports") {
+          echo '<p class="text-danger">Data Deleted</p>';
+        }
+        elseif($this->uri->segment(2) == "calldeleteAllInquire") {
           echo '<p class="text-danger">Data Deleted</p>';
         }
         ?>
@@ -246,52 +261,91 @@
               <button><a href='<?php echo base_url()?>import/calleraseAllData'>Delete</a></button>
             </td>
           </tr>
-          <tr>
             <td>
-              <h5>Delete Core Data</h5>
+              <h5>Delete Core Loan Data</h5>
             </td>
             <td>
-              <button><a href='<?php echo base_url()?>import/calleraseCoreData'>Delete</a></button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h5>Delete Mbwin Data</h5>
-            </td>
-            <td>
-              <button><a href='<?php echo base_url()?>import/calleraseMbwinData'>Delete</a></button>
+              <button><a href='<?php echo base_url()?>import/calldeleteCoreLoan'>Delete</a></button>
             </td>
           </tr>
           <tr>
             <td>
-              <h5>Delete Migrated Data</h5>
+              <h5>Delete Core Savings Data</h5>
             </td>
             <td>
-              <button><a href='<?php echo base_url()?>import/calleraseMigratedData'>Delete</a></button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h5>Delete Validated Data</h5>
-            </td>
-            <td>
-              <button><a href='<?php echo base_url()?>import/calleraseValidatedData'>Delete</a></button>
+              <button><a href='<?php echo base_url()?>import/calldeleteCoreSavings'>Delete</a></button>
             </td>
           </tr>
           <tr>
             <td>
-              <h5>Delete Error Data</h5>
+              <h5>Delete Core Time Deposit Data</h5>
             </td>
             <td>
-              <button><a href='<?php echo base_url()?>import/calleraseErrorData'>Delete</a></button>
+              <button><a href='<?php echo base_url()?>import/calldeleteCoreTimeDeposit'>Delete</a></button>
             </td>
           </tr>
           <tr>
             <td>
-              <h5>Delete Inquire Data</h5>
+              <h5>Delete Mbwin Loan Data</h5>
             </td>
             <td>
-              <button><a href='<?php echo base_url()?>import/calleraseInquireData'>Delete</a></button>
+              <button><a href='<?php echo base_url()?>import/calldeleteMbwinLoan'>Delete</a></button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h5>Delete Mbwin Savings Data</h5>
+            </td>
+            <td>
+              <button><a href='<?php echo base_url()?>import/calldeleteMbwinSavings'>Delete</a></button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h5>Delete Mbwin Time Deposit Data</h5>
+            </td>
+            <td>
+              <button><a href='<?php echo base_url()?>import/calldeleteMbwinTimeDeposit'>Delete</a></button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h5>Delete Migrated Loan Data</h5>
+            </td>
+            <td>
+              <button><a href='<?php echo base_url()?>import/calldeleteMigratedLoan'>Delete</a></button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h5>Delete Migrated Savings Data</h5>
+            </td>
+            <td>
+              <button><a href='<?php echo base_url()?>import/calldeleteMigratedSavings'>Delete</a></button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h5>Delete Migrated Time Deposit Data</h5>
+            </td>
+            <td>
+              <button><a href='<?php echo base_url()?>import/calldeleteMigratedTimeDeposit'>Delete</a></button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h5>Delete All Reports Data</h5>
+            </td>
+            <td>
+              <button><a href='<?php echo base_url()?>import/calldeleteAllReports'>Delete</a></button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h5>Delete All Inquire Data</h5>
+            </td>
+            <td>
+              <button><a href='<?php echo base_url()?>import/calldeleteAllInquire'>Delete</a></button>
             </td>
           </tr>
         </table>
