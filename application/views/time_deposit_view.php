@@ -162,17 +162,32 @@
 
               <?php endif; ?>
               <?php
-              if($this->uri->segment(2) == "callchecktd"){
-                  $query = $this->db->query("call checkvaltd('$row->migratetd_id')");
-                  mysqli_next_result($this->db->conn_id);
+              if($row->migratetd_id > 1)
+              {
+                if($this->uri->segment(2) == "callchecktd"){
+                    $query = $this->db->query("call checkvaltd('$row->migratetd_id')");
+                    mysqli_next_result($this->db->conn_id);
 
-                  if($query->num_rows() > 0){
-                    echo '<p class="text-success">Data Validated</p>';
-                  }else{
-                    echo '<p class="text-danger ">Validation Error</p>';
-                  }
+                    if($query->num_rows() > 0){
+                      echo '<p class="text-success">Data Validated</p>';
+                    }else{
+                      echo '<p class="text-danger ">Validation Error</p>';
+                    }
+                }
+              }else
+              {
+                redirect('page/finish');
               }
+  
             ?>
+
+            <!--<?php 
+              //if($row->migratetd_id == 0)
+              {
+                //echo "there are no files to validate";
+                //redirect('page/check');
+              }
+            ?>-->
                
             </table>
           </form>

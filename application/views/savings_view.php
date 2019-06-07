@@ -162,15 +162,21 @@
 
               <?php endif; ?>
               <?php
-              if($this->uri->segment(2) == "callchecksv"){
-                  $query = $this->db->query("call checkvalsv('$row->migratesv_id')");
-                  mysqli_next_result($this->db->conn_id);
+              if($row->migratesv_id > 1)
+              {
+                if($this->uri->segment(2) == "callchecksv"){
+                    $query = $this->db->query("call checkvalsv('$row->migratesv_id')");
+                    mysqli_next_result($this->db->conn_id);
 
-                  if($query->num_rows() > 0){
-                    echo '<p class="text-success">Data Validated</p>';
-                  }else{
-                    echo '<p class="text-danger ">Validation Error</p>';
-                  }
+                    if($query->num_rows() > 0){
+                      echo '<p class="text-success">Data Validated</p>';
+                    }else{
+                      echo '<p class="text-danger ">Validation Error</p>';
+                    }
+                }
+              }else
+              {
+                redirect('page/finish');
               }
             ?>
                
