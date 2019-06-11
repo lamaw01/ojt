@@ -147,9 +147,9 @@
 
               <tr>
               <?php if ($row->mbwintd_open_date != $row->coretd_open_date) { ?>
-                <td style="background-color: red;"><p>Open Date</p></td>
-                <td style="background-color: red;"><p><?php echo $row->mbwintd_open_date; ?></p></td>
-                <td style="background-color: red;"><p><?php echo $row->coretd_open_date; ?></p></td>
+                <td style="background-color: #ff6666;"><p>Open Date</p></td>
+                <td style="background-color: #ff6666"><p><?php echo $row->mbwintd_open_date; ?></p></td>
+                <td style="background-color: #ff6666"><p><?php echo $row->coretd_open_date; ?></p></td>
               <?php } else { ?>
                 <td><p>Open Date</p></td>
                 <td><p><?php echo $row->mbwintd_open_date; ?></p></td>
@@ -158,9 +158,9 @@
               </tr>
               <tr>
               <?php if ($row->mbwintd_bal_amt != $row->coretd_principal_amt) { ?>
-                <td style="background-color: red;"><p>Principal Amount</p></td>
-                <td style="background-color: red;"><p><?php echo $row->mbwintd_bal_amt; ?></p></td>
-                <td style="background-color: red;"><p><?php echo $row->coretd_principal_amt; ?></p></td>
+                <td style="background-color: #ff6666;"><p>Principal Amount</p></td>
+                <td style="background-color: #ff6666;"><p><?php echo $row->mbwintd_bal_amt; ?></p></td>
+                <td style="background-color: #ff6666;"><p><?php echo $row->coretd_principal_amt; ?></p></td>
               <?php } else { ?>
                 <td><p>Principal Amount</p></td>
                 <td><p><?php echo $row->mbwintd_bal_amt; ?></p></td>
@@ -169,9 +169,9 @@
               </tr>
               <tr>
               <?php if ($row->mbwintd_int_bal_amt != $row->coretd_interest) { ?>
-                <td style="background-color: red;"><p>Interest</p></td>
-                <td style="background-color: red;"><p><?php echo $row->mbwintd_int_bal_amt; ?></p></td>
-                <td style="background-color: red;"><p><?php echo $row->coretd_interest; ?></p></td>
+                <td style="background-color: #ff6666;"><p>Interest</p></td>
+                <td style="background-color: #ff6666;"><p><?php echo $row->mbwintd_int_bal_amt; ?></p></td>
+                <td style="background-color: #ff6666;"><p><?php echo $row->coretd_interest; ?></p></td>
               <?php } else { ?>
                 <td><p>Interest</p></td>
                 <td><p><?php echo $row->mbwintd_int_bal_amt; ?></p></td>
@@ -180,9 +180,9 @@
               </tr>
               <tr>
               <?php if ($row->mbwintd_acc_name != $row->coretd_acc_name) { ?>
-                <td style="background-color: red;"><p>Account Name</p></td>
-                <td style="background-color: red;"><p><?php echo $row->mbwintd_acc_name; ?></p></td>
-                <td style="background-color: red;"><p><?php echo $row->coretd_acc_name; ?></p></td>
+                <td style="background-color: #ff6666;"><p>Account Name</p></td>
+                <td style="background-color: #ff6666;"><p><?php echo $row->mbwintd_acc_name; ?></p></td>
+                <td style="background-color: #ff6666;"><p><?php echo $row->coretd_acc_name; ?></p></td>
               <?php } else { ?>
                 <td><p>Account Name</p></td>
                 <td><p><?php echo $row->mbwintd_acc_name; ?></p></td>

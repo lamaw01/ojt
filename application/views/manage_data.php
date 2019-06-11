@@ -152,12 +152,13 @@
     </div>
     <div class="container">
       <div class="container-fluid" style="width: 350px; float: left;">
+        <header style="text-align: center;"><p style="font-size: 20px; color: green;">Correct Data</p></header>
         <table class="table table-striped"  cellpadding="2">
           <tr>
             <?php
             if($data1 > 1 && $data2 > 1 && $data3 > 1 && $data4 > 1 && $data5 > 1 && $data6 > 1 && $data7 > 1 && $data8 > 1 && $data9 > 1) { ?>
               <td>
-              <h5>Correct All Data</h5>
+              <h5>All Data</h5>
               </td>
               <td>
               <button><a href='<?php echo base_url()?>import/callcorrectAllData'>Correct</a></button>
@@ -165,37 +166,39 @@
             <?php } ?>
           </tr>
           <tr>
-            <?php
-            if($data1 > 1 && $data2 > 1 && $data3 > 1) { ?>
             <td>
-              <h5>Correct Core Data</h5>
+              <h5>Core Data</h5>
             </td>
             <td>
               <button><a href='<?php echo base_url()?>import/callcorrectCoreData'>Correct</a></button>
             </td>
-            <?php } ?>
           </tr>
           <tr>
-            <?php
-            if($data4 > 1 && $data5 > 1 && $data6 > 1) { ?>
             <td>
-              <h5>Correct Mbwin Data</h5>
+              <h5>Mbwin Data</h5>
             </td>
             <td>
               <button><a href='<?php echo base_url()?>import/callcorrectMbwinData'>Correct</a></button>
             </td>
-            <?php } ?>
           </tr>
           <tr>
-            <?php
-            if($data7 > 1 && $data8 > 1 && $data9 > 1) { ?>
             <td>
-              <h5>Correct Migrated Data</h5>
+              <h5>Migrated Data</h5>
             </td>
             <td>
               <button><a href='<?php echo base_url()?>import/callcorrectMigratedData'>Correct</a></button>
             </td>
-            <?php } ?>
+          </tr>
+        </table>  
+        <table class="table table-striped"  cellpadding="2">
+          <header style="text-align: center; padding-top: 100px;"><p style="font-size: 20px; color: blue;">Backup Database</p></header>
+          <tr>
+            <td>
+              <h5>Backup Database</h5>
+            </td>
+            <td>
+              <button><a href='<?php echo base_url()?>import/backup'>Export</a></button>
+            </td>
           </tr>
         </table>
       </div>
@@ -253,16 +256,17 @@
       </div>
       <div class="container-fluid" style="width: 350px; margin-top: -15px; float: right;">
         <table class="table table-striped"  cellpadding="2">
+        <header style="text-align: center;"><p style="font-size: 20px; color: red;">Delete Data</p></header>
           <tr>
             <td>
-              <h5>Delete All Data</h5>
+              <h5>All Data</h5>
             </td>
             <td>
               <button><a href='<?php echo base_url()?>import/calleraseAllData'>Delete</a></button>
             </td>
           </tr>
             <td>
-              <h5>Delete Core Loan Data</h5>
+              <h5>Core Loan Data</h5>
             </td>
             <td>
               <button><a href='<?php echo base_url()?>import/calldeleteCoreLoan'>Delete</a></button>
@@ -270,7 +274,7 @@
           </tr>
           <tr>
             <td>
-              <h5>Delete Core Savings Data</h5>
+              <h5>Core Savings Data</h5>
             </td>
             <td>
               <button><a href='<?php echo base_url()?>import/calldeleteCoreSavings'>Delete</a></button>
@@ -278,7 +282,7 @@
           </tr>
           <tr>
             <td>
-              <h5>Delete Core Time Deposit Data</h5>
+              <h5>Core Time Deposit Data</h5>
             </td>
             <td>
               <button><a href='<?php echo base_url()?>import/calldeleteCoreTimeDeposit'>Delete</a></button>
@@ -286,7 +290,7 @@
           </tr>
           <tr>
             <td>
-              <h5>Delete Mbwin Loan Data</h5>
+              <h5>Mbwin Loan Data</h5>
             </td>
             <td>
               <button><a href='<?php echo base_url()?>import/calldeleteMbwinLoan'>Delete</a></button>
@@ -294,7 +298,7 @@
           </tr>
           <tr>
             <td>
-              <h5>Delete Mbwin Savings Data</h5>
+              <h5>Mbwin Savings Data</h5>
             </td>
             <td>
               <button><a href='<?php echo base_url()?>import/calldeleteMbwinSavings'>Delete</a></button>
@@ -302,7 +306,7 @@
           </tr>
           <tr>
             <td>
-              <h5>Delete Mbwin Time Deposit Data</h5>
+              <h5>Mbwin Time Deposit Data</h5>
             </td>
             <td>
               <button><a href='<?php echo base_url()?>import/calldeleteMbwinTimeDeposit'>Delete</a></button>
@@ -310,7 +314,7 @@
           </tr>
           <tr>
             <td>
-              <h5>Delete Migrated Loan Data</h5>
+              <h5>Migrated Loan Data</h5>
             </td>
             <td>
               <button><a href='<?php echo base_url()?>import/calldeleteMigratedLoan'>Delete</a></button>
@@ -318,7 +322,7 @@
           </tr>
           <tr>
             <td>
-              <h5>Delete Migrated Savings Data</h5>
+              <h5>Migrated Savings Data</h5>
             </td>
             <td>
               <button><a href='<?php echo base_url()?>import/calldeleteMigratedSavings'>Delete</a></button>
@@ -326,7 +330,7 @@
           </tr>
           <tr>
             <td>
-              <h5>Delete Migrated Time Deposit Data</h5>
+              <h5>Migrated Time Deposit Data</h5>
             </td>
             <td>
               <button><a href='<?php echo base_url()?>import/calldeleteMigratedTimeDeposit'>Delete</a></button>
@@ -334,7 +338,7 @@
           </tr>
           <tr>
             <td>
-              <h5>Delete All Reports Data</h5>
+              <h5>All Reports Data</h5>
             </td>
             <td>
               <button><a href='<?php echo base_url()?>import/calldeleteAllReports'>Delete</a></button>
@@ -342,7 +346,7 @@
           </tr>
           <tr>
             <td>
-              <h5>Delete All Inquire Data</h5>
+              <h5>All Inquire Data</h5>
             </td>
             <td>
               <button><a href='<?php echo base_url()?>import/calldeleteAllInquire'>Delete</a></button>

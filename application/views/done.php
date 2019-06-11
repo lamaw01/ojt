@@ -137,7 +137,7 @@
 
     <center>
       <div class="container-fluid" style="margin-top: 180px;">
-        <p><font size="3">Data validation done.</font></p>
+        <p><font size="3">Data validation done/empty.</font></p>
         <button><a href="<?php echo base_url('page/check');?>">Back</a></button>
       </div>
     </center>

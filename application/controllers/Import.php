@@ -8,6 +8,10 @@ class Import extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Import_model');
+        $this->load->helper('url');
+        $this->load->helper('file');
+        $this->load->helper('download');
+        $this->load->library('zip');
         if($this->session->userdata('logged_in') !== TRUE){
           redirect('login');
         }
@@ -19,7 +23,7 @@ class Import extends CI_Controller
     function importcoreln()
     {
       $this->Import_model->coreln();
-      redirect('page');
+      redirect('page'); 
     }
     function importcoresv()
     {
@@ -69,22 +73,58 @@ class Import extends CI_Controller
     function callcorrectAllData()
     {
         $this->Import_model->correctAllData();
-        redirect('page/managedata');
+        $result['data1']=$this->Import_model->checkcoreln();
+        $result['data2']=$this->Import_model->checkcoresv();
+        $result['data3']=$this->Import_model->checkcoretd();
+        $result['data4']=$this->Import_model->checkmbwinln();
+        $result['data5']=$this->Import_model->checkmbwinsv();
+        $result['data6']=$this->Import_model->checkmbwintd();
+        $result['data7']=$this->Import_model->checkmigratedln();
+        $result['data8']=$this->Import_model->checkmigratedsv();
+        $result['data9']=$this->Import_model->checkmigratedtd();
+        $this->load->view('manage_data',$result);
     }
     function callcorrectCoreData()
     {
         $this->Import_model->correctCoreData();
-        redirect('page/managedata');
+        $result['data1']=$this->Import_model->checkcoreln();
+        $result['data2']=$this->Import_model->checkcoresv();
+        $result['data3']=$this->Import_model->checkcoretd();
+        $result['data4']=$this->Import_model->checkmbwinln();
+        $result['data5']=$this->Import_model->checkmbwinsv();
+        $result['data6']=$this->Import_model->checkmbwintd();
+        $result['data7']=$this->Import_model->checkmigratedln();
+        $result['data8']=$this->Import_model->checkmigratedsv();
+        $result['data9']=$this->Import_model->checkmigratedtd();
+        $this->load->view('manage_data',$result);
     }
     function callcorrectMbwinData()
     {
         $this->Import_model->correctMbwinData();
-        redirect('page/managedata');
+        $result['data1']=$this->Import_model->checkcoreln();
+        $result['data2']=$this->Import_model->checkcoresv();
+        $result['data3']=$this->Import_model->checkcoretd();
+        $result['data4']=$this->Import_model->checkmbwinln();
+        $result['data5']=$this->Import_model->checkmbwinsv();
+        $result['data6']=$this->Import_model->checkmbwintd();
+        $result['data7']=$this->Import_model->checkmigratedln();
+        $result['data8']=$this->Import_model->checkmigratedsv();
+        $result['data9']=$this->Import_model->checkmigratedtd();
+        $this->load->view('manage_data',$result);
     }
     function callcorrectMigratedData()
     {
         $this->Import_model->correctMigratedData();
-        redirect('page/managedata');
+        $result['data1']=$this->Import_model->checkcoreln();
+        $result['data2']=$this->Import_model->checkcoresv();
+        $result['data3']=$this->Import_model->checkcoretd();
+        $result['data4']=$this->Import_model->checkmbwinln();
+        $result['data5']=$this->Import_model->checkmbwinsv();
+        $result['data6']=$this->Import_model->checkmbwintd();
+        $result['data7']=$this->Import_model->checkmigratedln();
+        $result['data8']=$this->Import_model->checkmigratedsv();
+        $result['data9']=$this->Import_model->checkmigratedtd();
+        $this->load->view('manage_data',$result);
     }
 
 
@@ -258,6 +298,18 @@ class Import extends CI_Controller
       $result['data8']=$this->Import_model->checkmigratedsv();
       $result['data9']=$this->Import_model->checkmigratedtd();
       $this->load->view('manage_data',$result);
+    }
+
+    function backup()
+    {
+      $NAME=$this->db->database;
+      $this->load->dbutil();
+      $db_format=array('format'=>'zip','filename'=>'testing_db_backup.sql');
+      $backup=& $this->dbutil->backup($db_format);
+      $dbname=$NAME.'-backup-on-'.date('Y-m-d-H-i').'.zip';
+      $save='db/db_backup/'.$dbname;
+      write_file($save, $backup);
+      force_download($dbname, $backup);
     }
 
 }
