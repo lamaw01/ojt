@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2019 at 10:20 AM
+-- Generation Time: Jun 13, 2019 at 08:44 AM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.1.29
 
@@ -569,6 +569,7 @@ CREATE TABLE `inquiretd` (
 
 CREATE TABLE `mbwinln` (
   `mbwinln_id` int(11) NOT NULL,
+  `correct` int(5) NOT NULL DEFAULT '0',
   `account_no` varchar(30) NOT NULL,
   `check_digit` int(30) NOT NULL,
   `prtype` int(30) NOT NULL,
@@ -594,8 +595,7 @@ CREATE TABLE `mbwinln` (
   `acrintoduepriamt` decimal(20,2) NOT NULL,
   `odueintamt` decimal(20,2) NOT NULL,
   `int_bal_amt` decimal(20,2) NOT NULL,
-  `pen_bal_amt` decimal(20,2) NOT NULL,
-  `correct` int(5) NOT NULL DEFAULT '0'
+  `pen_bal_amt` decimal(20,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -606,6 +606,7 @@ CREATE TABLE `mbwinln` (
 
 CREATE TABLE `mbwinsv` (
   `mbwinsv_id` int(11) NOT NULL,
+  `correct` int(5) NOT NULL DEFAULT '0',
   `account_no` varchar(30) NOT NULL,
   `check_digit` int(30) NOT NULL,
   `prtype` int(30) NOT NULL,
@@ -621,8 +622,7 @@ CREATE TABLE `mbwinsv` (
   `cumintpdamt` decimal(20,2) NOT NULL,
   `cumtaxwamt` decimal(20,2) NOT NULL,
   `int_bal_amt` decimal(20,2) NOT NULL,
-  `minperbalamt` decimal(20,2) NOT NULL,
-  `correct` int(5) NOT NULL DEFAULT '0'
+  `minperbalamt` decimal(20,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -633,6 +633,7 @@ CREATE TABLE `mbwinsv` (
 
 CREATE TABLE `mbwintd` (
   `mbwintd_id` int(11) NOT NULL,
+  `correct` int(5) NOT NULL DEFAULT '0',
   `account_no` varchar(30) NOT NULL,
   `check_digit` int(30) NOT NULL,
   `prtype` int(30) NOT NULL,
@@ -644,8 +645,7 @@ CREATE TABLE `mbwintd` (
   `bal_amt` decimal(20,2) NOT NULL,
   `intrate` decimal(20,2) NOT NULL,
   `minperbalamt` decimal(20,2) NOT NULL,
-  `int_bal_amt` decimal(20,2) NOT NULL,
-  `correct` int(5) NOT NULL DEFAULT '0'
+  `int_bal_amt` decimal(20,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -656,6 +656,8 @@ CREATE TABLE `mbwintd` (
 
 CREATE TABLE `migratedln` (
   `migratedln_id` int(11) NOT NULL,
+  `stat` int(30) NOT NULL DEFAULT '0',
+  `correct` int(5) NOT NULL DEFAULT '0',
   `account_no` varchar(60) NOT NULL,
   `old_account_no` varchar(30) NOT NULL,
   `check_digit` int(30) NOT NULL,
@@ -675,9 +677,7 @@ CREATE TABLE `migratedln` (
   `overdue_principal_amount` decimal(20,2) NOT NULL,
   `overdue_interest_amount` decimal(20,2) NOT NULL,
   `penalty_balance_amount` decimal(20,2) NOT NULL,
-  `principal_frequency` int(30) NOT NULL,
-  `stat` int(30) NOT NULL DEFAULT '0',
-  `correct` int(5) NOT NULL DEFAULT '0'
+  `principal_frequency` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -709,6 +709,8 @@ DELIMITER ;
 
 CREATE TABLE `migratedsv` (
   `migratedsv_id` int(11) NOT NULL,
+  `stat` int(30) NOT NULL DEFAULT '0',
+  `correct` int(5) NOT NULL DEFAULT '0',
   `account_no` varchar(60) NOT NULL,
   `old_account_no` varchar(30) NOT NULL,
   `check_digit` int(30) NOT NULL,
@@ -731,9 +733,7 @@ CREATE TABLE `migratedsv` (
   `new_passbook_no` int(30) NOT NULL,
   `maturity_date` varchar(30) NOT NULL,
   `effective_interest_rate` decimal(20,2) NOT NULL,
-  `term_in_days` int(30) NOT NULL,
-  `stat` int(30) NOT NULL DEFAULT '0',
-  `correct` int(5) NOT NULL DEFAULT '0'
+  `term_in_days` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -765,6 +765,8 @@ DELIMITER ;
 
 CREATE TABLE `migratedtd` (
   `migratedtd_id` int(11) NOT NULL,
+  `stat` int(30) NOT NULL DEFAULT '0',
+  `correct` int(5) NOT NULL DEFAULT '0',
   `account_no` varchar(60) NOT NULL,
   `old_account_no` varchar(30) NOT NULL,
   `check_digit` int(30) NOT NULL,
@@ -787,9 +789,7 @@ CREATE TABLE `migratedtd` (
   `new_passbook_no` int(30) NOT NULL,
   `maturity_date` varchar(30) NOT NULL,
   `effective_interest_rate` decimal(20,2) NOT NULL,
-  `term_in_days` int(30) NOT NULL,
-  `stat` int(30) NOT NULL DEFAULT '0',
-  `correct` int(5) NOT NULL DEFAULT '0'
+  `term_in_days` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -917,19 +917,22 @@ DELIMITER ;
 -- Indexes for table `coreln`
 --
 ALTER TABLE `coreln`
-  ADD PRIMARY KEY (`coreln_id`);
+  ADD PRIMARY KEY (`coreln_id`),
+  ADD KEY `account_no` (`account_no`);
 
 --
 -- Indexes for table `coresv`
 --
 ALTER TABLE `coresv`
-  ADD PRIMARY KEY (`coresv_id`);
+  ADD PRIMARY KEY (`coresv_id`),
+  ADD KEY `account_no` (`account_no`);
 
 --
 -- Indexes for table `coretd`
 --
 ALTER TABLE `coretd`
-  ADD PRIMARY KEY (`coretd_id`);
+  ADD PRIMARY KEY (`coretd_id`),
+  ADD KEY `account_no` (`account_no`);
 
 --
 -- Indexes for table `errorln`
@@ -971,37 +974,46 @@ ALTER TABLE `inquiretd`
 -- Indexes for table `mbwinln`
 --
 ALTER TABLE `mbwinln`
-  ADD PRIMARY KEY (`mbwinln_id`);
+  ADD PRIMARY KEY (`mbwinln_id`),
+  ADD KEY `account_no` (`account_no`);
 
 --
 -- Indexes for table `mbwinsv`
 --
 ALTER TABLE `mbwinsv`
-  ADD PRIMARY KEY (`mbwinsv_id`);
+  ADD PRIMARY KEY (`mbwinsv_id`),
+  ADD KEY `account_no` (`account_no`);
 
 --
 -- Indexes for table `mbwintd`
 --
 ALTER TABLE `mbwintd`
-  ADD PRIMARY KEY (`mbwintd_id`);
+  ADD PRIMARY KEY (`mbwintd_id`),
+  ADD KEY `account_no` (`account_no`);
 
 --
 -- Indexes for table `migratedln`
 --
 ALTER TABLE `migratedln`
-  ADD PRIMARY KEY (`migratedln_id`);
+  ADD PRIMARY KEY (`migratedln_id`),
+  ADD KEY `account_no` (`account_no`),
+  ADD KEY `old_account_no` (`old_account_no`);
 
 --
 -- Indexes for table `migratedsv`
 --
 ALTER TABLE `migratedsv`
-  ADD PRIMARY KEY (`migratedsv_id`);
+  ADD PRIMARY KEY (`migratedsv_id`),
+  ADD KEY `account_no` (`account_no`),
+  ADD KEY `old_account_no` (`old_account_no`);
 
 --
 -- Indexes for table `migratedtd`
 --
 ALTER TABLE `migratedtd`
-  ADD PRIMARY KEY (`migratedtd_id`);
+  ADD PRIMARY KEY (`migratedtd_id`),
+  ADD KEY `account_no` (`account_no`),
+  ADD KEY `old_account_no` (`old_account_no`);
 
 --
 -- Indexes for table `tbl_users`

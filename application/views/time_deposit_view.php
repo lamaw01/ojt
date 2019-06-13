@@ -174,21 +174,15 @@
                       echo '<p class="text-danger ">Validation Error</p>';
                     }
                 }
+              }else if($row->account_name == '')
+              {
+                redirect('page/correct');
               }else
               {
-                redirect('page/finish');
+                redirect('page/done');
               }
-  
             ?>
 
-            <!--<?php 
-              //if($row->migratetd_id == 0)
-              {
-                //echo "there are no files to validate";
-                //redirect('page/check');
-              }
-            ?>-->
-               
             </table>
           </form>
             <div class="container-fluid">
@@ -205,19 +199,15 @@
     <script src="<?php echo base_url('assets/plugins/pace/pace.js'); ?>"></script>
     
     <script>
-      var startTime = setInterval(resume, 1750); //CHANGE THIS VALUE TO ADJUST VALIDATION SPEED
+      var startTime = setInterval(resume, 2000); //CHANGE THIS VALUE TO ADJUST VALIDATION SPEED
     
       function resume(){
         $('#botox')[0].click();
       }
-      /*
-      function start(){
+      
 
-        setInterval(function(){
-          $('#botox')[0].click();
-        }, 3000);
-      }
-      */
+
+      
       function stop(){
         clearInterval(startTime);
       }

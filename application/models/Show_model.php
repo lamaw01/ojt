@@ -14,13 +14,13 @@ class Show_model extends CI_Model{
   }
 
  function total_recordln(){
-    return $this->db->count_all('coreln','mbwinln','migratedln');
+    return $this->db->count_all('migratedln');
  }
 
  function get_joinln(){
     $this->db->select('migratedln.migratedln_id AS migrateln_id, migratedln.account_no AS migratedln_acc_no, migratedln.old_account_no AS migratedln_old_acc_no, coreln.account_name');
   	$this->db->from('migratedln');
-  	$this->db->join('coreln','migratedln.account_no = coreln.account_no','left');
+  	$this->db->join('coreln','migratedln.account_no = coreln.account_no');
     $this->db->where('stat = 0');
     $this->db->limit(5);
     $query = $this->db->get();
@@ -43,13 +43,13 @@ class Show_model extends CI_Model{
 
 
  function total_recordsv(){
-    return $this->db->count_all('coresv','mbwinsv','migratedsv');
+    return $this->db->count_all('migratedsv');
  }
 
  function get_joinsv(){
     $this->db->select('migratedsv.migratedsv_id AS migratesv_id, migratedsv.account_no AS migratedsv_acc_no, migratedsv.old_account_no AS migratedsv_old_acc_no, coresv.account_name');
     $this->db->from('migratedsv');
-    $this->db->join('coresv','migratedsv.account_no = coresv.account_no','left');
+    $this->db->join('coresv','migratedsv.account_no = coresv.account_no');
     $this->db->where('stat = 0');
     $this->db->limit(5);
     $query = $this->db->get();
@@ -71,13 +71,13 @@ class Show_model extends CI_Model{
  }
 
  function total_recordtd(){
-    return $this->db->count_all('coretd','mbwintd','migratedtd');
+    return $this->db->count_all('migratedtd');
  }
 
  function get_jointd(){
     $this->db->select('migratedtd.migratedtd_id AS migratetd_id, migratedtd.account_no AS migratedtd_acc_no, migratedtd.old_account_no AS migratedtd_old_acc_no, coretd.account_name');
     $this->db->from('migratedtd');
-    $this->db->join('coretd','migratedtd.account_no = coretd.account_no','left');
+    $this->db->join('coretd','migratedtd.account_no = coretd.account_no');
     $this->db->where('stat = 0');
     $this->db->limit(5);
     $query = $this->db->get();

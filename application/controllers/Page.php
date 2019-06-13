@@ -126,11 +126,22 @@ class Page extends CI_Controller{
     }
   }
 
-  function finish(){
+  function done(){
     //Allowing access to tech only
     $loginstatus = $this->session->userdata('level');
-    if($loginstatus == 1 || $loginstatus == 2 || $loginstatus == 3){
+    if($loginstatus == 1 || $loginstatus == 2){
       $this->load->view('done');
+    }else{
+      $this->session->sess_destroy();
+      redirect(base_url());
+    }
+  }
+
+  function correct(){
+    //Allowing access to tech only
+    $loginstatus = $this->session->userdata('level');
+    if($loginstatus == 1 || $loginstatus == 2){
+      $this->load->view('correct');
     }else{
       $this->session->sess_destroy();
       redirect(base_url());

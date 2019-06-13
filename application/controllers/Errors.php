@@ -29,7 +29,7 @@ class Errors extends CI_Controller {
     $config['uri_segment'] = 3;
     $config['use_page_numbers'] = false;
     $config['base_url'] = base_url().'errors/loan';
-    $config['total_rows'] = $this->Errors_model->total_recordln();
+    $config['total_rows'] = $this->db->count_all_results('errorln');
     $config['per_page'] = $limit;
     $config['num_links'] = 5;
     $config['full_tag_open'] = '<ul class="pagination">';
@@ -67,7 +67,7 @@ class Errors extends CI_Controller {
     $config['uri_segment'] = 3;
     $config['use_page_numbers'] = false;
     $config['base_url'] = base_url().'errors/savings';
-    $config['total_rows'] = $this->Errors_model->total_recordsv();
+    $config['total_rows'] = $this->db->count_all_results('errorsv');
     $config['per_page'] = $limit;
     $config['num_links'] = 5;
     $config['full_tag_open'] = '<ul class="pagination">';
@@ -105,7 +105,7 @@ class Errors extends CI_Controller {
     $config['uri_segment'] = 3;
     $config['use_page_numbers'] = false;
     $config['base_url'] = base_url().'errors/time_deposit';
-    $config['total_rows'] = $this->Errors_model->total_recordtd();
+    $config['total_rows'] = $this->db->count_all_results('errortd');
     $config['per_page'] = $limit;
     $config['num_links'] = 5;
     $config['full_tag_open'] = '<ul class="pagination">';

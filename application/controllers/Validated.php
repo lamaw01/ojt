@@ -29,7 +29,7 @@ class Validated extends CI_Controller {
     $config['uri_segment'] = 3;
     $config['use_page_numbers'] = false;
     $config['base_url'] = base_url().'validated/loan';
-    $config['total_rows'] = $this->Validated_model->total_recordln();
+    $config['total_rows'] = $this->db->count_all_results('validateln');
     $config['per_page'] = $limit;
     $config['num_links'] = 5;
     $config['full_tag_open'] = '<ul class="pagination">';
@@ -67,7 +67,7 @@ class Validated extends CI_Controller {
     $config['uri_segment'] = 3;
     $config['use_page_numbers'] = false;
     $config['base_url'] = base_url().'validated/savings';
-    $config['total_rows'] = $this->Validated_model->total_recordsv();
+    $config['total_rows'] = $this->db->count_all_results('validateln');
     $config['per_page'] = $limit;
     $config['num_links'] = 5;
     $config['full_tag_open'] = '<ul class="pagination">';
@@ -105,7 +105,7 @@ class Validated extends CI_Controller {
     $config['uri_segment'] = 3;
     $config['use_page_numbers'] = false;
     $config['base_url'] = base_url().'validated/time_deposit';
-    $config['total_rows'] = $this->Validated_model->total_recordtd();
+    $config['total_rows'] = $this->db->count_all_results('validateln');
     $config['per_page'] = $limit;
     $config['num_links'] = 5;
     $config['full_tag_open'] = '<ul class="pagination">';
