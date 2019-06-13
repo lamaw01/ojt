@@ -165,7 +165,7 @@
               <td><p><?php echo $row->inquiresv_old_acc_no; ?></p></td>
               <td><p><?php echo $row->coresv_acc_name; ?></p></td>
               <td><p><?php echo $row->stat; ?></p></td>
-              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/savings/<?php echo $row->inquiresv_acc_no; ?>'>Details</a></td>
+              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/inquire_savings/<?php echo $row->inquiresv_acc_no; ?>'>Details</a></td>
               <?php endforeach; ?>
               <?php else: ?>
 

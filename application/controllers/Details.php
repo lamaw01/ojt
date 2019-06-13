@@ -31,5 +31,26 @@ class Details extends CI_Controller {
 
 }
 
+function inquire_loan($id){
+    
+    $result['data'] = $this->Details_model->get_detailsln($id);
+    $this->load->view('inquire_loan_details_view',$result);
+
+}
+
+ function inquire_savings($id){
+    
+    $result['data'] = $this->Details_model->get_detailssv($id);
+    $this->load->view('inquire_savings_details_view',$result);
+
+}
+
+ function inquire_time_deposit($id){
+    
+    $result['data'] = $this->Details_model->get_detailstd($id);
+    $this->load->view('inquire_time_deposit_details_view',$result);
+
+}
+
 
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2019 at 08:44 AM
+-- Generation Time: Jun 13, 2019 at 10:40 AM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.1.29
 
@@ -325,65 +325,21 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `errtd` (IN `id` INT(11))  BEGIN
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `valln` (IN `id` INT(11))  BEGIN 
-
-    IF (SELECT coreln.int_rate, coreln.penalty_rate, coreln.loan_amount, coreln.outstanding_bal, coreln.overdue_principal, coreln.interest_due_amount, coreln.penalty FROM coreln
-        LEFT JOIN migratedln ON migratedln.account_no = coreln.account_no
-        LEFT JOIN mbwinln ON migratedln.old_account_no = mbwinln.account_no
-        WHERE coreln.int_rate = mbwinln.int_rate
-        AND coreln.penalty_rate = mbwinln.pen_rate
-        AND coreln.loan_amount = mbwinln.principal_amt
-        AND coreln.outstanding_bal = mbwinln.bal_amt
-        AND coreln.overdue_principal = mbwinln.over_due_pri_amt
-        AND coreln.interest_due_amount = mbwinln.int_bal_amt
-        AND coreln.penalty = mbwinln.pen_bal_amt
-        AND migratedln.stat = 0
-        AND migratedln.migratedln_id = id) = (SELECT mbwinln.int_rate, mbwinln.pen_rate, mbwinln.principal_amt, mbwinln.bal_amt, mbwinln.over_due_pri_amt, mbwinln.int_bal_amt, mbwinln.pen_bal_amt FROM mbwinln 
-        LEFT JOIN migratedln ON migratedln.old_account_no = mbwinln.account_no
-        LEFT JOIN coreln ON migratedln.account_no = coreln.account_no                           
-        WHERE mbwinln.int_rate = coreln.int_rate
-        AND mbwinln.pen_rate = coreln.penalty_rate
-        AND mbwinln.principal_amt = coreln.loan_amount
-        AND mbwinln.bal_amt = coreln.outstanding_bal
-        AND mbwinln.over_due_pri_amt = coreln.overdue_principal
-        AND mbwinln.int_bal_amt = coreln.interest_due_amount
-        AND mbwinln.pen_bal_amt = coreln.penalty
-        AND migratedln.stat = 0
-        AND migratedln.migratedln_id = id)
-        
-        THEN
-
-        UPDATE migratedln
-        SET stat = 1
-        WHERE migratedln_id = id;
-        
-    END IF;
+	UPDATE migratedln
+	SET stat = 1
+	WHERE migratedln_id = id;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `valsv` (IN `id` INT(11))  BEGIN 
+	UPDATE migratedsv
+	SET stat = 1
+	WHERE migratedsv_id = id;
+END$$
 
-    IF (SELECT coresv.open_date, coresv.current_bal, coresv.interest
-    FROM coresv
-    INNER JOIN migratedsv ON migratedsv.account_no = coresv.account_no
-    INNER JOIN mbwinsv ON migratedsv.old_account_no = mbwinsv.account_no
-    WHERE coresv.open_date = mbwinsv.open_date
-    AND coresv.current_bal = mbwinsv.bal_amt
-    AND coresv.interest = mbwinsv.int_bal_amt
-    AND migratedsv.migratedsv_id = id) = (SELECT mbwinsv.open_date, mbwinsv.bal_amt, mbwinsv.int_bal_amt
-    FROM mbwinsv
-    INNER JOIN migratedsv ON migratedsv.old_account_no = mbwinsv.account_no
-    INNER JOIN coresv ON migratedsv.account_no = coresv.account_no
-    WHERE mbwinsv.open_date = coresv.open_date
-    AND mbwinsv.bal_amt = coresv.current_bal
-    AND mbwinsv.int_bal_amt = coresv.interest
-    AND migratedsv.migratedsv_id = id)
-        
-        THEN
-
-        UPDATE migratedsv
-        SET stat = 1
-        WHERE migratedsv_id = id;
-        
-    END IF;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `valtd` (IN `id` INT(11))  BEGIN 
+	UPDATE migratedtd
+	SET stat = 1
+	WHERE migratedtd_id = id;
 END$$
 
 DELIMITER ;

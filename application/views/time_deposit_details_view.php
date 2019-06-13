@@ -195,7 +195,11 @@
               <?php endif; ?>
                
             </table>
-  
+
+              <div class="container-fluid" style="margin-top: 20px;">
+                <button><a href="<?php echo base_url('errors/time_deposit');?>">Back</a></button>
+              </div>
+              <br>
               <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
             </center>
           </div>

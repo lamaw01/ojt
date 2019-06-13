@@ -165,7 +165,7 @@
               <td><p><?php echo $row->inquiretd_old_acc_no; ?></p></td>
               <td><p><?php echo $row->coretd_acc_name; ?></p></td>
               <td><p><?php echo $row->stat; ?></p></td>
-              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/time_deposit/<?php echo $row->inquiretd_acc_no; ?>'>Details</a></td>
+              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/inquire_time_deposit/<?php echo $row->inquiretd_acc_no; ?>'>Details</a></td>
               <?php endforeach; ?>
               <?php else: ?>
 

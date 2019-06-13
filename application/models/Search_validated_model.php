@@ -12,7 +12,7 @@ Class Search_validated_model extends CI_Model {
  
     $this->db->select('validateln.*, coreln.account_name AS coreln_acc_name');
     $this->db->from('validateln');
-    $this->db->join('coreln','validateln.coreln_id = coreln.account_no','left');
+    $this->db->join('coreln','validateln.coreln_id = coreln.account_no');
 
     $newsearch = $search;
     if(preg_match('/\s/', $search)){
@@ -24,7 +24,6 @@ Class Search_validated_model extends CI_Model {
       $this->db->or_like('validateln.mbwinln_id', $search);
       $this->db->or_like('validateln.coreln_id', $search);
     }
-    $this->db->order_by('validateln_id', 'ASC');
     $this->db->limit($rowperpage, $rowno); 
     $query = $this->db->get();
  
@@ -36,7 +35,7 @@ Class Search_validated_model extends CI_Model {
 
     $this->db->select('count(*) as allcount, coreln.account_name AS coreln_acc_name');
     $this->db->from('validateln');
-    $this->db->join('coreln','validateln.coreln_id = coreln.account_no','left');
+    $this->db->join('coreln','validateln.coreln_id = coreln.account_no');
  
     if($search != ''){
       $this->db->like('coreln.account_name', $search);
@@ -55,13 +54,8 @@ Class Search_validated_model extends CI_Model {
  
     $this->db->select('validatesv.*, coresv.account_name AS coresv_acc_name');
     $this->db->from('validatesv');
-    $this->db->join('coresv','validatesv.coresv_id = coresv.account_no','left');
-  /*if (preg_match('/\s/', $search) > 0) {
-        $search = array_map('trim', array_filter(explode(' ', $search)));
-        foreach ($search as $key => $value) {
-          $this->db->or_like('coresv.account_name', $value);
-    }
-  }*/
+    $this->db->join('coresv','validatesv.coresv_id = coresv.account_no');
+
     $newsearch = $search;
     if(preg_match('/\s/', $search)){
           $arr = explode(" ", $search);
@@ -73,7 +67,6 @@ Class Search_validated_model extends CI_Model {
       $this->db->or_like('validatesv.coresv_id', $search);
     }
 
-    $this->db->order_by('validatesv_id', 'ASC');
     $this->db->limit($rowperpage, $rowno); 
     $query = $this->db->get();
  
@@ -86,7 +79,7 @@ Class Search_validated_model extends CI_Model {
 
     $this->db->select('count(*) as allcount, coresv.account_name AS coresv_acc_name');
     $this->db->from('validatesv');
-    $this->db->join('coresv','validatesv.coresv_id = coresv.account_no','left');
+    $this->db->join('coresv','validatesv.coresv_id = coresv.account_no');
 
     if($search != ''){
       $this->db->like('coresv.account_name', $search);
@@ -104,7 +97,7 @@ Class Search_validated_model extends CI_Model {
  
     $this->db->select('validatetd.*, coretd.account_name AS coretd_acc_name');
     $this->db->from('validatetd');
-    $this->db->join('coretd','validatetd.coretd_id = coretd.account_no','left');
+    $this->db->join('coretd','validatetd.coretd_id = coretd.account_no');
 
     $newsearch = $search;
     if(preg_match('/\s/', $search)){
@@ -117,7 +110,6 @@ Class Search_validated_model extends CI_Model {
       $this->db->or_like('validatetd.coretd_id', $search);
     }
 
-    $this->db->order_by('validatetd_id', 'ASC');
     $this->db->limit($rowperpage, $rowno); 
     $query = $this->db->get();
  
@@ -129,7 +121,7 @@ Class Search_validated_model extends CI_Model {
 
     $this->db->select('count(*) as allcount, coretd.account_name AS coretd_acc_name');
     $this->db->from('validatetd');
-    $this->db->join('coretd','validatetd.coretd_id = coretd.account_no','left');
+    $this->db->join('coretd','validatetd.coretd_id = coretd.account_no');
   
     if($search != ''){
       $this->db->like('coretd.account_name', $search);

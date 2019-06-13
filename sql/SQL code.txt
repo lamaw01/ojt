@@ -1115,3 +1115,33 @@ END
 
 2758080.00
 7245770.00
+
+DELIMITER ?
+CREATE PROCEDURE valtd(IN id INT(11))
+BEGIN 
+
+    IF (SELECT coretd.open_date, coretd.current_bal, coretd.interest
+    FROM coretd
+    INNER JOIN migratedtd ON migratedtd.account_no = coretd.account_no
+    INNER JOIN mbwintd ON migratedtd.old_account_no = mbwintd.account_no
+    WHERE coretd.open_date = mbwintd.open_date
+    AND coretd.principal_amount = mbwintd.bal_amt
+    AND coretd.interest = mbwintd.int_bal_amt
+    AND migratedtd.migratedtd_id = id) = (SELECT mbwintd.open_date, mbwintd.bal_amt, mbwintd.int_bal_amt
+    FROM mbwintd
+    INNER JOIN migratedtd ON migratedtd.old_account_no = mbwintd.account_no
+    INNER JOIN coretd ON migratedtd.account_no = coretd.account_no
+    WHERE mbwintd.open_date = coretd.open_date
+    AND mbwintd.bal_amt = coretd.principal_amount
+    AND mbwintd.int_bal_amt = coretd.interest
+    AND migratedtd.migratedtd_id = id)
+        
+        THEN
+
+        UPDATE migratedtd
+        SET stat = 1
+        WHERE migratedtd_id = id;
+        
+    END IF;
+END
+?

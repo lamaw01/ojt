@@ -165,7 +165,7 @@
               <td><p><?php echo $row->inquireln_old_acc_no; ?></p></td>
               <td><p><?php echo $row->coreln_acc_name; ?></p></td>
               <td><p><?php echo $row->stat; ?></p></td>
-              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/loan/<?php echo $row->inquireln_acc_no; ?>'>Details</a></td>
+              <td><a class='btn btn-primary btn-md' href='<?php echo base_url()?>details/inquire_loan/<?php echo $row->inquireln_acc_no; ?>'>Details</a></td>
               <?php endforeach; ?>
               <?php else: ?>
 
