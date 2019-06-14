@@ -174,7 +174,7 @@
                       echo '<p class="text-danger ">Validation Error</p>';
                     }
                 }
-              }else if($row->account_name == '')
+              }else if($row->account_name == '' && $row->migratetd_id > 1)
               {
                 redirect('page/correct');
               }else
@@ -199,7 +199,7 @@
     <script src="<?php echo base_url('assets/plugins/pace/pace.js'); ?>"></script>
 
     <script>
-      var startTime = setInterval(resume, 2000); //CHANGE THIS VALUE TO ADJUST VALIDATION SPEED
+      var startTime = setInterval(resume, 1500); //CHANGE THIS VALUE TO ADJUST VALIDATION SPEED
     
       function resume(){
         $('#botox')[0].click();

@@ -151,7 +151,7 @@
       </div>
     </div>
     <div class="container">
-      <div class="container-fluid" style="width: 350px; float: left;">
+      <div class="container-fluid" id="correct-div">
         <header style="text-align: center;"><p style="font-size: 20px; color: green;">Correct Data</p></header>
         <table class="table table-striped"  cellpadding="2">
           <tr>
@@ -254,7 +254,7 @@
         }
         ?>
       </div>
-      <div class="container-fluid" style="width: 350px; margin-top: -15px; float: right;">
+      <div class="container-fluid" id="delete-div">
         <table class="table table-striped"  cellpadding="2">
         <header style="text-align: center;"><p style="font-size: 20px; color: red;">Delete Data</p></header>
           <tr>

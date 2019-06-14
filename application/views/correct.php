@@ -136,7 +136,7 @@
     </div>
 
     <center>
-      <div class="container-fluid" style="margin-top: 180px;">
+      <div class="container" id="donediv">
         <p><font size="3">Data not corrected, correct first.</font></p>
         <button><a href="<?php echo base_url('page/check');?>">Back</a></button>
       </div>
